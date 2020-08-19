@@ -6,16 +6,16 @@ public class GST {
 	
 	private int Id; //The GST's ID
 	private int fitterDistrict;
-	private int job_status; 
-	private String job_statu;
+	private int jobStatus; 
+	private String jobStatu;
 	
-	public GST(int Id, int fitterDistrict, int job_status) {	
+	public GST(int Id, int fitterDistrict, int jobStatus) {	
 //		this.lat = lat;
 //		this.lng = lng;
 		
 		this.Id = Id;
 		this.fitterDistrict = fitterDistrict;
-		this.job_status = job_status;
+		this.jobStatus = jobStatus;
 	
 	}
 	
@@ -25,8 +25,8 @@ public class GST {
         	return Id;
     	}
 	
-	public int getJob_Status(){
-        	return job_status;
+	public int getJobStatus(){
+        	return jobStatus;
     	}
 	
 	public int getFitterDistrict() {
@@ -37,15 +37,15 @@ public class GST {
 		this.jobStatu = jobStatu;
 	}
 	
-	public String getJob_Statu() {
-        if (this.job_status == 0) {
+	public String getJobStatu() {
+        if (this.jobStatus == 0) {
             return "Available";
-        } else if (this.job_status == 1) {
+        } else if (this.jobStatus == 1) {
             return "Working";
-        } else if (this.job_status == 2) {
+        } else if (this.jobStatus == 2) {
             return "In Emergency task";
         }
-		return job_statu;
+		return jobStatu;
 	}
 
 }
