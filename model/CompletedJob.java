@@ -12,7 +12,8 @@ public class CompletedJob extends Job {
 	//The following variables will be hard coded initially
 	private double jobDuration;
 	private double travelTime;
-	private double totalTime;
+	private double endTime;
+	private GST gst;
 
 	/**
 	 * Constructor for a completedJob object with some basic information
@@ -20,17 +21,23 @@ public class CompletedJob extends Job {
 	 * @param fitterDistrict
 	 * @param startTime
 	 */
-	public CompletedJob(int fitterDistrict, int startTime) {
+	public CompletedJob(int fitterDistrict, double startTime, GST gst) {
 		super(fitterDistrict, startTime);
-		this.jobDuration = 60.0;
-		this.travelTime = 30.0;
-		totalTime = travelTime+jobDuration;
+		this.jobDuration = 1;
+		this.travelTime = 1;
+		this.gst = gst;
+		endTime = startTime + travelTime + jobDuration;
 		
 	}
 	
+	public double getEndTime() {
+		return endTime;
+	}
+	
+	
 	public String toString() {
-		return "\nJob Details " + "\nFitterDistrict: " + getFitterDistrict() + "\nStart Time:  " +  +getStartTime() + 
-		"\nJob Duration: " +jobDuration + "\nTravel Time: " +travelTime + "\nTotal Time: " +totalTime;
+		return "\nJob Details" +"\nJob ID: " + this.getOrderNum() + "\nGST ID: " + gst.getId() + "\nFitterDistrict: " + getFitterDistrict() + "\nStart Time:  " +  +getStartTime() + 
+		"\nJob Duration: " +jobDuration + "\nTravel Time: " +travelTime + "\nJob Finish Time: " +endTime;
 		
 	}
 

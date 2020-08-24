@@ -1,5 +1,7 @@
 package model;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @author Yun Wang
  * 
@@ -13,10 +15,12 @@ public class GST {
 	
 	//The GST's ID
 	
-	private int Id; 
+	private static final AtomicInteger count = new AtomicInteger(0); 
+	private int id; 
 	private int fitterDistrict;
 	private int jobStatus; 
 	private String jobStatu;
+	private boolean isAvailable;
 	
 //	public GST(int Id, int fitterDistrict, int jobStatus) {	
 //		this.lat = lat;
@@ -27,6 +31,8 @@ public class GST {
 //	
 //	}
 	
+	
+
 	/**
 	 * A constructor used to create GSTs with basic functionality.
 	 * Early development only requires them to be initialised with
@@ -36,10 +42,20 @@ public class GST {
 	 */
 	public GST(int fitterDistrict) {
 		this.fitterDistrict = fitterDistrict;
+		id = count.incrementAndGet();	
 	}
 	
+	public boolean isAvailable() {
+		return isAvailable;
+	}
+
+	public void setAvailable(boolean isAvailable) {
+		this.isAvailable = isAvailable;
+	}
+
+	
 	public int getId(){
-        	return Id;
+        	return id;
     	}
 	
 	public int getJobStatus(){
@@ -64,5 +80,13 @@ public class GST {
         }
 		return jobStatu;
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "GST [id=" + id + ", fitterDistrict=" + fitterDistrict + ", jobStatus=" + jobStatus + ", jobStatu="
+				+ jobStatu + ", isAvailable=" + isAvailable + "]";
+	}
+
 
 }

@@ -2,6 +2,7 @@ package model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author Sawmya Patidar
@@ -32,7 +33,10 @@ public class Job implements Comparable<Job> {
 	    
 	    
 	    //An integer to represent an hour of time in the simulation
-	    private int startTime;
+	    private double startTime;
+	    private double endTime;
+	    private double travelTime;
+	    private static final AtomicInteger count = new AtomicInteger(0); 
 	    
 	    
 		/**
@@ -88,17 +92,24 @@ public class Job implements Comparable<Job> {
 	     * @param startTime
 	     */
 		
-	    public Job(int fitterDistrict, int startTime) {
-
+	    public Job(int fitterDistrict, double startTime) {
+			orderNum = count.incrementAndGet();	
 			this.fitterDistrict = fitterDistrict;
 			this.startTime = startTime;
 			
 		}
 	    
 	    
+	    public double getEndTime(double travelTime, double jobDuration) {
+			endTime = travelTime + jobDuration;
+			return endTime;
+		}
 	    
+	    public double getTravelTime() {
+	    	return travelTime;
+	    }
+	
 	    //Getters and setters
-	 
 	  
 	    public String getMainActDescription() {
 			return mainActDescription;
@@ -237,12 +248,8 @@ public class Job implements Comparable<Job> {
 			this.jobDuration = jobDuration;
 		}
 
-		@Override
-		public int compareTo(Job job) {
-			return this.getJobPriority().compareTo(job.getJobPriority());
-		}
 		
-	    public int getStartTime() {
+	    public double getStartTime() {
 				return startTime;
 			}
 
@@ -252,7 +259,14 @@ public class Job implements Comparable<Job> {
 		
 		 @Override
 		    public String toString() {
-		        return "Job [Number: " + orderNum + ", Job Priority: " + jobPriority + ", Activity Type: " + mainActType +", Starting Date: " + orderCreateDate + ", Starting Time: " + orderCreateTime +", Estimated Duration: " + jobDuration + "]";
+		        return "Job [Number: " + orderNum + ", FitterDistrict: " +fitterDistrict + " Job Priority: " + jobPriority + ", Activity Type: " + mainActType +", Starting Date: " + orderCreateDate + ", Starting Time: " + orderCreateTime +", Estimated Duration: " + jobDuration + "]";
 		    }
+
+
+		@Override
+		public int compareTo(Job o) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
 		
 }
