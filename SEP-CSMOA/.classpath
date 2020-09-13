@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/commons-beanutils-1.9.4.jar"/>
+	<classpathentry kind="lib" path="lib/commons-collections4-4.4.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.11.jar"/>
+	<classpathentry kind="lib" path="lib/commons-text-1.9.jar"/>
+	<classpathentry kind="lib" path="lib/opencsv-5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/61469/Desktop/sqlite-jdbc-3.20.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
