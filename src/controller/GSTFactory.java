@@ -9,9 +9,9 @@ import model.GST;
 
 public class GSTFactory {
 	
-	private ArrayList<GST> gstPool = new ArrayList<GST>();
+	private static ArrayList<GST> gstPool = new ArrayList<GST>();
 	
-	public void initGSTs(String filename) {
+	public static void readGSTsFromCSV(String filename) {
 		System.out.println("GST init start...");
 		try {
 			File file = new File(filename);
@@ -49,6 +49,10 @@ public class GSTFactory {
 			e.printStackTrace();
 		}
 		System.out.println("GST init finish.");
+	}
+	
+	public static ArrayList<GST> getGSTpool() {
+		return gstPool;
 	}
 
 }

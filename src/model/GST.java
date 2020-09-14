@@ -1,7 +1,5 @@
 package model;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 /**
  * @author Yun Wang
  * 
@@ -11,78 +9,48 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class GST {
 	
-	//private double lat, lng;
-	
-	//The GST's ID
-	
-	private static final AtomicInteger count = new AtomicInteger(0); 
-	private int id; 
-	private int fitterDistrict;
-	private int jobStatus; 
-	private String jobStatu;
+	private String gSTid;
+	private double lat, lon;
 	private boolean isAvailable;
-	
-//	public GST(int Id, int fitterDistrict, int jobStatus) {	
-//		this.lat = lat;
-//		this.lng = lng;
-//		this.Id = Id;
-//		this.fitterDistrict = fitterDistrict;
-//		this.jobStatus = jobStatus;
-//	
-//	}
-	
-	
-
-	/**
-	 * A constructor used to create GSTs with basic functionality.
-	 * Early development only requires them to be initialised with
-	 * their fitter district in order to be assigned jobs.
-	 * 
-	 * @param fitterDistrict
-	 */
-	public GST(int fitterDistrict) {
-		this.fitterDistrict = fitterDistrict;
-		id = count.incrementAndGet();	
-	}
+	private int fitterDistrict;
 	
 	public GST(String gSTid, double lat, double lon) {
-		// TODO Auto-generated constructor stub
+		this.gSTid = gSTid;
+		this.lat = lat;
+		this.lon = lon;
+		isAvailable = true;		
+	}
+	
+	public String getgSTid() {
+		return gSTid;
 	}
 
-	public boolean isAvailable() {
-		return isAvailable;
+	public void setgSTid(String gSTid) {
+		this.gSTid = gSTid;
+	}
+	
+	public double getLat() {
+		return lat;
+	}
+
+	public void setLat(double lat) {
+		this.lat = lat;
+	}
+
+	public double getLon() {
+		return lon;
+	}
+
+	public void setLon(double lon) {
+		this.lon = lon;
 	}
 
 	public void setAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
 	}
 
-	
-	public int getId(){
-        	return id;
-    	}
-	
-	public int getJobStatus(){
-        	return jobStatus;
-    	}
-	
 	public int getFitterDistrict() {
 		return fitterDistrict;
-	}
-	
-	public void setJobStatu(String jobStatu) {
-		this.jobStatu = jobStatu;
-	}
-	
-	public String getJobStatu() {
-        if (this.jobStatus == 0) {
-            return "Available";
-        } else if (this.jobStatus == 1) {
-            return "Working";
-        } else if (this.jobStatus == 2) {
-            return "In Emergency task";
-        }
-		return jobStatu;
 	}
 	
 	public boolean getIsAvailable() {
@@ -92,7 +60,7 @@ public class GST {
 	
 	@Override
 	public String toString() {
-		return "GST [id=" + id + ", fitterDistrict=" + fitterDistrict + ", isAvailable=" + isAvailable + "]";
+		return "GST [id=" + gSTid + ", fitterDistrict=" + fitterDistrict + ", isAvailable=" + isAvailable + "]";
 	}
 
 

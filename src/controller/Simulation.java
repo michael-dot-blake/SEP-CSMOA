@@ -23,10 +23,6 @@ import model.Job;
  */
 public class Simulation {
 
-	// variable used to store time
-	private static int timer = 0;
-	private static int runtime;
-
 	Random rand = new Random();
 
 	// Queue storage for jobs
@@ -35,31 +31,7 @@ public class Simulation {
 	// Store completed jobs
 	private ArrayList<CompletedJob> completedJobs = new ArrayList<CompletedJob>();
 
-	// A pool of GSTs to which jobs can be assigned
 	private ArrayList<GST> gstPool = new ArrayList<GST>();
-
-	// A pool of jobs representing historical data
-	//private ArrayList<Job> jobPool = new ArrayList<Job>();
-
-	// A pool of fitter districts which can be randomly assigned to jobs and GSTS
-	private int[] fitterDistricts;
-
-	public Simulation() {
-
-		// Store fitter districts for random distribution
-		fitterDistricts = new int[10];
-		fitterDistricts[0] = 240;
-		fitterDistricts[1] = 320;
-		fitterDistricts[2] = 800;
-		fitterDistricts[3] = 503;
-		fitterDistricts[4] = 220;
-		fitterDistricts[5] = 442;
-		fitterDistricts[6] = 250;
-		fitterDistricts[7] = 301;
-		fitterDistricts[8] = 350;
-		fitterDistricts[9] = 420;
-
-	}
 
 	/**
 	 * Loop through completedJobs array and call toString
@@ -82,92 +54,83 @@ public class Simulation {
 
 	/**
 	 * Main simulation method
+	 * 
+	 * @throws IOException
+	 * @throws SecurityException
 	 */
-	private void runSim(LocalDate date, LocalTime time,int runtimeInHours) {
+	private void runSim(LocalDate date, LocalTime time, int runtimeInHours) throws SecurityException, IOException {
 
-		// A testing function which progresses time by one minute each time a a while
-		// loop executes
+		// initialise logger
+		initLogger();
+
+		// Read in jobs from provided csv file
+		String path = "JobFiles/testHisData.csv";
+		JobFactory.readJobsFromCSV(path);
 		
-		JobFactory jf = new JobFactory();
-		jf.initJobs();
-		ArrayList<Job> jobPool = jf.getJobPool();
-		
+		//Read in GSTs from provided csv file
+		String path2 = "GSTFiles/gstTestData.csv";
+		GSTFactory.readGSTsFromCSV(path2);
+
+		// convert the user input of hours into seconds
 		long runtimeInSeconds;
 		runtimeInSeconds = runtimeInHours * 3600;
+
+		// initialise counter which will increment each time a second is added to the
+		// clock
 		int count = 0;
-		//LocalDate date = LocalDate.of(2019, 8, 8);
-		//LocalTime time = LocalTime.of(8, 45);
+
+		// create LocalDateTime object based on user inputs of date and time
 		LocalDateTime myDateTime = LocalDateTime.of(date, time);
+
 		do {
-			for (Job j : jobPool ) {
-				//System.out.println("Job Creation Time: "+j.getOrderCreateDateAndTime());
-				//System.out.println("Value of LocalDateTime: " + myDateTime);
+			for (Job j : JobFactory.getJobPool()) {
+
+				// if the time and date of the job creation equals the myDateTime object
+				// then the job will be added to the jobQueue
 				if (myDateTime.isEqual(j.getOrderCreateDateAndTime())) {
-					
 					System.out.println("Times match");
-					// when the timer reaches the scheduled job time then the job
-					// is added to the job queue
 					jobQueue.add(j);
 					System.out.println(jobQueue);
 
-					// Now loop through both the jobQueue and the gstPool to find matching fitter
-					// districts and whether GST is currently available
-					// Note: this will be changed to lat,lng later in project
-//					for (Job jq : jobQueue) {
-//						for (GST g : gstPool) {
-//
-//							// if a match is found, the job is completed and a completedJob object is
-//							// created with some information about the job
-//							if ((g.getFitterDistrict() == jq.getFitterDistrict()) && g.getIsAvailable() == true) {
-//
-//								// flag the GST as unavailable
-//								g.setAvailable(false);
-//
-//								// when the timer progresses to the time that the job is completed
-//								// a completedjob object is created
-//
-////								if (timer == jq.getEndTime(jq.getStartTime(), jq.getJobDuration())) {
-////									completedJobs.add(new CompletedJob(jq.getFitterDistrict(), jq.getStartTime(), g));
-////
-////									jobQueue.remove(j);
-////									
-////									// The gst flag is reset to available and they can now be assigned new jobs
-////									g.setAvailable(true);
-////
-////								}
-//
-//							}
-//
-//						}
-//
-//					}
+					// Now loop through both the jobQueue and the gstPool to assign a GST
+					for (Job jq : jobQueue) {
+						for (GST g : GSTFactory.getGSTpool()) {
+							if ((g.getIsAvailable() == true)) {
+								g.setAvailable(false);
+
+								// when the timer progresses to the time that the job is completed
+								// a completedjob object is created and GST is set to available
+								jq.setEndDateAndTime(
+										jq.getOrderCreateDateAndTime().plusSeconds(jq.getJobDuration() * 60));
+								if (myDateTime.isEqual(jq.getEndDateAndTime())) {
+									//System.out.println("myDateTime is equal");
+									completedJobs.add(new CompletedJob(jq.getOrderNum(), jq.getOrderType(),
+											jq.getOrderDescription(), jq.getIssueCode(), jq.getIssuedescription(),
+											jq.getMainActType(), jq.getMainActDescription(), jq.getOrderCreateDate(),
+											jq.getOrderCreateTime(), jq.getOrderCreateDateAndTime(),
+											jq.getJobPriority(), jq.getSuburb(), jq.getStreet(), jq.getHouseNum1(),
+											jq.getHouseNum2(), jq.getPostcode(), jq.getJobDuration(),
+											jq.getFitterDistrict(), jq.getEndDateAndTime(), g));
+									jobQueue.remove(j);
+
+									// The gst flag is reset to available and they can now be assigned new jobs
+									g.setAvailable(true);
+
+								}
+
+							}
+
+						}
+
+					}
 
 				}
 
 			}
-			//System.out.println(myDateTime);
 			myDateTime = myDateTime.plusSeconds(1);
+			//System.out.println(myDateTime);
 			count++;
 		} while (count <= runtimeInSeconds);
-
-	}
-
-	public void runTimer(int runtimeInHours) {
-
-		// A testing function which progresses time by one minute each time a a while
-		// loop executes
-		long runtimeInMinutes;
-		runtimeInMinutes = runtimeInHours * 60;
-		ArrayList<LocalDateTime> storedTime = new ArrayList<LocalDateTime>();
-		int thisCount = 0;
-		LocalDate ld = LocalDate.of(2020, 11, 23);
-		LocalTime lt = LocalTime.MIN;
-		LocalDateTime myDateTime = LocalDateTime.of(ld, lt);
-		do {
-			storedTime.add(thisCount, myDateTime);
-			myDateTime = myDateTime.plusMinutes(1);
-			thisCount++;
-		} while (thisCount <= runtimeInMinutes);
 
 	}
 
@@ -179,10 +142,10 @@ public class Simulation {
 		String dateString = scan.nextLine();
 		LocalDate date = LocalDate.parse(dateString);
 		System.out.println("Enter the Time(HH:MM:SS): ");
-	    String timeString = scan.nextLine();
-	    LocalTime time = LocalTime.parse(timeString); 
-	    System.out.println("Enter the Simulation running Time(In hours): ");   
-	    int runningTime = scan.nextInt();
+		String timeString = scan.nextLine();
+		LocalTime time = LocalTime.parse(timeString);
+		System.out.println("Enter the Simulation running Time(In hours): ");
+		int runningTime = scan.nextInt();
 		s.runSim(date, time, runningTime);
 
 	}// end main

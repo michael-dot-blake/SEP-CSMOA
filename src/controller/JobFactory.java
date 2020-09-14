@@ -12,16 +12,11 @@ import model.Job;
 
 public class JobFactory {
 	
-	private ArrayList<Job> jobPool = new ArrayList<Job>();
+	private static ArrayList<Job> jobPool = new ArrayList<Job>();
 	
-	public ArrayList<Job> getJobPool() {
-		return jobPool;
-	}
-
-	public void initJobs() {
+	public static void readJobsFromCSV(String path) {
 		System.out.println("init jobs start...");
 		try {
-			String path = "JobFiles/testHisData.csv";
 			File file = new File(path);
 			Scanner sc = new Scanner(file);
 			String header = sc.nextLine();
@@ -81,6 +76,10 @@ public class JobFactory {
 		System.out.println("\nAdded Jobs from the file:\n");
 		for(Job j : jobPool)
 			System.out.println(j);
+	}
+
+	public static ArrayList<Job> getJobPool() {
+		return jobPool;
 	}
 
 	
