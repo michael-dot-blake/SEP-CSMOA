@@ -45,6 +45,10 @@ public class GST {
 		id = count.incrementAndGet();	
 	}
 	
+	public GST(String gSTid, double lat, double lon) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public boolean isAvailable() {
 		return isAvailable;
 	}

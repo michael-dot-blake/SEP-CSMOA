@@ -1,6 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.Random;
@@ -23,8 +26,6 @@ public class Simulation {
 	// variable used to store time
 	private static int timer = 0;
 	private static int runtime;
-	
-	
 
 	Random rand = new Random();
 
@@ -38,7 +39,7 @@ public class Simulation {
 	private ArrayList<GST> gstPool = new ArrayList<GST>();
 
 	// A pool of jobs representing historical data
-	private ArrayList<Job> jobPool = new ArrayList<Job>();
+	//private ArrayList<Job> jobPool = new ArrayList<Job>();
 
 	// A pool of fitter districts which can be randomly assigned to jobs and GSTS
 	private int[] fitterDistricts;
@@ -63,155 +64,117 @@ public class Simulation {
 	/**
 	 * Loop through completedJobs array and call toString
 	 */
-	private void report() {
-		for (CompletedJob cj : completedJobs) {
-			System.out.println(cj.toString());
-		}
-	}
 
-	private void createGSTs(int numGSTs) {
-
-		int count = 0;
-		do {
-			gstPool.add(new GST(fitterDistricts[rand.nextInt(10)]));
-			count++;
-		} while (count < numGSTs);
-
-			for (GST g: gstPool) {
-			System.out.println(g.toString());
-			}
-
-	}
-
-	private void createJobs(int numJobs) {
-
-		int count = 0;
-		do {
-			jobPool.add(new Job(fitterDistricts[rand.nextInt(10)], rand.nextInt(10)));
-			count++;
-		} while (count < numJobs);
-
-			for (Job j: jobPool) {
-			System.out.println(j.toString());
-			}
-
-	}
-	
-	private void generateCompletedJobs(int numCompletedJobs) {
-		int count = 0;
-		do {
-			completedJobs.add(new CompletedJob(fitterDistricts[rand.nextInt(10)], rand.nextInt(10), null));
-			count++;
-		} while (count < numCompletedJobs);
-
-			for (Job j: completedJobs) {
-			System.out.println(j.toString());
-			}
-
-		
-	}
-	
 	private void initLogger() throws SecurityException, IOException {
-	
+
 		try {
 			Log myLog = new Log("log.txt");
-	   System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-	   for (Job j: completedJobs) {
-		   myLog.logger.log(Level.INFO, " " + j.toString());
-	   }
-	   
+			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+			for (Job j : completedJobs) {
+				myLog.logger.log(Level.INFO, " " + j.toString());
+			}
 
 		} catch (Exception e) {
-		
+
 		}
-		
+
 	}
 
 	/**
 	 * Main simulation method
 	 */
-	private void runSim(int numJobs, int numGSTs) {
+	private void runSim(int runtimeInHours) {
 
+		// A testing function which progresses time by one minute each time a a while
+		// loop executes
 		
-		createJobs(numJobs);
-		createGSTs(numGSTs);
-	
-		// set running time
-		runtime = 24;
-
+		JobFactory jf = new JobFactory();
+		jf.initJobs();
+		ArrayList<Job> jobPool = jf.getJobPool();
+		
+		long runtimeInSeconds;
+		runtimeInSeconds = runtimeInHours * 3600;
+		int count = 0;
+		LocalDate ld = LocalDate.of(2019, 8, 8);
+		LocalTime lt = LocalTime.MIN;
+		LocalDateTime myDateTime = LocalDateTime.of(ld, lt);
 		do {
-			// Loop through jobPool until timer matches job start time
-			for (Job j : jobPool) {
-				if (timer == j.getStartTime()) {
-
+			for (Job j : jobPool ) {
+				//System.out.println("Job Creation Time: "+j.getOrderCreateDateAndTime());
+				//System.out.println("Value of LocalDateTime: " + myDateTime);
+				if (myDateTime.isEqual(j.getOrderCreateDateAndTime())) {
+					
+					System.out.println("Times match");
 					// when the timer reaches the scheduled job time then the job
 					// is added to the job queue
 					jobQueue.add(j);
+					System.out.println(jobQueue);
 
 					// Now loop through both the jobQueue and the gstPool to find matching fitter
 					// districts and whether GST is currently available
 					// Note: this will be changed to lat,lng later in project
-					for (Job jq : jobQueue) {
-						for (GST g : gstPool) {
+//					for (Job jq : jobQueue) {
+//						for (GST g : gstPool) {
+//
+//							// if a match is found, the job is completed and a completedJob object is
+//							// created with some information about the job
+//							if ((g.getFitterDistrict() == jq.getFitterDistrict()) && g.getIsAvailable() == true) {
+//
+//								// flag the GST as unavailable
+//								g.setAvailable(false);
+//
+//								// when the timer progresses to the time that the job is completed
+//								// a completedjob object is created
+//
+////								if (timer == jq.getEndTime(jq.getStartTime(), jq.getJobDuration())) {
+////									completedJobs.add(new CompletedJob(jq.getFitterDistrict(), jq.getStartTime(), g));
+////
+////									jobQueue.remove(j);
+////									
+////									// The gst flag is reset to available and they can now be assigned new jobs
+////									g.setAvailable(true);
+////
+////								}
+//
+//							}
+//
+//						}
+//
+//					}
 
-							// if a match is found, the job is completed and a completedJob object is
-							// created with some information about the job
-							if ((g.getFitterDistrict() == jq.getFitterDistrict()) && g.getIsAvailable() == true) {
+				}
 
-								// flag the GST as unavailable
-								g.setAvailable(false);
+			}
+			//System.out.println(myDateTime);
+			myDateTime = myDateTime.plusSeconds(1);
+			count++;
+		} while (count <= runtimeInSeconds);
 
-								// when the timer progresses to the time that the job is completed
-								// a completedjob object is created
-								
-								if (timer == jq.getEndTime(jq.getStartTime(), jq.getJobDuration())) {
-									completedJobs.add(new CompletedJob(jq.getFitterDistrict(), jq.getStartTime(), g));
+	}
 
-									jobQueue.remove(j);
-									
-									// The gst flag is reset to available and they can now be assigned new jobs
-									g.setAvailable(true);
+	public void runTimer(int runtimeInHours) {
 
-								}
-
-							} 
-
-						} 
-
-					} 
-
-				} 
-
-			} 
-
-			timer++;
-
-		} while (timer <= runtime);
-
-		report();
+		// A testing function which progresses time by one minute each time a a while
+		// loop executes
+		long runtimeInMinutes;
+		runtimeInMinutes = runtimeInHours * 60;
+		ArrayList<LocalDateTime> storedTime = new ArrayList<LocalDateTime>();
+		int thisCount = 0;
+		LocalDate ld = LocalDate.of(2020, 11, 23);
+		LocalTime lt = LocalTime.MIN;
+		LocalDateTime myDateTime = LocalDateTime.of(ld, lt);
+		do {
+			storedTime.add(thisCount, myDateTime);
+			myDateTime = myDateTime.plusMinutes(1);
+			thisCount++;
+		} while (thisCount <= runtimeInMinutes);
 
 	}
 
 	public static void main(String[] args) throws SecurityException, IOException {
 
-		Simulation sim = new Simulation();
-		Scanner sc = new Scanner(System.in);
-
-		System.out.println("Enter number of Jobs: ");
-		int numJobs = sc.nextInt();
-		System.out.println("Enter number of GSTs: ");
-		int numGSTs = sc.nextInt();
-
-		
-
-
-		
-		sim.createJobs(numJobs);
-		sim.createGSTs(numGSTs);
-		sim.generateCompletedJobs(numJobs);
-		sim.initLogger();
-		
-		sc.close();
+		Simulation s = new Simulation();
+		s.runSim(24);
 
 	}// end main
 

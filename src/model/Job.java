@@ -1,8 +1,8 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author Sawmya Patidar
@@ -22,6 +22,7 @@ public class Job implements Comparable<Job> {
 	    private String mainActDescription;
 	    private LocalDate orderCreateDate;
 	    private LocalTime orderCreateTime;
+	    private LocalDateTime orderCreateDateAndTime;
 	    private String jobPriority;
 	    private String suburb;
 	    private String street;
@@ -29,28 +30,19 @@ public class Job implements Comparable<Job> {
 	    private String houseNum2;
 	    private int postcode;
 	    private int fitterDistrict;
-	    private int jobDuration;
-	    
-	    
-	    //An integer to represent an hour of time in the simulation
-	    private double startTime;
-	    private double endTime;
-	    private double travelTime;
-	    private static final AtomicInteger count = new AtomicInteger(0); 
-	    
-	    
+	    private int jobDuration; 
 		/**
 		 * Constructor for a final Job object with all values initialised
 		 * 
-		 * @param orderNum
+		 * @param jobId
 		 * @param orderType
 		 * @param orderDescription
 		 * @param issueCode
 		 * @param issueDescription
 		 * @param mainActType
 		 * @param mainActDescip
-		 * @param orderCreateDate
-		 * @param orderCreateTime
+		 * @param jobDate
+		 * @param jobTime
 		 * @param jobPriority
 		 * @param suburb
 		 * @param street
@@ -60,19 +52,20 @@ public class Job implements Comparable<Job> {
 		 * @param fitterDistrict
 		 * @param jobDuration
 		 */
-		public Job(int orderNum, String orderType, String orderDescription, String issueCode, String issueDescription,
-				String mainActType, String mainActDescription,  LocalDate orderCreateDate, LocalTime orderCreateTime, String jobPriority,
+		public Job(int jobId, String orderType, String orderDescription, String issueCode, String issueDescription,
+				String mainActType, String mainActDescription,  LocalDate jobDate, LocalTime jobTime, LocalDateTime startDateAndTime, String jobPriority,
 				String suburb, String street, int houseNum1, String houseNum2, int postcode, int fitterDistrict,
 				int jobDuration) {
-			this.orderNum = orderNum;
+			this.orderNum = jobId;
 			this.orderType = orderType;
 			this.orderDescription = orderDescription;
 			this.issueCode = issueCode;
 			this.issueDescription = issueDescription;
 			this.mainActType = mainActType;
 			this.mainActDescription = mainActDescription;
-			this.orderCreateDate = orderCreateDate;
-			this.orderCreateTime = orderCreateTime;
+			this.orderCreateDate = jobDate;
+			this.orderCreateTime = jobTime;
+			this.orderCreateDateAndTime = startDateAndTime;
 			this.jobPriority = jobPriority;
 			this.suburb = suburb;
 			this.street = street;
@@ -82,33 +75,9 @@ public class Job implements Comparable<Job> {
 			this.fitterDistrict = fitterDistrict;
 			this.jobDuration = jobDuration;
 		}
-	    
-		
-	    /**
-	     * Constructor for basic functionality where jobs are allocated by fitter district and have some
-	     * basic hard coded variables
-	     * 
-	     * @param fitterDistrict
-	     * @param startTime
-	     */
-		
-	    public Job(int fitterDistrict, double startTime) {
-			orderNum = count.incrementAndGet();	
-			this.fitterDistrict = fitterDistrict;
-			this.startTime = startTime;
-			
-		}
-	    
-	    
-	    public double getEndTime(double travelTime, double jobDuration) {
-			endTime = travelTime + jobDuration;
-			return endTime;
-		}
-	    
-	    public double getTravelTime() {
-	    	return travelTime;
-	    }
-	
+	    	public Job(){
+	    	
+	    	}
 	    //Getters and setters
 	  
 	    public String getMainActDescription() {
@@ -175,8 +144,8 @@ public class Job implements Comparable<Job> {
 			return orderCreateDate;
 		}
 
-		public void setOrderCreateDate(LocalDate orderCreateDate) {
-			this.orderCreateDate = orderCreateDate;
+		public void setOrderCreateDate(LocalDate jobString) {
+			this.orderCreateDate = jobString;
 		}
 
 		public LocalTime getOrderCreateTime() {
@@ -190,6 +159,11 @@ public class Job implements Comparable<Job> {
 		public String getJobPriority() {
 			return jobPriority;
 		}
+		
+		public LocalDateTime getOrderCreateDateAndTime() {
+			return orderCreateDateAndTime;
+		}
+	
 
 
 		public String getSuburb() {
@@ -247,15 +221,7 @@ public class Job implements Comparable<Job> {
 		public void setWorkTime(int jobDuration) {
 			this.jobDuration = jobDuration;
 		}
-
 		
-	    public double getStartTime() {
-				return startTime;
-			}
-
-			public void setStartTime(int startTime) {
-				this.startTime = startTime;
-			}
 		
 		 @Override
 		    public String toString() {
@@ -265,7 +231,6 @@ public class Job implements Comparable<Job> {
 
 		@Override
 		public int compareTo(Job o) {
-			// TODO Auto-generated method stub
 			return 0;
 		}
 		
