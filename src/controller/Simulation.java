@@ -83,7 +83,7 @@ public class Simulation {
 	/**
 	 * Main simulation method
 	 */
-	private void runSim(int runtimeInHours) {
+	private void runSim(LocalDate date, LocalTime time,int runtimeInHours) {
 
 		// A testing function which progresses time by one minute each time a a while
 		// loop executes
@@ -95,9 +95,9 @@ public class Simulation {
 		long runtimeInSeconds;
 		runtimeInSeconds = runtimeInHours * 3600;
 		int count = 0;
-		LocalDate ld = LocalDate.of(2019, 8, 8);
-		LocalTime lt = LocalTime.MIN;
-		LocalDateTime myDateTime = LocalDateTime.of(ld, lt);
+		//LocalDate date = LocalDate.of(2019, 8, 8);
+		//LocalTime time = LocalTime.of(8, 45);
+		LocalDateTime myDateTime = LocalDateTime.of(date, time);
 		do {
 			for (Job j : jobPool ) {
 				//System.out.println("Job Creation Time: "+j.getOrderCreateDateAndTime());
@@ -174,7 +174,16 @@ public class Simulation {
 	public static void main(String[] args) throws SecurityException, IOException {
 
 		Simulation s = new Simulation();
-		s.runSim(24);
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter the date(YYYY-MM-DD): ");
+		String dateString = scan.nextLine();
+		LocalDate date = LocalDate.parse(dateString);
+		System.out.println("Enter the Time(HH:MM:SS): ");
+	    String timeString = scan.nextLine();
+	    LocalTime time = LocalTime.parse(timeString); 
+	    System.out.println("Enter the Simulation running Time(In hours): ");   
+	    int runningTime = scan.nextInt();
+		s.runSim(date, time, runningTime);
 
 	}// end main
 
