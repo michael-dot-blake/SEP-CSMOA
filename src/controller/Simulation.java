@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 import java.util.Random;
@@ -58,7 +59,7 @@ public class Simulation {
 	 * @throws IOException
 	 * @throws SecurityException
 	 */
-	private void runSim(LocalDate date, LocalTime time, int runtimeInHours) throws SecurityException, IOException {
+	private void runSim(LocalDate startDate, LocalTime time, LocalDate endDate) throws SecurityException, IOException {
 
 		// initialise logger
 		initLogger();
@@ -71,16 +72,18 @@ public class Simulation {
 		String path2 = "GSTFiles/gstTestData.csv";
 		GSTFactory.readGSTsFromCSV(path2);
 
-		// convert the user input of hours into seconds
+		// convert the user input of date into seconds
+		long duration = ChronoUnit.DAYS.between(startDate, endDate);
+		long hours = duration * 24;
 		long runtimeInSeconds;
-		runtimeInSeconds = runtimeInHours * 3600;
+		runtimeInSeconds = hours * 3600;
 
 		// initialise counter which will increment each time a second is added to the
 		// clock
 		int count = 0;
 
 		// create LocalDateTime object based on user inputs of date and time
-		LocalDateTime myDateTime = LocalDateTime.of(date, time);
+		LocalDateTime myDateTime = LocalDateTime.of(startDate, time);
 
 		do {
 			for (Job j : JobFactory.getJobPool()) {
@@ -138,15 +141,16 @@ public class Simulation {
 
 		Simulation s = new Simulation();
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter the date(YYYY-MM-DD): ");
-		String dateString = scan.nextLine();
-		LocalDate date = LocalDate.parse(dateString);
+		System.out.println("Enter the StartDate(YYYY-MM-DD): ");
+		String startDateString = scan.nextLine();
+		LocalDate startDate = LocalDate.parse(startDateString);
 		System.out.println("Enter the Time(HH:MM:SS): ");
 		String timeString = scan.nextLine();
 		LocalTime time = LocalTime.parse(timeString);
-		System.out.println("Enter the Simulation running Time(In hours): ");
-		int runningTime = scan.nextInt();
-		s.runSim(date, time, runningTime);
+		System.out.println("Enter the EndDate(YYYY-MM-DD): ");
+		String endDateString = scan.nextLine();
+		LocalDate endDate = LocalDate.parse(endDateString);
+		s.runSim(startDate, time, endDate);
 
 	}// end main
 
