@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import model.Job;
@@ -53,7 +54,7 @@ public class JobFactory {
 					int jobPostCode = Integer.parseInt(postCodeString);
 					int jobFitterDistrict = Integer.parseInt(fitterDistrictString);
 					int jobDuration = Integer.parseInt(jobDurationString);
-					jobPool.add(new Job(jobId, jobType, jobDescription, jobIssueCode, jobIssueDescrp, jobActType, jobActDescrp, jobDate, jobTime, jobDateAndTime, jobPriority, jobSuburb, jobStreet, jobHouseNum, houseNum2String, jobPostCode, jobFitterDistrict, jobDuration));
+					jobPool.add(new Job(jobId, jobType, jobDescription, jobIssueCode, jobIssueDescrp, jobActType, jobActDescrp, jobDate, jobTime, jobDateAndTime, jobPriority, jobSuburb, jobStreet, jobHouseNum, houseNum2String, jobPostCode, jobFitterDistrict, jobDuration, null));
 					jobAdded = true;
 				}
 				catch (Exception e) {

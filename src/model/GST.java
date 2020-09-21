@@ -12,7 +12,6 @@ public class GST {
 	private String gSTid;
 	private double lat, lon;
 	private boolean isAvailable;
-	private int fitterDistrict;
 	
 	public GST(String gSTid, double lat, double lon) {
 		this.gSTid = gSTid;
@@ -48,10 +47,6 @@ public class GST {
 	public void setAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
 	}
-
-	public int getFitterDistrict() {
-		return fitterDistrict;
-	}
 	
 	public boolean getIsAvailable() {
 		return isAvailable;
@@ -60,7 +55,7 @@ public class GST {
 	
 	@Override
 	public String toString() {
-		return "GST [id=" + gSTid + ", fitterDistrict=" + fitterDistrict + ", isAvailable=" + isAvailable + "]";
+		return "GST [id=" + gSTid + ", isAvailable=" + isAvailable + "]";
 	}
 
 

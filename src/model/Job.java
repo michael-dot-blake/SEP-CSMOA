@@ -30,8 +30,8 @@ public class Job implements Comparable<Job> {
 	private int postcode;
 	private int fitterDistrict;
 	private int jobDuration;
-
-	protected LocalDateTime endDateAndTime;
+	
+	private LocalDateTime endDateAndTime;
 
 	/**
 	 * Constructor for a final Job object with all values initialised
@@ -53,11 +53,12 @@ public class Job implements Comparable<Job> {
 	 * @param postcode
 	 * @param fitterDistrict
 	 * @param jobDuration
+	 * @param endDateAndTime 
 	 */
 	public Job(int jobId, String orderType, String orderDescription, String issueCode, String issueDescription,
 			String mainActType, String mainActDescription, LocalDate jobDate, LocalTime jobTime,
 			LocalDateTime startDateAndTime, String jobPriority, String suburb, String street, int houseNum1,
-			String houseNum2, int postcode, int fitterDistrict, int jobDuration) {
+			String houseNum2, int postcode, int fitterDistrict, int jobDuration, LocalDateTime endDateAndTime) {
 		this.orderNum = jobId;
 		this.orderType = orderType;
 		this.orderDescription = orderDescription;
@@ -76,6 +77,7 @@ public class Job implements Comparable<Job> {
 		this.postcode = postcode;
 		this.fitterDistrict = fitterDistrict;
 		this.jobDuration = jobDuration;
+		this.endDateAndTime = endDateAndTime;
 
 	}
 	// Getters and setters
