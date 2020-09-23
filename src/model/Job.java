@@ -12,7 +12,8 @@ import java.time.LocalTime;
  */
 public class Job implements Comparable<Job> {
 
-	private int orderNum;
+	//instance variables to be initialised when a job is created
+	private String orderNum;
 	private String orderType;
 	private String orderDescription;
 	private String issueCode;
@@ -25,12 +26,13 @@ public class Job implements Comparable<Job> {
 	private String jobPriority;
 	private String suburb;
 	private String street;
-	private int houseNum1;
+	private String houseNum1;
 	private String houseNum2;
-	private int postcode;
-	private int fitterDistrict;
-	private int jobDuration;
+	private String postcode;
+	private String fitterDistrict;
 	
+	//instance variables to be set prior to the creation of a completedJobRecord object
+	private double jobDuration;
 	private LocalDateTime endDateAndTime;
 
 	/**
@@ -55,10 +57,10 @@ public class Job implements Comparable<Job> {
 	 * @param jobDuration
 	 * @param endDateAndTime 
 	 */
-	public Job(int jobId, String orderType, String orderDescription, String issueCode, String issueDescription,
+	public Job(String jobId, String orderType, String orderDescription, String issueCode, String issueDescription,
 			String mainActType, String mainActDescription, LocalDate jobDate, LocalTime jobTime,
-			LocalDateTime startDateAndTime, String jobPriority, String suburb, String street, int houseNum1,
-			String houseNum2, int postcode, int fitterDistrict, int jobDuration, LocalDateTime endDateAndTime) {
+			LocalDateTime startDateAndTime, String jobPriority, String suburb, String street, String houseNum1,
+			String houseNum2, String postcode, String fitterDistrict, double jobDuration, LocalDateTime endDateAndTime) {
 		this.orderNum = jobId;
 		this.orderType = orderType;
 		this.orderDescription = orderDescription;
@@ -94,11 +96,11 @@ public class Job implements Comparable<Job> {
 		this.jobPriority = jobPriority;
 	}
 
-	public int getOrderNum() {
+	public String getOrderNum() {
 		return orderNum;
 	}
 
-	public void setOrderNum(int orderNum) {
+	public void setOrderNum(String orderNum) {
 		this.orderNum = orderNum;
 	}
 
@@ -182,11 +184,11 @@ public class Job implements Comparable<Job> {
 		this.street = street;
 	}
 
-	public int getHouseNum1() {
+	public String getHouseNum1() {
 		return houseNum1;
 	}
 
-	public void setHouseNum1(int houseNum1) {
+	public void setHouseNum1(String houseNum1) {
 		this.houseNum1 = houseNum1;
 	}
 
@@ -198,27 +200,27 @@ public class Job implements Comparable<Job> {
 		this.houseNum2 = houseNum2;
 	}
 
-	public int getPostcode() {
+	public String getPostcode() {
 		return postcode;
 	}
 
-	public void setPostcode(int postcode) {
+	public void setPostcode(String postcode) {
 		this.postcode = postcode;
 	}
 
-	public int getFitterDistrict() {
+	public String getFitterDistrict() {
 		return fitterDistrict;
 	}
 
-	public void setFitterDistrict(int fitterDistrict) {
+	public void setFitterDistrict(String fitterDistrict) {
 		this.fitterDistrict = fitterDistrict;
 	}
 
-	public int getJobDuration() {
+	public double getJobDuration() {
 		return jobDuration;
 	}
 
-	public void setJobDuration(int jobDuration) {
+	public void setJobDuration(double jobDuration) {
 		this.jobDuration = jobDuration;
 	}
 
