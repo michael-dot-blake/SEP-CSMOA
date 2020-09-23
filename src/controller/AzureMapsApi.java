@@ -19,6 +19,17 @@ public class AzureMapsApi {
 	private static final String API_KEY = "5nXsFMSUBlUyt_Hvq0fgM6u6tKXy80wgwWfvZaLJuj0";
 	private static final int TIME_BUDGET = 6000;
 
+	/**
+	 * A method which takes an address and calls the Azure Maps Api to return
+	 * coordinates in latitude and longitude
+	 * 
+	 * @param streetNo
+	 * @param streetName
+	 * @param suburbName
+	 * @param postCode
+	 * @return coord
+	 * @throws IOException
+	 */
 	public static Coordinates getCoordinatesFromAddress(String streetNo, String streetName, String suburbName,
 			String postCode) throws IOException {
 
@@ -61,6 +72,16 @@ public class AzureMapsApi {
 
 	}
 
+	/**
+	 * A method which takes an object of type Coordinates which contains a latitude
+	 * and longitude value and calls the Azure Maps API. The API call will respond
+	 * with latitude and longitude values for the boundaries of an isochrone which
+	 * extend to a set integer defined as timeBudgetInSeconds.
+	 * 
+	 * @param coord
+	 * @param timeBudgetInSeconds
+	 * @throws IOException
+	 */
 	public static void getIsochroneCoords(Coordinates coord, int timeBudgetInSeconds) throws IOException {
 		URL url = new URL("https://atlas.microsoft.com/route/range/json?subscription-key=" + API_KEY
 				+ "&api-version=1.0&query=" + coord + "&timeBudgetInSec=" + TIME_BUDGET);
