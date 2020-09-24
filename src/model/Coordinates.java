@@ -1,7 +1,7 @@
 package model;
 
 public class Coordinates {
-	
+
 	private double lat;
 	private double lon;
 	
@@ -10,9 +10,18 @@ public class Coordinates {
 		this.lon = lon;
 	}
 
+	public double getLat() {
+		return lat;
+	}
+
+	public double getLon() {
+		return lon;
+	}
+
 	@Override
 	public String toString() {
 		return lat + "," + lon;
 	}
-	
+
+
 }
