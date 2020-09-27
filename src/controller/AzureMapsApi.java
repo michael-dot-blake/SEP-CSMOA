@@ -4,14 +4,22 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.LinearRing;
+import org.locationtech.jts.geom.Point;
+import org.locationtech.jts.geom.Polygon;
+import org.locationtech.jts.geom.impl.CoordinateArraySequence;
+
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
 
-import model.Coordinates;
+import model.SimpleCoordinates;
 
 public class AzureMapsApi {
 
@@ -30,7 +38,7 @@ public class AzureMapsApi {
 	 * @return coord
 	 * @throws IOException
 	 */
-	public static Coordinates getCoordinatesFromAddress(String streetNo, String streetName, String suburbName,
+	public static SimpleCoordinates getCoordinatesFromAddress(String streetNo, String streetName, String suburbName,
 			String postCode) throws IOException {
 
 		streetNo = streetNo.trim();
@@ -63,7 +71,7 @@ public class AzureMapsApi {
 			JsonObject json = (JsonObject) ((JsonObject) jsonObject.getAsJsonArray("results").get(0)).get("position");
 			double lat = json.get("lat").getAsDouble();
 			double lon = json.get("lon").getAsDouble();
-			Coordinates coord = new Coordinates(lat, lon);
+			SimpleCoordinates coord = new SimpleCoordinates(lat, lon);
 			System.out.println("Address Location: " + coord);
 			sc.close();
 			return coord;
@@ -74,15 +82,15 @@ public class AzureMapsApi {
 
 	/**
 	 * A method which takes an object of type Coordinates which contains a latitude
-	 * and longitude value and calls the Azure Maps API. The API call will respond
-	 * with latitude and longitude values for the boundaries of an isochrone which
-	 * extend to a set integer defined as timeBudgetInSeconds.
+	 * and longitude value and calls the Azure Maps API. The API call will then
+	 * respond with latitude and longitude values for the boundaries of an isochrone
+	 * which extend to a set integer defined as timeBudgetInSeconds.
 	 * 
 	 * @param coord
 	 * @param timeBudgetInSeconds
 	 * @throws IOException
 	 */
-	public static void getIsochroneCoords(Coordinates coord, int timeBudgetInSeconds) throws IOException {
+	public static JsonObject getIsochroneCoords(SimpleCoordinates coord, int timeBudgetInSeconds) throws IOException {
 		URL url = new URL("https://atlas.microsoft.com/route/range/json?subscription-key=" + API_KEY
 				+ "&api-version=1.0&query=" + coord + "&timeBudgetInSec=" + TIME_BUDGET);
 		URLConnection conn = url.openConnection();
@@ -96,25 +104,84 @@ public class AzureMapsApi {
 		if (responseCode != 200) {
 			throw new RuntimeException("HttpResponseCode: " + responseCode);
 		} else {
-
 			Scanner sc = new Scanner(url.openStream());
 			while (sc.hasNext()) {
 				inline += sc.nextLine();
+
 			}
-			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
 			JsonObject jsonObject = JsonParser.parseString(inline).getAsJsonObject();
-			String prettyJsonString = gson.toJson(jsonObject);
-			System.out.println(prettyJsonString);
+			sc.close();
+			return jsonObject;
 
 		}
 
 	}
 
+	/**
+	 * A method which currently accepts a JsonObject and a coordinate. The method builds a polygon
+	 * out of the values of the json object by parsing the object and extracting the lat and long
+	 * values from the Json returned by the api call. The method returns a boolean if the point supplied
+	 * in the method declaration is within the polygon created. 
+	 * 
+	 * @param jsonObj
+	 * @param coordToTest
+	 * @return
+	 */
+	public static boolean checkIfLocationInIsochrone(JsonObject jsonObj, Coordinate coordToTest) {
+
+		GeometryFactory gf = new GeometryFactory();
+		ArrayList<Coordinate> points = new ArrayList<Coordinate>();
+
+		String myJSONString = jsonObj.toString();
+		JsonObject jsonObject = JsonParser.parseString(myJSONString).getAsJsonObject();
+		JsonObject range = (JsonObject) ((JsonObject) jsonObject.getAsJsonObject("reachableRange"));
+		JsonArray jsonArray = range.getAsJsonArray("boundary");
+
+		for (int i = 0; i < jsonArray.size(); i++) {
+			JsonPrimitive jsonLat = (JsonPrimitive) ((JsonObject) range.getAsJsonArray("boundary").get(i))
+					.get("latitude");
+			JsonPrimitive jsonLon = (JsonPrimitive) ((JsonObject) range.getAsJsonArray("boundary").get(i))
+					.get("longitude");
+			double lat = jsonLat.getAsDouble();
+			double lon = jsonLon.getAsDouble();
+			Coordinate c = new Coordinate(lat, lon);
+			points.add(c);
+		}
+
+		JsonPrimitive lastLat = (JsonPrimitive) ((JsonObject) range.getAsJsonArray("boundary").get(0)).get("latitude");
+		JsonPrimitive lastLon = (JsonPrimitive) ((JsonObject) range.getAsJsonArray("boundary").get(0)).get("longitude");
+		double lat2 = lastLat.getAsDouble();
+		double lon2 = lastLon.getAsDouble();
+		Coordinate lastCoord = new Coordinate(lat2, lon2);
+
+		points.add(lastCoord);
+
+		for (Coordinate c : points) {
+			System.out.println(c);
+		}
+
+		Polygon poly = gf.createPolygon(
+				new LinearRing(new CoordinateArraySequence(points.toArray(new Coordinate[points.size()])), gf), null);
+
+		Point testPoint = gf.createPoint(coordToTest);
+
+		if (testPoint.within(poly)) {
+			return true;
+
+		} else {
+			return false;
+		}
+	}
+
 	public static void main(String[] args) throws IOException {
 
 		// test functionality for the api calls
-		Coordinates coord = getCoordinatesFromAddress("13", "Bundle St", "Caddens", "2747");
-		getIsochroneCoords(coord, 6000);
+		SimpleCoordinates coord = getCoordinatesFromAddress("13", "Bundle St", "Caddens", "2747");
+		JsonObject jsonObj = getIsochroneCoords(coord, 6000);
+		Coordinate testCoord = new Coordinate(-33.77494, 150.7393);
+		boolean check = checkIfLocationInIsochrone(jsonObj, testCoord);
+		System.out.println(check);
 
 	}
 

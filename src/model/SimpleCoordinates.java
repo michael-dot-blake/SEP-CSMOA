@@ -1,11 +1,11 @@
 package model;
 
-public class Coordinates {
+public class SimpleCoordinates {
 	
 	private double lat;
 	private double lon;
 	
-	public Coordinates(double lat, double lon) {
+	public SimpleCoordinates(double lat, double lon) {
 		this.lat = lat;
 		this.lon = lon;
 	}
