@@ -12,7 +12,7 @@ public class GSTFactory {
 	private static ArrayList<GST> gstPool = new ArrayList<GST>();
 	
 	public static void readGSTsFromCSV(String filename) {
-		System.out.println("GST init start...");
+		System.out.println("GST init start...\n");
 		try {
 			File file = new File(filename);
 			Scanner sc = new Scanner(file);
@@ -51,7 +51,7 @@ public class GSTFactory {
 		for (GST gst : gstPool) {
 			System.out.println(gst);
 		}
-		System.out.println("GST init finish.");
+		System.out.println("\nGST init finish.\n");
 	}
 	
 	public static ArrayList<GST> getGSTpool() {

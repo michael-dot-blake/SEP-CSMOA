@@ -38,7 +38,7 @@ public class Simulation {
 
 		try {
 			Log myLog = new Log("log.txt");
-			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+			System.out.println(">>>>>>>>>>>END>>>>>>>>>>>>>>");
 			for (CompletedJobRecord cj : completedJobs) {
 				myLog.logger.log(Level.INFO, " " + cj.toString());
 			}
@@ -91,12 +91,15 @@ public class Simulation {
 				if (currentTime.isEqual(j.getOrderCreateDateAndTime())) {
 					//System.out.println("Times match");
 					jobQueue.add(j);
-					//System.out.println(checkGst(j));
+					System.out.println("For job "+j.getOrderNum());
 					if (checkGst(j, 900) != null) {
-						System.out.println("Found GST in 15min Isochrone\n");
+						System.out.println("Found GST in 15min isochrone\n");
+					}
+					else if (checkGst(j, 1800) != null) {
+						System.out.println("Found GST in 30min isochrone\n");
 					}
 					else {
-						System.out.println("No GST in Isochone");
+						System.out.println("No GST found in 30min isochone\n");
 					}
 					//System.out.println(jobQueue);
 					// Now loop through both the jobQueue and the gstPool to assign a GST
@@ -171,8 +174,8 @@ public class Simulation {
 		Polygon p = AzureMapsApi.BuildPolygon(jsonObj);
 		for (GST g : GSTFactory.getGSTpool()) {
 			Coordinate gstCoord = new Coordinate(g.getLat(), g.getLon());
-			System.out.println("GST Co-ord is: "+gstCoord);
-			System.out.println(AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord));
+			//System.out.println("GST Co-ord is: "+gstCoord);
+			//System.out.println(AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord));
 			if (AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord)) {
 				return g;
 			}

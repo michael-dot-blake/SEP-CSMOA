@@ -71,7 +71,7 @@ public class AzureMapsApi {
 			double lat = json.get("lat").getAsDouble();
 			double lon = json.get("lon").getAsDouble();
 			Coordinate coord = new Coordinate(lat, lon);
-			System.out.println("Address Location: " + coord);
+			//System.out.println("Address Location: " + coord);
 			sc.close();
 			return coord;
 
