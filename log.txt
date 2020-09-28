@@ -913,3 +913,43 @@ Sep 16, 2020 1:39:32 AM controller.Simulation log
 INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401571800, FitterDistrict: 123 Job Priority: C, Activity Type: SNG, Starting Date: 2019-08-23, Starting Time: 15:17:33, Estimated Duration: 25]]
 Sep 16, 2020 1:39:32 AM controller.Simulation log
 INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571800, FitterDistrict: 123 Job Priority: C, Activity Type: SNG, Starting Date: 2019-08-23, Starting Time: 15:17:33, Estimated Duration: 25]]
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  For job 401555575
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  No GST found in 30min isochone
+
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  For job 401555747
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  No GST found in 30min isochone
+
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  For job 401557872
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  No GST found in 30min isochone
+
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  For job 401559836
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  Found GST in 30min isochrone
+
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  For job 401562213
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  Found GST in 15min isochrone
+
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  For job 401565738
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  Found GST in 15min isochrone
+
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  For job 401566046
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  Found GST in 15min isochrone
+
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  For job 401571800
+Sep 29, 2020 1:30:37 AM controller.Simulation log
+INFO:  No GST found in 30min isochone
+
