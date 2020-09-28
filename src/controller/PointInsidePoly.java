@@ -1,15 +1,15 @@
 package controller;
 
-import model.Coordinates;
+import model.SimpleCoordinates;
 
 public class PointInsidePoly {
 
     static int INF = 10000;
     
-    // Given three colinear Coordinates p, q, r,
-    // the function checks if Coordinates q lies
+    // Given three colinear SimpleSimpleCoordinates p, q, r,
+    // the function checks if SimpleCoordinates q lies
     // on line segment 'pr'
-    static boolean onSegment(Coordinates p, Coordinates q, Coordinates r) {
+    static boolean onSegment(SimpleCoordinates p, SimpleCoordinates q, SimpleCoordinates r) {
         if (q.getLat() <= Math.max(p.getLat(), r.getLat()) &&
                 q.getLat() >= Math.min(p.getLat(), r.getLat()) &&
                 q.getLon() <= Math.max(p.getLon(), r.getLon()) &&
@@ -24,7 +24,7 @@ public class PointInsidePoly {
     // 0 --> p, q and r are colinear
     // 1 --> Clockwise
     // 2 --> Counterclockwise
-    static int orientation(Coordinates p, Coordinates q, Coordinates r) {
+    static int orientation(SimpleCoordinates p, SimpleCoordinates q, SimpleCoordinates r) {
         double val = (q.getLon() - p.getLon()) * (r.getLat() - q.getLat())
                 - (q.getLat() - p.getLat()) * (r.getLon() - q.getLon());
 
@@ -36,8 +36,8 @@ public class PointInsidePoly {
 
     // The function that returns true if
     // line segment 'p1q1' and 'p2q2' intersect.
-    static boolean doIntersect(Coordinates p1, Coordinates q1,
-                               Coordinates p2, Coordinates q2) {
+    static boolean doIntersect(SimpleCoordinates p1, SimpleCoordinates q1,
+                               SimpleCoordinates p2, SimpleCoordinates q2) {
         // Find the four orientations needed for
         // general and special cases
         int o1 = orientation(p1, q1, p2);
@@ -79,16 +79,16 @@ public class PointInsidePoly {
         return false;
     }
 
-    // Returns true if the Coordinates p lies
+    // Returns true if the SimpleCoordinates p lies
     // inside the polygon[] with n vertices
-    static boolean isInside(Coordinates polygon[], int n, Coordinates p) {
+    static boolean isInside(SimpleCoordinates polygon[], int n, SimpleCoordinates p) {
         // There must be at least 3 vertices in polygon[]
         if (n < 3) {
             return false;
         }
 
-        // Create a Coordinates for line segment from p to infinite
-        Coordinates extreme = new Coordinates(INF, p.getLon());
+        // Create a SimpleCoordinates for line segment from p to infinite
+        SimpleCoordinates extreme = new SimpleCoordinates(INF, p.getLon());
 
         // Count intersections of the above line
         // with sides of polygon
@@ -100,7 +100,7 @@ public class PointInsidePoly {
             // 'extreme' intersects with the line
             // segment from 'polygon[i]' to 'polygon[next]'
             if (doIntersect(polygon[i], polygon[next], p, extreme)) {
-                // If the Coordinates 'p' is colinear with line
+                // If the SimpleCoordinates 'p' is colinear with line
                 // segment 'i-next', then check if it lies
                 // on segment. If it lies, return true, otherwise false
                 if (orientation(polygon[i], p, polygon[next]) == 0) {
@@ -119,58 +119,58 @@ public class PointInsidePoly {
 
     // Driver Code
     public static void main(String[] args) {
-        Coordinates polygon[] = {new Coordinates(-33.03861, 150.67741),
-                new Coordinates(-33.22013, 150.67003),
-                new Coordinates(-33.5475, 150.6548),
-                new Coordinates(-33.51542, 150.60664),
-                new Coordinates(-33.51167, 150.57035),
-                new Coordinates(-33.49687, 150.51741),
-                new Coordinates(-33.49219, 150.44517),
-                new Coordinates(-33.50411, 150.37843),
-                new Coordinates( -33.32884, 150.0367),
-                new Coordinates( -33.45044, 149.96045),
-                new Coordinates( -33.51742, 149.95309),
-                new Coordinates( -33.70819, 150.02141),
-                new Coordinates( -33.78547, 150.6502),
-                new Coordinates( -33.7955, 150.64964),
-                new Coordinates( -33.81336, 150.65302),
-                new Coordinates( -33.82269, 150.65268),
-                new Coordinates(  -33.84192, 150.64928),
-                new Coordinates(  -34.06898, 150.43392),
-                new Coordinates(  -34.7447, 149.92655),
-                new Coordinates( -34.71719, 150.05908),
-                new Coordinates(  -34.65471, 150.30477),
-                new Coordinates(  -34.68189, 150.48879),
-                new Coordinates( -34.68303, 150.50467),
-                new Coordinates(  -34.59833, 150.66292),
-                new Coordinates(  -34.71302, 150.83615),
-                new Coordinates(  -34.66171, 150.85144),
-                new Coordinates(  -34.42435, 150.9001),
-                new Coordinates(  -34.3018, 150.9385),
-                new Coordinates(  -34.2409, 150.97967),
-                new Coordinates(  -34.17039, 151.05012),
-                new Coordinates(  -34.16546, 151.05331),
-                new Coordinates(  -34.10394, 151.09123),
-                new Coordinates(  -34.05171, 151.154520),
-                 new Coordinates(  -34.03857, 151.14524),
-                 new Coordinates(  -33.97969, 151.24492),
-                 new Coordinates(  -33.93786, 151.25767),
-                 new Coordinates(  -33.74782, 151.29065),
-                 new Coordinates(  -33.6908, 151.30529),
-                 new Coordinates(  -33.62645, 151.33383),
-                 new Coordinates(  -33.60626, 151.33515),
-                 new Coordinates(  -33.42579, 151.3997),
-                 new Coordinates(  -33.19043, 151.56775),
-                 new Coordinates(  -33.0711, 151.47783),
-                 new Coordinates(  -33.14803, 151.20478),
-                 new Coordinates(  -33.13864, 151.20207),
-                 new Coordinates(  -33.08839, 151.13098),
-                 new Coordinates(  -33.42808, 150.83018),
-                 new Coordinates(  -33.40857, 150.78629),
-                 new Coordinates(  -33.37315, 150.74096)};
+        SimpleCoordinates polygon[] = {new SimpleCoordinates(-33.03861, 150.67741),
+                new SimpleCoordinates(-33.22013, 150.67003),
+                new SimpleCoordinates(-33.5475, 150.6548),
+                new SimpleCoordinates(-33.51542, 150.60664),
+                new SimpleCoordinates(-33.51167, 150.57035),
+                new SimpleCoordinates(-33.49687, 150.51741),
+                new SimpleCoordinates(-33.49219, 150.44517),
+                new SimpleCoordinates(-33.50411, 150.37843),
+                new SimpleCoordinates( -33.32884, 150.0367),
+                new SimpleCoordinates( -33.45044, 149.96045),
+                new SimpleCoordinates( -33.51742, 149.95309),
+                new SimpleCoordinates( -33.70819, 150.02141),
+                new SimpleCoordinates( -33.78547, 150.6502),
+                new SimpleCoordinates( -33.7955, 150.64964),
+                new SimpleCoordinates( -33.81336, 150.65302),
+                new SimpleCoordinates( -33.82269, 150.65268),
+                new SimpleCoordinates(  -33.84192, 150.64928),
+                new SimpleCoordinates(  -34.06898, 150.43392),
+                new SimpleCoordinates(  -34.7447, 149.92655),
+                new SimpleCoordinates( -34.71719, 150.05908),
+                new SimpleCoordinates(  -34.65471, 150.30477),
+                new SimpleCoordinates(  -34.68189, 150.48879),
+                new SimpleCoordinates( -34.68303, 150.50467),
+                new SimpleCoordinates(  -34.59833, 150.66292),
+                new SimpleCoordinates(  -34.71302, 150.83615),
+                new SimpleCoordinates(  -34.66171, 150.85144),
+                new SimpleCoordinates(  -34.42435, 150.9001),
+                new SimpleCoordinates(  -34.3018, 150.9385),
+                new SimpleCoordinates(  -34.2409, 150.97967),
+                new SimpleCoordinates(  -34.17039, 151.05012),
+                new SimpleCoordinates(  -34.16546, 151.05331),
+                new SimpleCoordinates(  -34.10394, 151.09123),
+                new SimpleCoordinates(  -34.05171, 151.154520),
+                 new SimpleCoordinates(  -34.03857, 151.14524),
+                 new SimpleCoordinates(  -33.97969, 151.24492),
+                 new SimpleCoordinates(  -33.93786, 151.25767),
+                 new SimpleCoordinates(  -33.74782, 151.29065),
+                 new SimpleCoordinates(  -33.6908, 151.30529),
+                 new SimpleCoordinates(  -33.62645, 151.33383),
+                 new SimpleCoordinates(  -33.60626, 151.33515),
+                 new SimpleCoordinates(  -33.42579, 151.3997),
+                 new SimpleCoordinates(  -33.19043, 151.56775),
+                 new SimpleCoordinates(  -33.0711, 151.47783),
+                 new SimpleCoordinates(  -33.14803, 151.20478),
+                 new SimpleCoordinates(  -33.13864, 151.20207),
+                 new SimpleCoordinates(  -33.08839, 151.13098),
+                 new SimpleCoordinates(  -33.42808, 150.83018),
+                 new SimpleCoordinates(  -33.40857, 150.78629),
+                 new SimpleCoordinates(  -33.37315, 150.74096)};
         int n = polygon.length;
-//        Coordinates p = new Coordinates(-37.874831, 145.041638);
-        Coordinates p = new Coordinates(-33.774210, 150.746492);
+//        SimpleCoordinates p = new SimpleCoordinates(-37.874831, 145.041638);
+        SimpleCoordinates p = new SimpleCoordinates(-33.774210, 150.746492);
         if (isInside(polygon, n, p)) {
             System.out.println("It's in the Isochrone");
         } else {
