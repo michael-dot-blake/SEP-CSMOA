@@ -4,13 +4,17 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
+
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.Polygon;
+
+import com.google.gson.JsonObject;
 
 import model.CompletedJobRecord;
 import model.GST;
@@ -85,9 +89,16 @@ public class Simulation {
 				// if the time and date of the job creation equals the currentTime object
 				// then the job will be added to the jobQueue
 				if (currentTime.isEqual(j.getOrderCreateDateAndTime())) {
-					System.out.println("Times match");
+					//System.out.println("Times match");
 					jobQueue.add(j);
-					System.out.println(jobQueue);
+					//System.out.println(checkGst(j));
+					if (checkGst(j, 900) != null) {
+						System.out.println("Found GST in 15min Isochrone\n");
+					}
+					else {
+						System.out.println("No GST in Isochone");
+					}
+					//System.out.println(jobQueue);
 					// Now loop through both the jobQueue and the gstPool to assign a GST
 					for (Job jq : jobQueue) {
 						for (GST g : GSTFactory.getGSTpool()) {
@@ -98,12 +109,8 @@ public class Simulation {
 								jq.setEndDateAndTime(
 										jq.getOrderCreateDateAndTime().plusHours(1));
 								if (currentTime.isEqual(jq.getEndDateAndTime())) {
-									
-								
 									System.out.println("myDateTime is equal");
-									
 									completedJobs.add(new CompletedJobRecord(g, j));
-									g.setAvailable(true);
 									jobQueue.remove(j);
 
 									// The gst flag is reset to available and they can now be assigned new jobs
@@ -125,6 +132,52 @@ public class Simulation {
 		
 	log();
 
+	}
+	
+	private void runSim2(LocalDateTime currentTime, LocalDateTime endTime) throws SecurityException, IOException {
+		
+		String path = "JobFiles/testHisData.csv";
+		JobFactory.readJobsFromCSV(path);
+
+		String path2 = "GSTFiles/gstTestData.csv";
+		GSTFactory.readGSTsFromCSV(path2);
+		
+		do {
+			for (Job j : JobFactory.getJobPool()) {
+				if (currentTime.isEqual(j.getOrderCreateDateAndTime())) {
+					jobQueue.add(j);
+				}
+			}
+			if (jobQueue.size()>0) {
+				for (Job j : jobQueue) {
+					GST gst = null;
+					if (checkGst(j, 900) != null) {
+						gst = checkGst(j, 900);
+					}
+				}
+			}
+		}
+		while (currentTime.isBefore(endTime));
+	}
+	
+	public GST checkGst(Job j, int timeLimit) throws IOException {
+		String number = j.getHouseNum1();
+		String street = j.getStreet();
+		String suburb = j.getSuburb();
+		String postcode = j.getPostcode();
+		
+		Coordinate coord = AzureMapsApi.getCoordinatesFromAddress(number, street, suburb, postcode);
+		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(coord, timeLimit);
+		Polygon p = AzureMapsApi.BuildPolygon(jsonObj);
+		for (GST g : GSTFactory.getGSTpool()) {
+			Coordinate gstCoord = new Coordinate(g.getLat(), g.getLon());
+			System.out.println("GST Co-ord is: "+gstCoord);
+			System.out.println(AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord));
+			if (AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord)) {
+				return g;
+			}
+		}
+		return null;
 	}
 
 	public static void main(String[] args) throws SecurityException, IOException {
