@@ -34,6 +34,9 @@ public class Simulation {
 	// Store completed jobs
 	private ArrayList<CompletedJobRecord> completedJobs = new ArrayList<CompletedJobRecord>();
 
+	//Store the Isochrone results from simulation
+	private ArrayList<String> simResults = new ArrayList<String>();
+
 	private void log() throws SecurityException, IOException {
 
 		try {
@@ -41,6 +44,9 @@ public class Simulation {
 			System.out.println(">>>>>>>>>>>END>>>>>>>>>>>>>>");
 			for (CompletedJobRecord cj : completedJobs) {
 				myLog.logger.log(Level.INFO, " " + cj.toString());
+			}
+			for (int i = 0; i < simResults.size() ; i++) {
+				myLog.logger.log(Level.INFO, " " + simResults.get(i));
 			}
 
 		} catch (Exception e) {
@@ -92,14 +98,18 @@ public class Simulation {
 					//System.out.println("Times match");
 					jobQueue.add(j);
 					System.out.println("For job "+j.getOrderNum());
+					simResults.add("For job "+j.getOrderNum());
 					if (checkGst(j, 900) != null) {
 						System.out.println("Found GST in 15min isochrone\n");
+						simResults.add("Found GST in 15min isochrone\n");
 					}
 					else if (checkGst(j, 1800) != null) {
 						System.out.println("Found GST in 30min isochrone\n");
+						simResults.add("Found GST in 30min isochrone\n");
 					}
 					else {
 						System.out.println("No GST found in 30min isochone\n");
+						simResults.add("No GST found in 30min isochone\n");
 					}
 					//System.out.println(jobQueue);
 					// Now loop through both the jobQueue and the gstPool to assign a GST
