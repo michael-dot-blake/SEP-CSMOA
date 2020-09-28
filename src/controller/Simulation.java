@@ -98,8 +98,12 @@ public class Simulation {
 								jq.setEndDateAndTime(
 										jq.getOrderCreateDateAndTime().plusHours(1));
 								if (currentTime.isEqual(jq.getEndDateAndTime())) {
+									
+								
 									System.out.println("myDateTime is equal");
+									
 									completedJobs.add(new CompletedJobRecord(g, j));
+									g.setAvailable(true);
 									jobQueue.remove(j);
 
 									// The gst flag is reset to available and they can now be assigned new jobs

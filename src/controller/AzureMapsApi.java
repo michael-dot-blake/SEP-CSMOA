@@ -19,13 +19,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 
-import model.SimpleCoordinates;
-
 public class AzureMapsApi {
 
 	private static final String STATE = "NSW";
 	private static final String API_KEY = "5nXsFMSUBlUyt_Hvq0fgM6u6tKXy80wgwWfvZaLJuj0";
-	private static final int TIME_BUDGET = 6000;
 
 	static GeometryFactory gf = new GeometryFactory();
 
@@ -40,7 +37,7 @@ public class AzureMapsApi {
 	 * @return coord
 	 * @throws IOException
 	 */
-	public static SimpleCoordinates getCoordinatesFromAddress(String streetNo, String streetName, String suburbName,
+	public static Coordinate getCoordinatesFromAddress(String streetNo, String streetName, String suburbName,
 			String postCode) throws IOException {
 
 		streetNo = streetNo.trim();
@@ -73,7 +70,7 @@ public class AzureMapsApi {
 			JsonObject json = (JsonObject) ((JsonObject) jsonObject.getAsJsonArray("results").get(0)).get("position");
 			double lat = json.get("lat").getAsDouble();
 			double lon = json.get("lon").getAsDouble();
-			SimpleCoordinates coord = new SimpleCoordinates(lat, lon);
+			Coordinate coord = new Coordinate(lat, lon);
 			System.out.println("Address Location: " + coord);
 			sc.close();
 			return coord;
@@ -92,9 +89,11 @@ public class AzureMapsApi {
 	 * @param timeBudgetInSeconds
 	 * @throws IOException
 	 */
-	public static JsonObject getIsochroneCoords(SimpleCoordinates coord, int timeBudgetInSeconds) throws IOException {
-		URL url = new URL("https://atlas.microsoft.com/route/range/json?subscription-key=" + API_KEY
-				+ "&api-version=1.0&query=" + coord + "&timeBudgetInSec=" + TIME_BUDGET);
+	public static JsonObject getIsochroneCoords(Coordinate coord, int timeBudgetInSeconds) throws IOException {
+		URL url = new URL(
+				"https://atlas.microsoft.com/route/range/json?subscription-key=" + API_KEY + "&api-version=1.0&query="
+						+ coord.getX() + "," + coord.getY() + "&timeBudgetInSec=" + timeBudgetInSeconds);
+
 		URLConnection conn = url.openConnection();
 		HttpURLConnection http = (HttpURLConnection) conn;
 		http.setRequestMethod("GET");
@@ -121,10 +120,10 @@ public class AzureMapsApi {
 	}
 
 	/**
-	 * A method which currently accepts a JsonObject and  builds a polygon 
-	 * out of the values of the json object by parsing the object
-	 * and extracting the lat and long values from the Json returned by the api
-	 * call. The method returns a polygon object
+	 * A method which currently accepts a JsonObject and builds a polygon out of the
+	 * values of the json object by parsing the object and extracting the lat and
+	 * long values from the Json returned by the api call. The method returns a
+	 * polygon object
 	 * 
 	 * @param jsonObj
 	 * @return
@@ -181,7 +180,7 @@ public class AzureMapsApi {
 	public static void main(String[] args) throws IOException {
 
 		// test functionality for the api calls
-		SimpleCoordinates coord = getCoordinatesFromAddress("13", "Bundle St", "Caddens", "2747");
+		Coordinate coord = getCoordinatesFromAddress("13", "Bundle St", "Caddens", "2747");
 		JsonObject jsonObj = getIsochroneCoords(coord, 6000);
 		Polygon p = BuildPolygon(jsonObj);
 
