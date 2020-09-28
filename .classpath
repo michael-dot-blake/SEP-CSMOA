@@ -7,7 +7,7 @@
 	<classpathentry kind="lib" path="lib/commons-lang3-3.11.jar"/>
 	<classpathentry kind="lib" path="lib/commons-text-1.9.jar"/>
 	<classpathentry kind="lib" path="lib/opencsv-5.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/S3622180/Documents/GitHub/SEP-CSMOA/lib/gson-2.8.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/S3622180/Documents/GitHub/SEP-CSMOA/lib/jts-core-1.17.1.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.8.6.jar"/>
+	<classpathentry kind="lib" path="lib/jts-core-1.17.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
