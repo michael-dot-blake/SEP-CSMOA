@@ -27,6 +27,8 @@ public class AzureMapsApi {
 	private static final String API_KEY = "5nXsFMSUBlUyt_Hvq0fgM6u6tKXy80wgwWfvZaLJuj0";
 	private static final int TIME_BUDGET = 6000;
 
+	static GeometryFactory gf = new GeometryFactory();
+
 	/**
 	 * A method which takes an address and calls the Azure Maps Api to return
 	 * coordinates in latitude and longitude
@@ -119,18 +121,16 @@ public class AzureMapsApi {
 	}
 
 	/**
-	 * A method which currently accepts a JsonObject and a coordinate. The method builds a polygon
-	 * out of the values of the json object by parsing the object and extracting the lat and long
-	 * values from the Json returned by the api call. The method returns a boolean if the point supplied
-	 * in the method declaration is within the polygon created. 
+	 * A method which currently accepts a JsonObject and  builds a polygon 
+	 * out of the values of the json object by parsing the object
+	 * and extracting the lat and long values from the Json returned by the api
+	 * call. The method returns a polygon object
 	 * 
 	 * @param jsonObj
-	 * @param coordToTest
 	 * @return
 	 */
-	public static boolean checkIfLocationInIsochrone(JsonObject jsonObj, Coordinate coordToTest) {
+	public static Polygon BuildPolygon(JsonObject jsonObj) {
 
-		GeometryFactory gf = new GeometryFactory();
 		ArrayList<Coordinate> points = new ArrayList<Coordinate>();
 
 		String myJSONString = jsonObj.toString();
@@ -157,12 +157,16 @@ public class AzureMapsApi {
 
 		points.add(lastCoord);
 
-		for (Coordinate c : points) {
-			System.out.println(c);
-		}
+//		for (Coordinate c : points) {
+//			System.out.println(c);
+//		}
 
 		Polygon poly = gf.createPolygon(
 				new LinearRing(new CoordinateArraySequence(points.toArray(new Coordinate[points.size()])), gf), null);
+		return poly;
+	}
+
+	public static boolean checkIfLocationInIsoChrone(Polygon poly, Coordinate coordToTest) {
 
 		Point testPoint = gf.createPoint(coordToTest);
 
@@ -179,9 +183,20 @@ public class AzureMapsApi {
 		// test functionality for the api calls
 		SimpleCoordinates coord = getCoordinatesFromAddress("13", "Bundle St", "Caddens", "2747");
 		JsonObject jsonObj = getIsochroneCoords(coord, 6000);
-		Coordinate testCoord = new Coordinate(-33.77494, 150.7393);
-		boolean check = checkIfLocationInIsochrone(jsonObj, testCoord);
-		System.out.println(check);
+		Polygon p = BuildPolygon(jsonObj);
+
+		// centre of isochrone. Should return true
+		Coordinate centerCoord = new Coordinate(-33.77494, 150.7393);
+
+		// edge point. Should return false
+		Coordinate edgeCoord = new Coordinate(-34.3018, 150.9385);
+
+		// coordinates for LosAngeles. Should return false
+		Coordinate losAngelesCoord = new Coordinate(34.0522, 118.2437);
+
+		System.out.println(checkIfLocationInIsoChrone(p, centerCoord));
+		System.out.println(checkIfLocationInIsoChrone(p, edgeCoord));
+		System.out.println(checkIfLocationInIsoChrone(p, losAngelesCoord));
 
 	}
 
