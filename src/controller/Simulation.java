@@ -91,16 +91,33 @@ public class Simulation {
 				if (currentTime.isEqual(j.getOrderCreateDateAndTime())) {
 					//System.out.println("Times match");
 					jobQueue.add(j);
+					Coordinate jobCoord = getJobLocation(j);
+					GST gst = findGst(jobCoord, 900);
 					System.out.println("For job "+j.getOrderNum());
-					if (checkGst(j, 900) != null) {
+					
+					if (gst != null) {
 						System.out.println("Found GST in 15min isochrone\n");
-					}
-					else if (checkGst(j, 1800) != null) {
-						System.out.println("Found GST in 30min isochrone\n");
+
 					}
 					else {
-						System.out.println("No GST found in 30min isochone\n");
+						gst = findGst(jobCoord, 1800);
+						if (gst != null) {
+							System.out.println("Found GST in 30min isochrone\n");
+						}
+						else {System.out.println("No GST found!!!\n");}
 					}
+					
+//					if (checkGst(j, 900) != null) {
+//						System.out.println("Found GST in 15min isochrone\n");
+//						gst = checkGst(j, 900);
+//					}
+//					else if (checkGst(j, 1800) != null) {
+//						System.out.println("Found GST in 30min isochrone\n");
+//						gst = checkGst(j, 1800);
+//					}
+//					else {
+//						System.out.println("No GST found in 30min isochone\n");
+//					}
 					//System.out.println(jobQueue);
 					// Now loop through both the jobQueue and the gstPool to assign a GST
 					for (Job jq : jobQueue) {
@@ -153,23 +170,58 @@ public class Simulation {
 			}
 			if (jobQueue.size()>0) {
 				for (Job j : jobQueue) {
-					GST gst = null;
-					if (checkGst(j, 900) != null) {
-						gst = checkGst(j, 900);
+					Coordinate jobCoord = getJobLocation(j);
+					GST gst = findGst(jobCoord, 900);
+					System.out.println("For job "+j.getOrderNum());
+					
+					if (gst != null) {
+						System.out.println("Found GST in 15min isochrone\n");
+
+					}
+					else {
+						gst = findGst(jobCoord, 1800);
+						if (gst != null) {
+							System.out.println("Found GST in 30min isochrone\n");
+						}
+						else {System.out.println("No GST found!!!\n");}
 					}
 				}
 			}
+			currentTime = currentTime.plusSeconds(1);
 		}
 		while (currentTime.isBefore(endTime));
 	}
+	//===Old method. Has now been replaced with getJobLocation() and findGst().===
+//	public GST checkGst(Job j, int timeLimit) throws IOException {
+//		String number = j.getHouseNum1();
+//		String street = j.getStreet();
+//		String suburb = j.getSuburb();
+//		String postcode = j.getPostcode();
+//		
+//		Coordinate coord = AzureMapsApi.getCoordinatesFromAddress(number, street, suburb, postcode);
+//		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(coord, timeLimit);
+//		Polygon p = AzureMapsApi.BuildPolygon(jsonObj);
+//		for (GST g : GSTFactory.getGSTpool()) {
+//			Coordinate gstCoord = new Coordinate(g.getLat(), g.getLon());
+//			//System.out.println("GST Co-ord is: "+gstCoord);
+//			//System.out.println(AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord));
+//			if (AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord)) {
+//				return g;
+//			}
+//		}
+//		return null;
+//	}
 	
-	public GST checkGst(Job j, int timeLimit) throws IOException {
+	public Coordinate  getJobLocation(Job j) throws IOException {
 		String number = j.getHouseNum1();
 		String street = j.getStreet();
 		String suburb = j.getSuburb();
 		String postcode = j.getPostcode();
 		
-		Coordinate coord = AzureMapsApi.getCoordinatesFromAddress(number, street, suburb, postcode);
+		return AzureMapsApi.getCoordinatesFromAddress(number, street, suburb, postcode);
+	}
+	
+	public GST findGst(Coordinate coord, int timeLimit) throws IOException {
 		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(coord, timeLimit);
 		Polygon p = AzureMapsApi.BuildPolygon(jsonObj);
 		for (GST g : GSTFactory.getGSTpool()) {
