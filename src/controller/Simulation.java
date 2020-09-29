@@ -104,45 +104,49 @@ public class Simulation {
 						if (gst != null) {
 							System.out.println("Found GST in 30min isochrone\n");
 						}
-						else {System.out.println("No GST found!!!\n");}
+						else {System.out.println("No GST found within 30min!!!\n");}
 					}
-					
-//					if (checkGst(j, 900) != null) {
-//						System.out.println("Found GST in 15min isochrone\n");
-//						gst = checkGst(j, 900);
-//					}
-//					else if (checkGst(j, 1800) != null) {
-//						System.out.println("Found GST in 30min isochrone\n");
-//						gst = checkGst(j, 1800);
-//					}
-//					else {
-//						System.out.println("No GST found in 30min isochone\n");
-//					}
-					//System.out.println(jobQueue);
-					// Now loop through both the jobQueue and the gstPool to assign a GST
-					for (Job jq : jobQueue) {
-						for (GST g : GSTFactory.getGSTpool()) {
-							if ((g.getIsAvailable() == true)) {
-								g.setAvailable(false);
-								// when the timer progresses to the time that the job is completed
-								// a completedjob object is created and GST is set to available
-								jq.setEndDateAndTime(
-										jq.getOrderCreateDateAndTime().plusHours(1));
-								if (currentTime.isEqual(jq.getEndDateAndTime())) {
-									System.out.println("myDateTime is equal");
-									completedJobs.add(new CompletedJobRecord(g, j));
-									jobQueue.remove(j);
+					if ((gst != null && gst.getIsAvailable() == true)) {
+						gst.setAvailable(false);
+						// when the timer progresses to the time that the job is completed
+						// a completedjob object is created and GST is set to available
+						j.setEndDateAndTime(
+								j.getOrderCreateDateAndTime().plusHours(1));
+						if (currentTime.isEqual(j.getEndDateAndTime())) {
+							System.out.println("myDateTime is equal");
+							completedJobs.add(new CompletedJobRecord(gst, j));
+							jobQueue.remove(j);
 
-									// The gst flag is reset to available and they can now be assigned new jobs
-									g.setAvailable(true);
-
-								}
-
-							}
+							// The gst flag is reset to available and they can now be assigned new jobs
+							gst.setAvailable(true);
 
 						}
 
 					}
+					// Now loop through both the jobQueue and the gstPool to assign a GST
+//					for (Job jq : jobQueue) {
+//						for (GST g : GSTFactory.getGSTpool()) {
+//							if ((g.getIsAvailable() == true)) {
+//								g.setAvailable(false);
+//								// when the timer progresses to the time that the job is completed
+//								// a completedjob object is created and GST is set to available
+//								jq.setEndDateAndTime(
+//										jq.getOrderCreateDateAndTime().plusHours(1));
+//								if (currentTime.isEqual(jq.getEndDateAndTime())) {
+//									System.out.println("myDateTime is equal");
+//									completedJobs.add(new CompletedJobRecord(g, j));
+//									jobQueue.remove(j);
+//
+//									// The gst flag is reset to available and they can now be assigned new jobs
+//									g.setAvailable(true);
+//
+//								}
+//
+//							}
+//
+//						}
+//
+//					}
 
 				}
 
@@ -191,26 +195,6 @@ public class Simulation {
 		}
 		while (currentTime.isBefore(endTime));
 	}
-	//===Old method. Has now been replaced with getJobLocation() and findGst().===
-//	public GST checkGst(Job j, int timeLimit) throws IOException {
-//		String number = j.getHouseNum1();
-//		String street = j.getStreet();
-//		String suburb = j.getSuburb();
-//		String postcode = j.getPostcode();
-//		
-//		Coordinate coord = AzureMapsApi.getCoordinatesFromAddress(number, street, suburb, postcode);
-//		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(coord, timeLimit);
-//		Polygon p = AzureMapsApi.BuildPolygon(jsonObj);
-//		for (GST g : GSTFactory.getGSTpool()) {
-//			Coordinate gstCoord = new Coordinate(g.getLat(), g.getLon());
-//			//System.out.println("GST Co-ord is: "+gstCoord);
-//			//System.out.println(AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord));
-//			if (AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord)) {
-//				return g;
-//			}
-//		}
-//		return null;
-//	}
 	
 	public Coordinate  getJobLocation(Job j) throws IOException {
 		String number = j.getHouseNum1();
