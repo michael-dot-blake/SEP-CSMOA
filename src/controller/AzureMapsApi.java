@@ -28,7 +28,8 @@ public class AzureMapsApi {
 
 	/**
 	 * A method which takes an address and calls the Azure Maps Api to return
-	 * coordinates in latitude and longitude
+	 * coordinates in latitude and longitude. It returns an object of type
+	 * Coordinate
 	 * 
 	 * @param streetNo
 	 * @param streetName
