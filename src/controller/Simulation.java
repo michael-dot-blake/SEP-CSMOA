@@ -187,6 +187,16 @@ public class Simulation {
 					
 					if (gst != null) {
 						System.out.println("Found GST in 15min isochrone\n");
+					}
+					else if (gst == null) {
+						gst = findGst(jobCoord, 1800);
+					}
+					
+					
+					
+					
+					if (gst != null) {
+						System.out.println("Found GST in 15min isochrone\n");
 
 					}
 					else {
@@ -203,6 +213,7 @@ public class Simulation {
 							}
 						}
 					}
+					//hereeeeeee
 					completedJobs.add(new CompletedJobRecord(gst, j));
 					jobQueue.remove(j);
 				}
