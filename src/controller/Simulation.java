@@ -104,7 +104,14 @@ public class Simulation {
 						if (gst != null) {
 							System.out.println("Found GST in 30min isochrone\n");
 						}
-						else {System.out.println("No GST found within 30min!!!\n");}
+						else {
+							System.out.println("No GST found within 30min!!!");
+							gst = simpleGetGst(jobCoord);
+							System.out.println("Simple find executed.\n");
+							if (gst == null) {
+								System.err.println("Simple find went wrong!!!!!!!!");
+							}
+						}
 					}
 					if ((gst != null && gst.getIsAvailable() == true)) {
 						gst.setAvailable(false);
@@ -187,8 +194,17 @@ public class Simulation {
 						if (gst != null) {
 							System.out.println("Found GST in 30min isochrone\n");
 						}
-						else {System.out.println("No GST found!!!\n");}
+						else {
+							System.out.println("No GST found within 30min!!!");
+							gst = simpleGetGst(jobCoord);
+							System.out.println("Simple find executed.\n");
+							if (gst == null) {
+								System.err.println("Simple find went wrong!!!!!!!!");
+							}
+						}
 					}
+					completedJobs.add(new CompletedJobRecord(gst, j));
+					jobQueue.remove(j);
 				}
 			}
 			currentTime = currentTime.plusSeconds(1);
@@ -217,6 +233,28 @@ public class Simulation {
 			}
 		}
 		return null;
+	}
+	
+	public GST simpleGetGst(Coordinate jobCoord) {
+		GST closeGst = null;
+		double jx = jobCoord.getX();
+		double jy = jobCoord.getY();
+		double gx = 0.0;
+		double gy = 0.0;
+		double minDistance = 200.00;
+		for (GST g : GSTFactory.getGSTpool()) {
+			gx = g.getLat();
+			gy = g.getLon();
+			if (calcDistance(jx, jy, gx, gy)<minDistance) {
+				minDistance = calcDistance(jx, jy, gx, gy);
+				closeGst = g;
+			}
+		}
+		return closeGst;
+	}
+	
+	public double calcDistance(double jx, double jy, double gx, double gy) {
+		return Math.abs(Math.sqrt((jx-gx)*(jx-gx)+(jy-gy)*(jy-gy)));
 	}
 
 	public static void main(String[] args) throws SecurityException, IOException {
