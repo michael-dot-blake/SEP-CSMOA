@@ -20,6 +20,8 @@ import model.CompletedJobRecord;
 import model.GST;
 import model.Job;
 
+
+
 /**
  * @author Michael Blake Simulation class to handle assigning jobs to GSTs in
  *         early stages of development
@@ -179,7 +181,7 @@ public class Simulation {
 					jobQueue.add(j);
 				}
 			}
-			if (jobQueue.size()>0) {
+			if (jobQueue.size() > 0) {
 				for (Job j : jobQueue) {
 					Coordinate jobCoord = getJobLocation(j);
 					GST gst = findGst(jobCoord, 900);
@@ -187,28 +189,28 @@ public class Simulation {
 					
 					if (gst != null) {
 						System.out.println("Found GST in 15min isochrone\n");
+						gst.setAvailable(false);
 					}
 					else {
-						gst = findGst(jobCoord, 1800);
-						if (gst != null) {
-							System.out.println("Found GST in 30min isochrone\n");
-						}
-						else {
 							System.out.println("No GST found within 30min!!!");
 							gst = simpleGetGst(jobCoord);
-							System.out.println("Simple find executed.\n");
+							System.out.println("Found the closest GST outside isochrone.\n");
 							if (gst == null) {
-								System.err.println("Simple find went wrong!!!!!!!!");
+								System.err.println("Unable to find any GSTs");
 							}
 						}
-					}
+					if (currentTime.equals(j.getEndDateAndTime()))
 					completedJobs.add(new CompletedJobRecord(gst, j));
 					jobQueue.remove(j);
+					gst.setAvailable(true);
+					}
+				
 				}
-			}
 			currentTime = currentTime.plusSeconds(1);
-		}
-		while (currentTime.isBefore(endTime));
+			} while (currentTime.isBefore(endTime));
+			
+		
+		
 	}
 	
 	public Coordinate  getJobLocation(Job j) throws IOException {
@@ -227,7 +229,7 @@ public class Simulation {
 			Coordinate gstCoord = new Coordinate(g.getLat(), g.getLon());
 			//System.out.println("GST Co-ord is: "+gstCoord);
 			//System.out.println(AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord));
-			if (AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord)) {
+			if (AzureMapsApi.checkIfLocationInIsochrone(p, gstCoord)) {
 				return g;
 			}
 		}
