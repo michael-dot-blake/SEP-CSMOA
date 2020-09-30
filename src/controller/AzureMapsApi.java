@@ -28,8 +28,11 @@ public class AzureMapsApi {
 
 	/**
 	 * A method which takes an address and calls the Azure Maps Api to return
-	 * coordinates in latitude and longitude. It returns an object of type
-	 * Coordinate
+	 * coordinates in latitude and longitude. It will replace all whitespace within
+	 * the string such as between a street name and type e.g. "Boundary Rd" with a %
+	 * to ensure the api call is successful. It will also remove all leading and
+	 * trailing whitespace. It returns an object of type Coordinate from the JTS
+	 * Topology library.
 	 * 
 	 * @param streetNo
 	 * @param streetName
@@ -41,10 +44,10 @@ public class AzureMapsApi {
 	public static Coordinate getCoordinatesFromAddress(String streetNo, String streetName, String suburbName,
 			String postCode) throws IOException {
 
-		streetNo = streetNo.trim();
+		streetNo = streetNo.replace(" ", "%").trim();
 		streetName = streetName.replace(" ", "%").trim();
 		suburbName = suburbName.replace(" ", "%").trim();
-		postCode = postCode.trim();
+		postCode = postCode.replace(" ", "%").trim();
 
 		URL url = new URL("https://atlas.microsoft.com/search/address/json?subscription-key=" + API_KEY
 				+ "&api-version=1.0&language=en-US&query=" + streetNo + "," + streetName + "," + suburbName + ","
@@ -72,7 +75,7 @@ public class AzureMapsApi {
 			double lat = json.get("lat").getAsDouble();
 			double lon = json.get("lon").getAsDouble();
 			Coordinate coord = new Coordinate(lat, lon);
-			//System.out.println("Address Location: " + coord);
+			// System.out.println("Address Location: " + coord);
 			sc.close();
 			return coord;
 
@@ -81,10 +84,10 @@ public class AzureMapsApi {
 	}
 
 	/**
-	 * A method which takes an object of type Coordinates which contains a latitude
+	 * A method which takes an object of type Coordinate which contains a latitude
 	 * and longitude value and calls the Azure Maps API. The API call will then
 	 * respond with latitude and longitude values for the boundaries of an isochrone
-	 * which extend to a set integer defined as timeBudgetInSeconds.
+	 * which extend to a set integer defined as an integer timeBudgetInSeconds.
 	 * 
 	 * @param coord
 	 * @param timeBudgetInSeconds
@@ -121,10 +124,9 @@ public class AzureMapsApi {
 	}
 
 	/**
-	 * A method which currently accepts a JsonObject and builds a polygon out of the
-	 * values of the json object by parsing the object and extracting the lat and
-	 * long values from the Json returned by the api call. The method returns a
-	 * polygon object
+	 * A method which accepts a JsonObject and builds a polygon out of the values of
+	 * the json object by parsing the object and extracting the lat and long values
+	 * from the Json returned by the api call. The method returns a polygon object.
 	 * 
 	 * @param jsonObj
 	 * @return
@@ -166,14 +168,15 @@ public class AzureMapsApi {
 		return poly;
 	}
 
-	public static boolean checkIfLocationInIsoChrone(Polygon poly, Coordinate coordToTest) {
+	public static boolean checkIfLocationInIsochrone(Polygon isochrone, Coordinate coordToTest) {
 
 		Point testPoint = gf.createPoint(coordToTest);
+		if (testPoint.within(isochrone)) {
 
-		if (testPoint.within(poly)) {
 			return true;
 
 		} else {
+
 			return false;
 		}
 	}
@@ -194,9 +197,9 @@ public class AzureMapsApi {
 		// coordinates for LosAngeles. Should return false
 		Coordinate losAngelesCoord = new Coordinate(34.0522, 118.2437);
 
-		System.out.println(checkIfLocationInIsoChrone(p, centerCoord));
-		System.out.println(checkIfLocationInIsoChrone(p, edgeCoord));
-		System.out.println(checkIfLocationInIsoChrone(p, losAngelesCoord));
+		System.out.println(checkIfLocationInIsochrone(p, centerCoord));
+		System.out.println(checkIfLocationInIsochrone(p, edgeCoord));
+		System.out.println(checkIfLocationInIsochrone(p, losAngelesCoord));
 
 	}
 
