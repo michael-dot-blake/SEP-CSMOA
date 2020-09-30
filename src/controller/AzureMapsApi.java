@@ -169,11 +169,12 @@ public class AzureMapsApi {
 	public static boolean checkIfLocationInIsoChrone(Polygon poly, Coordinate coordToTest) {
 
 		Point testPoint = gf.createPoint(coordToTest);
-
 		if (testPoint.within(poly)) {
+			
 			return true;
-
+			
 		} else {
+			
 			return false;
 		}
 	}
