@@ -1,5 +1,4 @@
 package controller;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,8 +18,6 @@ import com.google.gson.JsonObject;
 import model.CompletedJobRecord;
 import model.GST;
 import model.Job;
-
-
 
 /**
  * @author Michael Blake Simulation class to handle assigning jobs to GSTs in
@@ -181,7 +178,7 @@ public class Simulation {
 					jobQueue.add(j);
 				}
 			}
-			if (jobQueue.size() > 0) {
+			if (jobQueue.size()>0) {
 				for (Job j : jobQueue) {
 					Coordinate jobCoord = getJobLocation(j);
 					GST gst = findGst(jobCoord, 900);
@@ -189,28 +186,31 @@ public class Simulation {
 					
 					if (gst != null) {
 						System.out.println("Found GST in 15min isochrone\n");
-						gst.setAvailable(false);
 					}
 					else {
+						gst = findGst(jobCoord, 1800);
+						if (gst != null) {
+							System.out.println("Found GST in 30min isochrone\n");
+						}
+						else {
 							System.out.println("No GST found within 30min!!!");
 							gst = simpleGetGst(jobCoord);
-							System.out.println("Found the closest GST outside isochrone.\n");
+							System.out.println("Simple find executed.\n");
 							if (gst == null) {
-								System.err.println("Unable to find any GSTs");
+								System.err.println("Simple find went wrong!!!!!!!!");
 							}
 						}
-					if (currentTime.equals(j.getEndDateAndTime()))
+					}
+					//we found a gst, now what to do?
+					gst.setAvailable(false);
 					completedJobs.add(new CompletedJobRecord(gst, j));
 					jobQueue.remove(j);
-					gst.setAvailable(true);
-					}
-				
+					
 				}
+			}
 			currentTime = currentTime.plusSeconds(1);
-			} while (currentTime.isBefore(endTime));
-			
-		
-		
+		}
+		while (currentTime.isBefore(endTime));
 	}
 	
 	public Coordinate  getJobLocation(Job j) throws IOException {
@@ -229,7 +229,7 @@ public class Simulation {
 			Coordinate gstCoord = new Coordinate(g.getLat(), g.getLon());
 			//System.out.println("GST Co-ord is: "+gstCoord);
 			//System.out.println(AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord));
-			if (AzureMapsApi.checkIfLocationInIsochrone(p, gstCoord)) {
+			if (AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord)) {
 				return g;
 			}
 		}
@@ -274,7 +274,7 @@ public class Simulation {
 
 		LocalDateTime start = LocalDateTime.of(startDate, LocalTime.MIN);
 		LocalDateTime end = LocalDateTime.of(endDate, LocalTime.MIN);
-		s.runSim2(start, end);
+		s.runSim(start, end);
 
 	}// end main
 
