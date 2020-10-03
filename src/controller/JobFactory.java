@@ -41,7 +41,7 @@ public class JobFactory {
 				String houseNum2 = reform[13];
 				String postCode = reform[14];
 				String fitterDistrict = reform[15];
-				String jobDuration = reform[16];
+				String jobDurationString = reform[16];
 				String yearStr = reform[7].substring(0, 4);
 				String monthStr = reform[7].substring(4, 6);
 				String dayStr = reform[7].substring(6, reform[7].length());
@@ -49,7 +49,9 @@ public class JobFactory {
 					LocalDate jobDate = LocalDate.parse(yearStr+"-"+monthStr+"-"+dayStr);
 					LocalTime jobTime = LocalTime.parse(jobTimeString);
 					LocalDateTime jobDateAndTime = LocalDateTime.of(jobDate, jobTime);
-					jobPool.add(new Job(jobId, jobType, jobDescription, jobIssueCode, jobIssueDescrp, jobActType, jobActDescrp, jobDate, jobTime, jobDateAndTime, jobPriority, jobSuburb, jobStreet, houseNum1, houseNum2, postCode, fitterDistrict, 0, null));
+					long jobDuration = Long.parseLong(jobDurationString);
+					LocalDateTime endDateAndTime = LocalDateTime.of(jobDate, jobTime).plusMinutes(jobDuration);
+					jobPool.add(new Job(jobId, jobType, jobDescription, jobIssueCode, jobIssueDescrp, jobActType, jobActDescrp, jobDate, jobTime, jobDateAndTime, jobPriority, jobSuburb, jobStreet, houseNum1, houseNum2, postCode, fitterDistrict, jobDuration, endDateAndTime));
 					jobAdded = true;
 				}
 				catch (Exception e) {
@@ -59,7 +61,7 @@ public class JobFactory {
 				if (!jobAdded) {
 					System.err.println("\nFAILED TO INIT JOB!");
 					System.out.println("Job num: "+jobId+", Job Type: "+jobType+", Job Description: "+jobDescription+", Job IsssueCode: "+jobIssueCode+", Job IssueDescription: "+jobIssueDescrp+", Job Activity: "+jobActType+", Job Activity Description: "+jobActDescrp+", Date: "+reform[7]+", Time: "+jobTimeString+
-							", Priority: "+jobPriority+", Suburb: "+jobSuburb+", Street: "+jobStreet+", House Num1: "+houseNum1+", House Num2: "+houseNum2+", Poscode: "+postCode+", Fitter District: "+fitterDistrict+", Work Time Elapsed: "+jobDuration );
+							", Priority: "+jobPriority+", Suburb: "+jobSuburb+", Street: "+jobStreet+", House Num1: "+houseNum1+", House Num2: "+houseNum2+", Poscode: "+postCode+", Fitter District: "+fitterDistrict+", Work Time Elapsed: "+jobDurationString );
 				}
 			}
 			sc.close();

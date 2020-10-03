@@ -32,7 +32,7 @@ public class Job implements Comparable<Job> {
 	private String fitterDistrict;
 	
 	//instance variables to be set prior to the creation of a completedJobRecord object
-	private double jobDuration;
+	private long jobDuration;
 	private LocalDateTime endDateAndTime;
 
 	/**
@@ -60,7 +60,7 @@ public class Job implements Comparable<Job> {
 	public Job(String jobId, String orderType, String orderDescription, String issueCode, String issueDescription,
 			String mainActType, String mainActDescription, LocalDate jobDate, LocalTime jobTime,
 			LocalDateTime startDateAndTime, String jobPriority, String suburb, String street, String houseNum1,
-			String houseNum2, String postcode, String fitterDistrict, double jobDuration, LocalDateTime endDateAndTime) {
+			String houseNum2, String postcode, String fitterDistrict, long jobDuration, LocalDateTime endDateAndTime) {
 		this.orderNum = jobId;
 		this.orderType = orderType;
 		this.orderDescription = orderDescription;
@@ -216,11 +216,11 @@ public class Job implements Comparable<Job> {
 		this.fitterDistrict = fitterDistrict;
 	}
 
-	public double getJobDuration() {
+	public long getJobDuration() {
 		return jobDuration;
 	}
 
-	public void setJobDuration(double jobDuration) {
+	public void setJobDuration(long jobDuration) {
 		this.jobDuration = jobDuration;
 	}
 
@@ -241,7 +241,7 @@ public class Job implements Comparable<Job> {
 	public String toString() {
 		return "Job [Number: " + orderNum + ", FitterDistrict: " + fitterDistrict + " Job Priority: " + jobPriority
 				+ ", Activity Type: " + mainActType + ", Starting Date: " + orderCreateDate + ", Starting Time: "
-				+ orderCreateTime + ", Estimated Duration: " + jobDuration + "]";
+				+ orderCreateTime + ", Estimated Duration: " + jobDuration +", Estimated End Time: " + endDateAndTime + "]";
 	}
 
 }

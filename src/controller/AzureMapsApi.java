@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -42,16 +45,17 @@ public class AzureMapsApi {
 	 * @throws IOException
 	 */
 	public static Coordinate getCoordinatesFromAddress(String streetNo, String streetName, String suburbName,
-			String postCode) throws IOException {
+			String postCode ) throws IOException {
 
 		streetNo = streetNo.replace(" ", "%").trim();
 		streetName = streetName.replace(" ", "%").trim();
 		suburbName = suburbName.replace(" ", "%").trim();
 		postCode = postCode.replace(" ", "%").trim();
+		
 
 		URL url = new URL("https://atlas.microsoft.com/search/address/json?subscription-key=" + API_KEY
 				+ "&api-version=1.0&language=en-US&query=" + streetNo + "," + streetName + "," + suburbName + ","
-				+ STATE + "," + postCode);
+				+ STATE + "," + postCode );
 
 		URLConnection conn = url.openConnection();
 		HttpURLConnection http = (HttpURLConnection) conn;
@@ -93,10 +97,10 @@ public class AzureMapsApi {
 	 * @param timeBudgetInSeconds
 	 * @throws IOException
 	 */
-	public static JsonObject getIsochroneCoords(Coordinate coord, int timeBudgetInSeconds) throws IOException {
+	public static JsonObject getIsochroneCoords(Coordinate coord, int timeBudgetInSeconds, LocalDateTime dateTime) throws IOException {
 		URL url = new URL(
 				"https://atlas.microsoft.com/route/range/json?subscription-key=" + API_KEY + "&api-version=1.0&query="
-						+ coord.getX() + "," + coord.getY() + "&timeBudgetInSec=" + timeBudgetInSeconds);
+						+ coord.getX() + "," + coord.getY() + "&timeBudgetInSec=" + timeBudgetInSeconds +"&departAt="+ dateTime);
 
 		URLConnection conn = url.openConnection();
 		HttpURLConnection http = (HttpURLConnection) conn;
@@ -184,8 +188,9 @@ public class AzureMapsApi {
 	public static void main(String[] args) throws IOException {
 
 		// test functionality for the api calls
+		LocalDateTime departAt = LocalDateTime.of(2020, 12, 19, 16, 39, 57);
 		Coordinate coord = getCoordinatesFromAddress("13", "Bundle St", "Caddens", "2747");
-		JsonObject jsonObj = getIsochroneCoords(coord, 6000);
+		JsonObject jsonObj = getIsochroneCoords(coord, 6000, departAt);
 		Polygon p = BuildPolygon(jsonObj);
 
 		// centre of isochrone. Should return true
@@ -200,7 +205,7 @@ public class AzureMapsApi {
 		System.out.println(checkIfLocationInIsochrone(p, centerCoord));
 		System.out.println(checkIfLocationInIsochrone(p, edgeCoord));
 		System.out.println(checkIfLocationInIsochrone(p, losAngelesCoord));
-
+        
 	}
 
 }

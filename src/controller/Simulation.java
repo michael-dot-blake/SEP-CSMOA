@@ -1,4 +1,5 @@
 package controller;
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,6 +19,8 @@ import com.google.gson.JsonObject;
 import model.CompletedJobRecord;
 import model.GST;
 import model.Job;
+
+
 
 /**
  * @author Michael Blake Simulation class to handle assigning jobs to GSTs in
@@ -73,7 +76,7 @@ public class Simulation {
 	 */
 	private void runSim(LocalDateTime currentTime, LocalDateTime endTime) throws SecurityException, IOException {
 
-		String path = "JobFiles/testHisData.csv";
+		String path = "JobFiles/FutureJobs.csv";
 		JobFactory.readJobsFromCSV(path);
 
 		String path2 = "GSTFiles/gstTestData.csv";
@@ -91,7 +94,9 @@ public class Simulation {
 					//System.out.println("Times match");
 					jobQueue.add(j);
 					Coordinate jobCoord = getJobLocation(j);
-					GST gst = findGst(jobCoord, 900);
+					LocalDateTime jobTime = j.getOrderCreateDateAndTime();
+					//LocalDateTime departAt = getJobTime(j);
+					GST gst = findGst(jobCoord, 900, jobTime);
 					System.out.println("For job "+j.getOrderNum());
 					
 					if (gst != null) {
@@ -99,7 +104,7 @@ public class Simulation {
 
 					}
 					else {
-						gst = findGst(jobCoord, 1800);
+						gst = findGst(jobCoord, 1800, jobTime);
 						if (gst != null) {
 							System.out.println("Found GST in 30min isochrone\n");
 						}
@@ -166,7 +171,7 @@ public class Simulation {
 	
 	private void runSim2(LocalDateTime currentTime, LocalDateTime endTime) throws SecurityException, IOException {
 		
-		String path = "JobFiles/testHisData.csv";
+		String path = "JobFiles/FutureJobs.csv";
 		JobFactory.readJobsFromCSV(path);
 
 		String path2 = "GSTFiles/gstTestData.csv";
@@ -177,40 +182,40 @@ public class Simulation {
 				if (currentTime.isEqual(j.getOrderCreateDateAndTime())) {
 					jobQueue.add(j);
 				}
-			}
-			if (jobQueue.size()>0) {
+			}		
+
+			if (jobQueue.size() > 0) {
 				for (Job j : jobQueue) {
 					Coordinate jobCoord = getJobLocation(j);
-					GST gst = findGst(jobCoord, 900);
-					System.out.println("For job "+j.getOrderNum());
+				    LocalDateTime jobTime = j.getOrderCreateDateAndTime();
+					GST gst = findGst(jobCoord, 1800, jobTime);
+					System.out.println("For Job "+j.getOrderNum());
 					
 					if (gst != null) {
-						System.out.println("Found GST in 15min isochrone\n");
+						System.out.println("Found GST: "+ gst.getgSTid()+ " in 30min isochrone.\n");
+						gst.setAvailable(false);
 					}
 					else {
-						gst = findGst(jobCoord, 1800);
-						if (gst != null) {
-							System.out.println("Found GST in 30min isochrone\n");
-						}
-						else {
 							System.out.println("No GST found within 30min!!!");
 							gst = simpleGetGst(jobCoord);
-							System.out.println("Simple find executed.\n");
-							if (gst == null) {
-								System.err.println("Simple find went wrong!!!!!!!!");
-							}
+							System.out.println("Found the closest GST: "+gst.getgSTid()+ " outside isochrone.\n");
+//							if (gst == null) {
+//								System.err.println("Unable to find any GSTs");
+//							}
 						}
-					}
-					//we found a gst, now what to do?
-					gst.setAvailable(false);
+					if (currentTime.equals(j.getEndDateAndTime()))
 					completedJobs.add(new CompletedJobRecord(gst, j));
 					jobQueue.remove(j);
+					//gst.setAvailable(true);
+					}
+				
 					
-				}
-			}
-			currentTime = currentTime.plusSeconds(1);
-		}
-		while (currentTime.isBefore(endTime));
+				
+				}currentTime = currentTime.plusSeconds(1);
+			} while (currentTime.isBefore(endTime));
+			
+		
+		
 	}
 	
 	public Coordinate  getJobLocation(Job j) throws IOException {
@@ -218,18 +223,19 @@ public class Simulation {
 		String street = j.getStreet();
 		String suburb = j.getSuburb();
 		String postcode = j.getPostcode();
-		
 		return AzureMapsApi.getCoordinatesFromAddress(number, street, suburb, postcode);
 	}
 	
-	public GST findGst(Coordinate coord, int timeLimit) throws IOException {
-		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(coord, timeLimit);
+	
+	public GST findGst(Coordinate coord, int timeLimit, LocalDateTime depart) throws IOException {
+	//	LocalDateTime depart  = LocalDateTime.now();
+		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(coord, timeLimit, depart);
 		Polygon p = AzureMapsApi.BuildPolygon(jsonObj);
 		for (GST g : GSTFactory.getGSTpool()) {
 			Coordinate gstCoord = new Coordinate(g.getLat(), g.getLon());
 			//System.out.println("GST Co-ord is: "+gstCoord);
 			//System.out.println(AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord));
-			if (AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord)) {
+			if (AzureMapsApi.checkIfLocationInIsochrone(p, gstCoord)) {
 				return g;
 			}
 		}
@@ -264,17 +270,18 @@ public class Simulation {
 		Scanner scan = new Scanner(System.in);
 //		System.out.println("Enter the Start Date(YYYY-MM-DD): ");
 //		String startDateString = scan.nextLine();
-		LocalDate startDate = LocalDate.of(2019, 8, 8);
+		LocalDate startDate = LocalDate.of(2020, 8, 8);
 //		System.out.println("Enter the Time(HH:MM:SS): ");
 //		String timeString = scan.nextLine();
 //		LocalTime time = LocalTime.parse(timeString);
 //		System.out.println("Enter the EndDate(YYYY-MM-DD): ");
 //		String endDateString = scan.nextLine();
-		LocalDate endDate = LocalDate.of(2019, 8, 24);
+		LocalDate endDate = LocalDate.of(2021, 8, 24);
 
 		LocalDateTime start = LocalDateTime.of(startDate, LocalTime.MIN);
 		LocalDateTime end = LocalDateTime.of(endDate, LocalTime.MIN);
-		s.runSim(start, end);
+		s.runSim2(start, end);
+		s.log();
 
 	}// end main
 
