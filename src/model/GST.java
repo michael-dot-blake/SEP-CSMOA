@@ -54,7 +54,7 @@ public class GST {
 
 	@Override
 	public String toString() {
-		return "GST [id=" + gSTid + ", isAvailable=" + isAvailable + "]";
+		return "GST id= " + gSTid;
 	}
 
 }

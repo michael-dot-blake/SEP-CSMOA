@@ -12,7 +12,7 @@ import java.time.LocalTime;
  */
 public class Job implements Comparable<Job> {
 
-	//instance variables to be initialised when a job is created
+	// instance variables to be initialised when a job is created
 	private String orderNum;
 	private String orderType;
 	private String orderDescription;
@@ -31,11 +31,11 @@ public class Job implements Comparable<Job> {
 	private String postcode;
 	private String fitterDistrict;
 	private int jobDurationInMinutes;
-	
-	//instance variables to be set prior to the creation of a completedJobRecord object
+
+	// instance variables to be set prior to the creation of a completedJobRecord
+	// object
 	private LocalDateTime endDateAndTime;
 	private int travelTimeInSeconds;
-	
 
 	/**
 	 * Constructor for a final Job object with all values initialised
@@ -57,12 +57,13 @@ public class Job implements Comparable<Job> {
 	 * @param postcode
 	 * @param fitterDistrict
 	 * @param jobDuration
-	 * @param endDateAndTime 
+	 * @param endDateAndTime
 	 */
 	public Job(String jobId, String orderType, String orderDescription, String issueCode, String issueDescription,
 			String mainActType, String mainActDescription, LocalDate jobDate, LocalTime jobTime,
 			LocalDateTime startDateAndTime, String jobPriority, String suburb, String street, String houseNum1,
-			String houseNum2, String postcode, String fitterDistrict, int jobDurationInMinutes, int travelTimeInSeconds, LocalDateTime endDateAndTime) {
+			String houseNum2, String postcode, String fitterDistrict, int jobDurationInMinutes, int travelTimeInSeconds,
+			LocalDateTime endDateAndTime) {
 		this.orderNum = jobId;
 		this.orderType = orderType;
 		this.orderDescription = orderDescription;
@@ -81,7 +82,7 @@ public class Job implements Comparable<Job> {
 		this.postcode = postcode;
 		this.fitterDistrict = fitterDistrict;
 		this.jobDurationInMinutes = jobDurationInMinutes;
-		this.travelTimeInSeconds = travelTimeInSeconds;
+		this.setTravelTimeInSeconds(travelTimeInSeconds);
 		this.endDateAndTime = endDateAndTime;
 
 	}
@@ -244,7 +245,16 @@ public class Job implements Comparable<Job> {
 	public String toString() {
 		return "Job [Number: " + orderNum + ", FitterDistrict: " + fitterDistrict + " Job Priority: " + jobPriority
 				+ ", Activity Type: " + mainActType + ", Starting Date: " + orderCreateDate + ", Starting Time: "
-				+ orderCreateTime + ", Estimated Duration: " + jobDurationInMinutes +", Estimated End Time: " + endDateAndTime + "]";
+				+ orderCreateTime + ", Duration: " + jobDurationInMinutes + ", Travel Time: " + travelTimeInSeconds
+				+ " ,End Date And Time: " + endDateAndTime + "]";
+	}
+
+	public int getTravelTimeInSeconds() {
+		return travelTimeInSeconds;
+	}
+
+	public void setTravelTimeInSeconds(int travelTimeInSeconds) {
+		this.travelTimeInSeconds = travelTimeInSeconds;
 	}
 
 }
