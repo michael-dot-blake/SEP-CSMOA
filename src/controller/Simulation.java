@@ -102,6 +102,8 @@ public class Simulation {
 						System.out.println("No GST found within 30min!!!");
 						gst = simpleGetGst(jobCoord, GSTFactory.getGSTpool());
 						System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone.\n");
+						Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
+						System.out.println("Travel Time is: " + AzureMapsApi.getRouteTime(gstCoord, jobCoord) + " seconds.\n");
 					}
 //					if (currentTime.equals(j.getEndDateAndTime()))
 //						completedJobs.add(new CompletedJobRecord(gst, j));
