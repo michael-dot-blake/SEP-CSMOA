@@ -73,7 +73,7 @@ public class Simulation {
 
 	private void runSim2(LocalDateTime currentTime, LocalDateTime endTime) throws SecurityException, IOException {
 
-		String path = "JobFiles/RJ.csv";
+		String path = "JobFiles/FutureJobs.csv";
 		JobFactory.readJobsFromCSV(path);
 
 		String path2 = "GSTFiles/gstTestData.csv";
