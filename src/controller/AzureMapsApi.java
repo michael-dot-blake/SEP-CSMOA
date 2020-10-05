@@ -191,7 +191,7 @@ public class AzureMapsApi {
 		}
 	}
 	
-	public static int getRouteTime(Coordinate startCoord, Coordinate endCoord) throws IOException {
+	public static double getRouteTime(Coordinate startCoord, Coordinate endCoord) throws IOException {
 		URL url = new URL("https://atlas.microsoft.com/route/directions/json?subscription-key=" + API_KEY
 				+ "&api-version=1.0&query=" + startCoord.getX() + "," + startCoord.getY() + ":" + endCoord.getX() + "," + endCoord.getY());
 
@@ -218,13 +218,13 @@ public class AzureMapsApi {
 			JsonArray routes = rootObj.getAsJsonArray("routes");
 			JsonElement summary = ((JsonObject) routes.get(0)).get("summary");
 			JsonPrimitive travelTime = summary.getAsJsonObject().getAsJsonPrimitive("travelTimeInSeconds");
-			int travelTimeInSeconds = travelTime.getAsInt();
+			double travelTimeInSeconds = travelTime.getAsDouble();
 			
 //			Gson gson = new GsonBuilder().setPrettyPrinting().create();
 //			String prettyJson = gson.toJson(summary);
 //			System.out.println(prettyJson);
 			sc.close();
-			return travelTimeInSeconds;
+			return travelTimeInSeconds/60;
 
 		}
 

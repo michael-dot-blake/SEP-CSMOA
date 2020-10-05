@@ -82,7 +82,7 @@ public class Simulation {
 		do {
 			for (Job j : JobFactory.getJobPool()) {
 				if (currentTime.isEqual(j.getOrderCreateDateAndTime())) {
-//					System.out.println(j.getOrderCreateDateAndTime());
+//				System.out.println(j.getOrderCreateDateAndTime());
 					jobQueue.add(j);
 				}
 			}
@@ -96,14 +96,14 @@ public class Simulation {
 					if (gst != null) {
 						System.out.println("Found GST: " + gst.getgSTid() + " in 30min isochrone.");
 						Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
-						System.out.println("Travel Time is: " + AzureMapsApi.getRouteTime(gstCoord, jobCoord) + " seconds.\n");
+						System.out.println("Travel Time is: " + String.format("%.2f", AzureMapsApi.getRouteTime(gstCoord, jobCoord)) + " minutes.\n");
 						// gst.setAvailable(false);
 					} else {
 						System.out.println("No GST found within 30min!!!");
 						gst = simpleGetGst(jobCoord, GSTFactory.getGSTpool());
-						System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone.\n");
+						System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone.");
 						Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
-						System.out.println("Travel Time is: " + AzureMapsApi.getRouteTime(gstCoord, jobCoord) + " seconds.\n");
+						System.out.println("Travel Time is: " + String.format("%.2f", AzureMapsApi.getRouteTime(gstCoord, jobCoord)) + " minutes.\n");
 					}
 //					if (currentTime.equals(j.getEndDateAndTime()))
 //						completedJobs.add(new CompletedJobRecord(gst, j));
