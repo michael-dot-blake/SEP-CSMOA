@@ -101,13 +101,13 @@ public class Simulation {
 						j.setTravelTimeInSeconds(travelTime);
 						System.out.println("Travel Time is: " + travelTime + " seconds.\n");
 						j.setEndDateAndTime(jobTime.plusMinutes(jobDuration).plusSeconds(travelTime));
-						gst.setAvailable(false);
+						//gst.setAvailable(false);
 						
 					} else {
 						System.out.println("No GST found within 30min!!!");
 						gst = simpleGetGst(jobCoord, GSTFactory.getGSTpool());
 						System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone");
-						gst.setAvailable(false);
+						//gst.setAvailable(false);
 						Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
 						int travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
 						j.setTravelTimeInSeconds(travelTime);
@@ -120,7 +120,7 @@ public class Simulation {
 							System.out.println(" ");
 						completedJobs.add(new CompletedJobRecord(gst, jo));
 						jobQueueIter.remove();
-						gst.setAvailable(true);
+						//gst.setAvailable(true);
 
 					}
 				}
