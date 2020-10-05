@@ -30,10 +30,12 @@ public class Job implements Comparable<Job> {
 	private String houseNum2;
 	private String postcode;
 	private String fitterDistrict;
+	private int jobDurationInMinutes;
 	
 	//instance variables to be set prior to the creation of a completedJobRecord object
-	private long jobDuration;
 	private LocalDateTime endDateAndTime;
+	private int travelTimeInSeconds;
+	
 
 	/**
 	 * Constructor for a final Job object with all values initialised
@@ -60,7 +62,7 @@ public class Job implements Comparable<Job> {
 	public Job(String jobId, String orderType, String orderDescription, String issueCode, String issueDescription,
 			String mainActType, String mainActDescription, LocalDate jobDate, LocalTime jobTime,
 			LocalDateTime startDateAndTime, String jobPriority, String suburb, String street, String houseNum1,
-			String houseNum2, String postcode, String fitterDistrict, long jobDuration, LocalDateTime endDateAndTime) {
+			String houseNum2, String postcode, String fitterDistrict, int jobDurationInMinutes, int travelTimeInSeconds, LocalDateTime endDateAndTime) {
 		this.orderNum = jobId;
 		this.orderType = orderType;
 		this.orderDescription = orderDescription;
@@ -78,7 +80,8 @@ public class Job implements Comparable<Job> {
 		this.houseNum2 = houseNum2;
 		this.postcode = postcode;
 		this.fitterDistrict = fitterDistrict;
-		this.jobDuration = jobDuration;
+		this.jobDurationInMinutes = jobDurationInMinutes;
+		this.travelTimeInSeconds = travelTimeInSeconds;
 		this.endDateAndTime = endDateAndTime;
 
 	}
@@ -216,12 +219,12 @@ public class Job implements Comparable<Job> {
 		this.fitterDistrict = fitterDistrict;
 	}
 
-	public long getJobDuration() {
-		return jobDuration;
+	public int getJobDuration() {
+		return jobDurationInMinutes;
 	}
 
-	public void setJobDuration(long jobDuration) {
-		this.jobDuration = jobDuration;
+	public void setJobDuration(int jobDuration) {
+		this.jobDurationInMinutes = jobDuration;
 	}
 
 	public LocalDateTime getEndDateAndTime() {
@@ -241,7 +244,7 @@ public class Job implements Comparable<Job> {
 	public String toString() {
 		return "Job [Number: " + orderNum + ", FitterDistrict: " + fitterDistrict + " Job Priority: " + jobPriority
 				+ ", Activity Type: " + mainActType + ", Starting Date: " + orderCreateDate + ", Starting Time: "
-				+ orderCreateTime + ", Estimated Duration: " + jobDuration +", Estimated End Time: " + endDateAndTime + "]";
+				+ orderCreateTime + ", Estimated Duration: " + jobDurationInMinutes +", Estimated End Time: " + endDateAndTime + "]";
 	}
 
 }

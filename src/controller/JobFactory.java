@@ -49,9 +49,13 @@ public class JobFactory {
 					LocalDate jobDate = LocalDate.parse(yearStr+"-"+monthStr+"-"+dayStr);
 					LocalTime jobTime = LocalTime.parse(jobTimeString);
 					LocalDateTime jobDateAndTime = LocalDateTime.of(jobDate, jobTime);
-					long jobDuration = Long.parseLong(jobDurationString);
-					LocalDateTime endDateAndTime = LocalDateTime.of(jobDate, jobTime).plusMinutes(jobDuration);
-					jobPool.add(new Job(jobId, jobType, jobDescription, jobIssueCode, jobIssueDescrp, jobActType, jobActDescrp, jobDate, jobTime, jobDateAndTime, jobPriority, jobSuburb, jobStreet, houseNum1, houseNum2, postCode, fitterDistrict, jobDuration, endDateAndTime));
+					int jobDurationInMinutes = Integer.parseInt(jobDurationString);
+					
+					//The following variables will be empty when a job is created and set when the job is completed
+					LocalDateTime endDateAndTime = null;
+					int travelTimeInSeconds = 0;
+					
+					jobPool.add(new Job(jobId, jobType, jobDescription, jobIssueCode, jobIssueDescrp, jobActType, jobActDescrp, jobDate, jobTime, jobDateAndTime, jobPriority, jobSuburb, jobStreet, houseNum1, houseNum2, postCode, fitterDistrict, jobDurationInMinutes, travelTimeInSeconds, endDateAndTime));
 					jobAdded = true;
 				}
 				catch (Exception e) {

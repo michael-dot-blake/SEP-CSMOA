@@ -191,9 +191,9 @@ public class AzureMapsApi {
 		}
 	}
 	
-	public static int getRouteTime(Coordinate gstCoord, Coordinate jobCoord) throws IOException {
+	public static int getRouteTime(Coordinate startCoord, Coordinate endCoord) throws IOException {
 		URL url = new URL("https://atlas.microsoft.com/route/directions/json?subscription-key=" + API_KEY
-				+ "&api-version=1.0&query=" + gstCoord.getX() + "," + gstCoord.getY() + ":" + jobCoord.getX() + "," + jobCoord.getY());
+				+ "&api-version=1.0&query=" + startCoord.getX() + "," + startCoord.getY() + ":" + endCoord.getX() + "," + endCoord.getY());
 
 		URLConnection conn = url.openConnection();
 		HttpURLConnection http = (HttpURLConnection) conn;
