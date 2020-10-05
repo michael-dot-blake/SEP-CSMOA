@@ -7,6 +7,7 @@ import java.net.URLConnection;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,7 +18,10 @@ import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.geom.Polygon;
 import org.locationtech.jts.geom.impl.CoordinateArraySequence;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
@@ -27,7 +31,7 @@ public class AzureMapsApi {
 	private static final String STATE = "NSW";
 	private static final String API_KEY = "5nXsFMSUBlUyt_Hvq0fgM6u6tKXy80wgwWfvZaLJuj0";
 
-	static GeometryFactory gf = new GeometryFactory();
+	
 
 	/**
 	 * A method which takes an address and calls the Azure Maps Api to return
@@ -138,6 +142,7 @@ public class AzureMapsApi {
 	public static Polygon BuildPolygon(JsonObject jsonObj) {
 
 		ArrayList<Coordinate> points = new ArrayList<Coordinate>();
+		GeometryFactory gf = new GeometryFactory();
 
 		String myJSONString = jsonObj.toString();
 		JsonObject jsonObject = JsonParser.parseString(myJSONString).getAsJsonObject();
@@ -174,6 +179,7 @@ public class AzureMapsApi {
 
 	public static boolean checkIfLocationInIsochrone(Polygon isochrone, Coordinate coordToTest) {
 
+		GeometryFactory gf = new GeometryFactory();
 		Point testPoint = gf.createPoint(coordToTest);
 		if (testPoint.within(isochrone)) {
 
@@ -184,6 +190,46 @@ public class AzureMapsApi {
 			return false;
 		}
 	}
+	
+	public static int getRouteTime(Coordinate gstCoord, Coordinate jobCoord) throws IOException {
+		URL url = new URL("https://atlas.microsoft.com/route/directions/json?subscription-key=" + API_KEY
+				+ "&api-version=1.0&query=" + gstCoord.getX() + "," + gstCoord.getY() + ":" + jobCoord.getX() + "," + jobCoord.getY());
+
+		URLConnection conn = url.openConnection();
+		HttpURLConnection http = (HttpURLConnection) conn;
+		http.setRequestMethod("GET");
+		http.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+		http.connect();
+		int responseCode = http.getResponseCode();
+		String inline = "";
+		//System.out.println(responseCode);
+
+		if (responseCode != 200) {
+			throw new RuntimeException("HttpResponseCode: " + responseCode);
+		} else {
+			Scanner sc = new Scanner(url.openStream());
+			while (sc.hasNext()) {
+				inline += sc.nextLine();
+
+			}
+
+			JsonElement element = JsonParser.parseString(inline).getAsJsonObject();
+			JsonObject rootObj = element.getAsJsonObject();
+			JsonArray routes = rootObj.getAsJsonArray("routes");
+			JsonElement summary = ((JsonObject) routes.get(0)).get("summary");
+			JsonPrimitive travelTime = summary.getAsJsonObject().getAsJsonPrimitive("travelTimeInSeconds");
+			int travelTimeInSeconds = travelTime.getAsInt();
+			
+//			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//			String prettyJson = gson.toJson(summary);
+//			System.out.println(prettyJson);
+			sc.close();
+			return travelTimeInSeconds;
+
+		}
+
+	}
+
 
 	public static void main(String[] args) throws IOException {
 
@@ -192,6 +238,8 @@ public class AzureMapsApi {
 		Coordinate coord = getCoordinatesFromAddress("13", "Bundle St", "Caddens", "2747");
 		JsonObject jsonObj = getIsochroneCoords(coord, 6000, departAt);
 		Polygon p = BuildPolygon(jsonObj);
+		
+		Coordinate gstCoord = new Coordinate(-33.78, 150.74);
 
 		// centre of isochrone. Should return true
 		Coordinate centerCoord = new Coordinate(-33.77494, 150.7393);
@@ -201,10 +249,12 @@ public class AzureMapsApi {
 
 		// coordinates for LosAngeles. Should return false
 		Coordinate losAngelesCoord = new Coordinate(34.0522, 118.2437);
-
-		System.out.println(checkIfLocationInIsochrone(p, centerCoord));
-		System.out.println(checkIfLocationInIsochrone(p, edgeCoord));
-		System.out.println(checkIfLocationInIsochrone(p, losAngelesCoord));
+		
+		System.out.println(getRouteTime(gstCoord, centerCoord));
+//
+//		System.out.println(checkIfLocationInIsochrone(p, centerCoord));
+//		System.out.println(checkIfLocationInIsochrone(p, edgeCoord));
+//		System.out.println(checkIfLocationInIsochrone(p, losAngelesCoord));
         
 	}
 
