@@ -38,3 +38,1063 @@ INFO:  For job 401571800
 Sep 29, 2020 2:40:15 PM controller.Simulation log
 INFO:  No GST found in 30min isochone
 
+Oct 05, 2020 8:45:36 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 8:45:36 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401555747, FitterDistrict: 301 Job Priority: B, Activity Type: EST, Starting Date: 2021-08-08, Starting Time: 08:46:37, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 8:45:36 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401557872, FitterDistrict: 303 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-10, Starting Time: 12:06:45, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 8:45:36 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401559836, FitterDistrict: 210 Job Priority: B, Activity Type: EOT, Starting Date: 2021-08-13, Starting Time: 11:09:22, Estimated Duration: 20, Estimated End Time: null]]
+Oct 05, 2020 8:45:36 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401562213, FitterDistrict: 220 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-15, Starting Time: 10:45:31, Estimated Duration: 5, Estimated End Time: null]]
+Oct 05, 2020 8:45:36 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401565738, FitterDistrict: 320 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-19, Starting Time: 16:49:31, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 8:45:36 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401566046, FitterDistrict: 440 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:24:50, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 8:45:36 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401571800, FitterDistrict: 123 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-23, Starting Time: 15:17:33, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 8:51:56 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 8:51:56 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401555747, FitterDistrict: 301 Job Priority: B, Activity Type: EST, Starting Date: 2021-08-08, Starting Time: 08:46:37, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 8:51:56 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401557872, FitterDistrict: 303 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-10, Starting Time: 12:06:45, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 8:51:56 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401559836, FitterDistrict: 210 Job Priority: B, Activity Type: EOT, Starting Date: 2021-08-13, Starting Time: 11:09:22, Estimated Duration: 20, Estimated End Time: null]]
+Oct 05, 2020 8:51:56 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401562213, FitterDistrict: 220 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-15, Starting Time: 10:45:31, Estimated Duration: 5, Estimated End Time: null]]
+Oct 05, 2020 8:51:56 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401565738, FitterDistrict: 320 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-19, Starting Time: 16:49:31, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 8:51:56 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401566046, FitterDistrict: 440 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:24:50, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 8:51:56 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401571800, FitterDistrict: 123 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-23, Starting Time: 15:17:33, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 8:51:56 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401572017, FitterDistrict: 425 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-24, Starting Time: 09:39, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 8:52:33 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 8:52:33 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401555747, FitterDistrict: 301 Job Priority: B, Activity Type: EST, Starting Date: 2021-08-08, Starting Time: 08:46:37, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 8:52:33 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401557872, FitterDistrict: 303 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-10, Starting Time: 12:06:45, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 8:52:33 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401559836, FitterDistrict: 210 Job Priority: B, Activity Type: EOT, Starting Date: 2021-08-13, Starting Time: 11:09:22, Estimated Duration: 20, Estimated End Time: null]]
+Oct 05, 2020 8:52:33 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401562213, FitterDistrict: 220 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-15, Starting Time: 10:45:31, Estimated Duration: 5, Estimated End Time: null]]
+Oct 05, 2020 8:52:33 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401565738, FitterDistrict: 320 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-19, Starting Time: 16:49:31, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 8:52:33 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401566046, FitterDistrict: 440 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:24:50, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 8:52:33 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401571800, FitterDistrict: 123 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-23, Starting Time: 15:17:33, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 8:52:33 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401572017, FitterDistrict: 425 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-24, Starting Time: 09:39, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 8:55:08 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 8:55:08 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401555747, FitterDistrict: 301 Job Priority: B, Activity Type: EST, Starting Date: 2021-08-08, Starting Time: 08:46:37, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 8:55:08 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401557872, FitterDistrict: 303 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-10, Starting Time: 12:06:45, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 8:55:08 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401559836, FitterDistrict: 210 Job Priority: B, Activity Type: EOT, Starting Date: 2021-08-13, Starting Time: 11:09:22, Estimated Duration: 20, Estimated End Time: null]]
+Oct 05, 2020 8:55:08 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401562213, FitterDistrict: 220 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-15, Starting Time: 10:45:31, Estimated Duration: 5, Estimated End Time: null]]
+Oct 05, 2020 8:55:08 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401565738, FitterDistrict: 320 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-19, Starting Time: 16:49:31, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 8:55:08 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401566046, FitterDistrict: 440 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:24:50, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 8:55:08 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401571800, FitterDistrict: 123 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-23, Starting Time: 15:17:33, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 8:55:08 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401572017, FitterDistrict: 425 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-24, Starting Time: 09:39, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 8:56:50 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 8:56:50 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401555747, FitterDistrict: 301 Job Priority: B, Activity Type: EST, Starting Date: 2021-08-08, Starting Time: 08:46:37, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 8:56:50 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401557872, FitterDistrict: 303 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-10, Starting Time: 12:06:45, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 8:56:50 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401559836, FitterDistrict: 210 Job Priority: B, Activity Type: EOT, Starting Date: 2021-08-13, Starting Time: 11:09:22, Estimated Duration: 20, Estimated End Time: null]]
+Oct 05, 2020 8:56:50 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401562213, FitterDistrict: 220 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-15, Starting Time: 10:45:31, Estimated Duration: 5, Estimated End Time: null]]
+Oct 05, 2020 8:56:50 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401565738, FitterDistrict: 320 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-19, Starting Time: 16:49:31, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 8:56:50 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401566046, FitterDistrict: 440 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:24:50, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 8:56:50 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401571800, FitterDistrict: 123 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-23, Starting Time: 15:17:33, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 8:56:50 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401572017, FitterDistrict: 425 Job Priority: C, Activity Type: SNG, Starting Date: 2021-08-24, Starting Time: 09:39, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 82, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 82, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: Z401555904, FitterDistrict: 441 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:23:19, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: Z401555904, FitterDistrict: 441 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:23:19, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555906, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:23:58, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555906, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:23:58, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555910, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:30:35, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555910, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:30:35, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401556204, FitterDistrict: 121 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 13:36:45, Estimated Duration: 130, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401556204, FitterDistrict: 121 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 13:36:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401556204, FitterDistrict: 121 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 13:36:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401556204, FitterDistrict: 121 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 13:36:45, Estimated Duration: 130, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401556319, FitterDistrict: 365 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 14:48:27, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401556319, FitterDistrict: 365 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 14:48:27, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401556938, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:42:39, Estimated Duration: 120, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401556938, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:42:39, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401556938, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:42:39, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401556938, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:42:39, Estimated Duration: 120, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401557597, FitterDistrict: 303 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-10, Starting Time: 12:25:28, Estimated Duration: 135, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401557597, FitterDistrict: 303 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-10, Starting Time: 12:25:28, Estimated Duration: 135, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557933, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-11, Starting Time: 12:39:01, Estimated Duration: 107, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557933, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-11, Starting Time: 12:39:01, Estimated Duration: 107, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557933, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-11, Starting Time: 12:39:01, Estimated Duration: 107, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557933, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-11, Starting Time: 12:39:01, Estimated Duration: 107, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 306, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 306, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 306, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 306, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401559028, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 15:19:04, Estimated Duration: 132, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401559028, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 15:19:04, Estimated Duration: 132, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401559558, FitterDistrict: 290 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-13, Starting Time: 08:31:41, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401559558, FitterDistrict: 290 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-13, Starting Time: 08:31:41, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401560299, FitterDistrict: 410 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 02:11:51, Estimated Duration: 153, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401560299, FitterDistrict: 410 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 02:11:51, Estimated Duration: 153, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 50, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 71, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 71, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 71, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 71, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 50, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 50, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 50, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401562185, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-15, Starting Time: 10:37:26, Estimated Duration: 240, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401562185, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-15, Starting Time: 10:37:26, Estimated Duration: 240, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563082, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 07:59:50, Estimated Duration: 645, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563082, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 07:59:50, Estimated Duration: 645, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563122, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 08:53:42, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563122, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 08:53:42, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563122, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 08:53:42, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563122, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 08:53:42, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 55, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 55, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 55, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 55, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563558, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 13:30:08, Estimated Duration: 161, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563558, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 13:30:08, Estimated Duration: 161, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401563773, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 15:04:44, Estimated Duration: 31, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401563773, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 15:04:44, Estimated Duration: 31, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564621, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-17, Starting Time: 09:04:57, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564621, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-17, Starting Time: 09:04:57, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401564653, FitterDistrict: 501 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-17, Starting Time: 16:23:59, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401564653, FitterDistrict: 501 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-17, Starting Time: 16:23:59, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564866, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 14:44:16, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564866, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 14:44:16, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564866, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 14:44:16, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564866, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 14:44:16, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401564868, FitterDistrict: 122 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 15:38:01, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401564868, FitterDistrict: 122 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 15:38:01, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401565019, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 09:22:44, Estimated Duration: 155, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401565019, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 09:22:44, Estimated Duration: 145, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401565019, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 09:22:44, Estimated Duration: 145, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401565019, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 09:22:44, Estimated Duration: 155, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401565158, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 10:57:09, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401565158, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 10:57:09, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401565224, FitterDistrict: 230 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 11:04:42, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401565224, FitterDistrict: 230 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 11:04:42, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401565729, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 16:06:57, Estimated Duration: 31, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401565729, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 16:06:57, Estimated Duration: 31, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401566068, FitterDistrict: 810 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:50:54, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401566068, FitterDistrict: 810 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:50:54, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401566068, FitterDistrict: 810 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:50:54, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401566068, FitterDistrict: 810 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:50:54, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569014, FitterDistrict: 210 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 08:11:28, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569014, FitterDistrict: 210 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 08:11:28, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569014, FitterDistrict: 210 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 08:11:28, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569014, FitterDistrict: 210 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 08:11:28, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569118, FitterDistrict: 339 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:03:02, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569118, FitterDistrict: 339 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:03:02, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569133, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:19:48, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569133, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:19:48, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569133, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:19:48, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569133, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:19:48, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401570143, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 09:39:10, Estimated Duration: 95, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401570143, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 09:39:10, Estimated Duration: 95, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401570143, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 09:39:10, Estimated Duration: 95, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401570143, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 09:39:10, Estimated Duration: 95, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: Z401570170, FitterDistrict: 442 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 10:36:32, Estimated Duration: 226, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: Z401570170, FitterDistrict: 442 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 10:36:32, Estimated Duration: 226, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571164, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 09:27:34, Estimated Duration: 20, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571164, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 09:27:34, Estimated Duration: 20, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571518, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 13:36:13, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571518, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 13:36:13, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571518, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 13:36:13, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571518, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 13:36:13, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401572399, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-24, Starting Time: 17:42:19, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401572399, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-24, Starting Time: 17:42:19, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401572898, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-26, Starting Time: 14:21:12, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401572898, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-26, Starting Time: 14:21:12, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 73, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 73, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 73, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 73, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401573970, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 15:18:29, Estimated Duration: 215, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401573970, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 15:18:29, Estimated Duration: 320, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401573970, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 15:18:29, Estimated Duration: 320, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401573970, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 15:18:29, Estimated Duration: 215, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401574836, FitterDistrict: 455 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-28, Starting Time: 13:52:09, Estimated Duration: 195, Estimated End Time: null]]
+Oct 05, 2020 9:33:44 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401574836, FitterDistrict: 455 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-28, Starting Time: 13:52:09, Estimated Duration: 195, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 82, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 82, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: Z401555904, FitterDistrict: 441 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:23:19, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: Z401555904, FitterDistrict: 441 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:23:19, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555906, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:23:58, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555906, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:23:58, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555910, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:30:35, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555910, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:30:35, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401556204, FitterDistrict: 121 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 13:36:45, Estimated Duration: 130, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401556204, FitterDistrict: 121 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 13:36:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401556204, FitterDistrict: 121 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 13:36:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401556204, FitterDistrict: 121 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 13:36:45, Estimated Duration: 130, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401556319, FitterDistrict: 365 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 14:48:27, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401556319, FitterDistrict: 365 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 14:48:27, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401556938, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:42:39, Estimated Duration: 120, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401556938, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:42:39, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401556938, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:42:39, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401556938, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:42:39, Estimated Duration: 120, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401557597, FitterDistrict: 303 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-10, Starting Time: 12:25:28, Estimated Duration: 135, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401557597, FitterDistrict: 303 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-10, Starting Time: 12:25:28, Estimated Duration: 135, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557933, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-11, Starting Time: 12:39:01, Estimated Duration: 107, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557933, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-11, Starting Time: 12:39:01, Estimated Duration: 107, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557933, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-11, Starting Time: 12:39:01, Estimated Duration: 107, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557933, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-11, Starting Time: 12:39:01, Estimated Duration: 107, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 306, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 306, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 306, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 306, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401559028, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 15:19:04, Estimated Duration: 132, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401559028, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 15:19:04, Estimated Duration: 132, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401559558, FitterDistrict: 290 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-13, Starting Time: 08:31:41, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401559558, FitterDistrict: 290 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-13, Starting Time: 08:31:41, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401560299, FitterDistrict: 410 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 02:11:51, Estimated Duration: 153, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401560299, FitterDistrict: 410 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 02:11:51, Estimated Duration: 153, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 50, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 71, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 71, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 71, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 71, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 50, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 50, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 50, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401562185, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-15, Starting Time: 10:37:26, Estimated Duration: 240, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401562185, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-15, Starting Time: 10:37:26, Estimated Duration: 240, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563082, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 07:59:50, Estimated Duration: 645, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563082, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 07:59:50, Estimated Duration: 645, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563122, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 08:53:42, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563122, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 08:53:42, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563122, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 08:53:42, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563122, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 08:53:42, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 55, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 55, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 55, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 55, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563558, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 13:30:08, Estimated Duration: 161, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563558, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 13:30:08, Estimated Duration: 161, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401563773, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 15:04:44, Estimated Duration: 31, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401563773, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 15:04:44, Estimated Duration: 31, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564621, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-17, Starting Time: 09:04:57, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564621, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-17, Starting Time: 09:04:57, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401564653, FitterDistrict: 501 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-17, Starting Time: 16:23:59, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401564653, FitterDistrict: 501 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-17, Starting Time: 16:23:59, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564866, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 14:44:16, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564866, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 14:44:16, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564866, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 14:44:16, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564866, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 14:44:16, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401564868, FitterDistrict: 122 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 15:38:01, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401564868, FitterDistrict: 122 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 15:38:01, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401565019, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 09:22:44, Estimated Duration: 155, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401565019, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 09:22:44, Estimated Duration: 145, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401565019, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 09:22:44, Estimated Duration: 145, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401565019, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 09:22:44, Estimated Duration: 155, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401565158, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 10:57:09, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401565158, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 10:57:09, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401565224, FitterDistrict: 230 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 11:04:42, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401565224, FitterDistrict: 230 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 11:04:42, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401565729, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 16:06:57, Estimated Duration: 31, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401565729, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 16:06:57, Estimated Duration: 31, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401566068, FitterDistrict: 810 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:50:54, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401566068, FitterDistrict: 810 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:50:54, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401566068, FitterDistrict: 810 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:50:54, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401566068, FitterDistrict: 810 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:50:54, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569014, FitterDistrict: 210 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 08:11:28, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569014, FitterDistrict: 210 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 08:11:28, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569014, FitterDistrict: 210 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 08:11:28, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569014, FitterDistrict: 210 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 08:11:28, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569118, FitterDistrict: 339 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:03:02, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569118, FitterDistrict: 339 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:03:02, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569133, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:19:48, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569133, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:19:48, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569133, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:19:48, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569133, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:19:48, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401570143, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 09:39:10, Estimated Duration: 95, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401570143, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 09:39:10, Estimated Duration: 95, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401570143, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 09:39:10, Estimated Duration: 95, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401570143, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 09:39:10, Estimated Duration: 95, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: Z401570170, FitterDistrict: 442 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 10:36:32, Estimated Duration: 226, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: Z401570170, FitterDistrict: 442 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 10:36:32, Estimated Duration: 226, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571164, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 09:27:34, Estimated Duration: 20, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571164, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 09:27:34, Estimated Duration: 20, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571518, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 13:36:13, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571518, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 13:36:13, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571518, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 13:36:13, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571518, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 13:36:13, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401572399, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-24, Starting Time: 17:42:19, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401572399, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-24, Starting Time: 17:42:19, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401572898, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-26, Starting Time: 14:21:12, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401572898, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-26, Starting Time: 14:21:12, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 73, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 73, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 73, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 73, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401573970, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 15:18:29, Estimated Duration: 215, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401573970, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 15:18:29, Estimated Duration: 320, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401573970, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 15:18:29, Estimated Duration: 320, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401573970, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 15:18:29, Estimated Duration: 215, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401574836, FitterDistrict: 455 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-28, Starting Time: 13:52:09, Estimated Duration: 195, Estimated End Time: null]]
+Oct 05, 2020 9:41:25 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401574836, FitterDistrict: 455 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-28, Starting Time: 13:52:09, Estimated Duration: 195, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 82, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 82, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: Z401555904, FitterDistrict: 441 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:23:19, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: Z401555904, FitterDistrict: 441 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:23:19, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555906, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:23:58, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555906, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:23:58, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555910, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:30:35, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401555910, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 10:30:35, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401556204, FitterDistrict: 121 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 13:36:45, Estimated Duration: 130, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401556204, FitterDistrict: 121 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 13:36:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401556204, FitterDistrict: 121 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 13:36:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401556204, FitterDistrict: 121 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 13:36:45, Estimated Duration: 130, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401556319, FitterDistrict: 365 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 14:48:27, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401556319, FitterDistrict: 365 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 14:48:27, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557041, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:27:37, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401556938, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:42:39, Estimated Duration: 120, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401556938, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:42:39, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401556938, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:42:39, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401556938, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 11:42:39, Estimated Duration: 120, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401557146, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-09, Starting Time: 13:30:22, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401557597, FitterDistrict: 303 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-10, Starting Time: 12:25:28, Estimated Duration: 135, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401557597, FitterDistrict: 303 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-10, Starting Time: 12:25:28, Estimated Duration: 135, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557933, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-11, Starting Time: 12:39:01, Estimated Duration: 107, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557933, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-11, Starting Time: 12:39:01, Estimated Duration: 107, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557933, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-11, Starting Time: 12:39:01, Estimated Duration: 107, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401557933, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-11, Starting Time: 12:39:01, Estimated Duration: 107, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 306, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 90, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 306, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 306, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401558858, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 13:34:25, Estimated Duration: 306, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401559028, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 15:19:04, Estimated Duration: 132, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401559028, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-12, Starting Time: 15:19:04, Estimated Duration: 132, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401559558, FitterDistrict: 290 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-13, Starting Time: 08:31:41, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401559558, FitterDistrict: 290 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-13, Starting Time: 08:31:41, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401560299, FitterDistrict: 410 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 02:11:51, Estimated Duration: 153, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401560299, FitterDistrict: 410 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 02:11:51, Estimated Duration: 153, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 50, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 71, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 71, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 71, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 71, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 50, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 50, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401561306, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-14, Starting Time: 14:31:43, Estimated Duration: 50, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401562185, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-15, Starting Time: 10:37:26, Estimated Duration: 240, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401562185, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-15, Starting Time: 10:37:26, Estimated Duration: 240, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563082, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 07:59:50, Estimated Duration: 645, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563082, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 07:59:50, Estimated Duration: 645, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563122, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 08:53:42, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563122, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 08:53:42, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563122, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 08:53:42, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563122, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 08:53:42, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 55, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 55, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 55, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 55, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563558, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 13:30:08, Estimated Duration: 161, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401563558, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 13:30:08, Estimated Duration: 161, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401563773, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 15:04:44, Estimated Duration: 31, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401563773, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 15:04:44, Estimated Duration: 31, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564621, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-17, Starting Time: 09:04:57, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564621, FitterDistrict: 350 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-17, Starting Time: 09:04:57, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401564653, FitterDistrict: 501 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-17, Starting Time: 16:23:59, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401564653, FitterDistrict: 501 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-17, Starting Time: 16:23:59, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564866, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 14:44:16, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564866, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 14:44:16, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564866, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 14:44:16, Estimated Duration: 15, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401564866, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 14:44:16, Estimated Duration: 25, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401564868, FitterDistrict: 122 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 15:38:01, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401564868, FitterDistrict: 122 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-18, Starting Time: 15:38:01, Estimated Duration: 30, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401565019, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 09:22:44, Estimated Duration: 155, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401565019, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 09:22:44, Estimated Duration: 145, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401565019, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 09:22:44, Estimated Duration: 145, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401565019, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 09:22:44, Estimated Duration: 155, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401565158, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 10:57:09, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401565158, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 10:57:09, Estimated Duration: 60, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401565224, FitterDistrict: 230 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 11:04:42, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401565224, FitterDistrict: 230 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 11:04:42, Estimated Duration: 100, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401565729, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 16:06:57, Estimated Duration: 31, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401565729, FitterDistrict: 300 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-19, Starting Time: 16:06:57, Estimated Duration: 31, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401566068, FitterDistrict: 810 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:50:54, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401566068, FitterDistrict: 810 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:50:54, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401566068, FitterDistrict: 810 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:50:54, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401566068, FitterDistrict: 810 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-20, Starting Time: 08:50:54, Estimated Duration: 150, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569014, FitterDistrict: 210 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 08:11:28, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569014, FitterDistrict: 210 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 08:11:28, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569014, FitterDistrict: 210 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 08:11:28, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569014, FitterDistrict: 210 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 08:11:28, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569118, FitterDistrict: 339 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:03:02, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569118, FitterDistrict: 339 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:03:02, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569133, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:19:48, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569133, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:19:48, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569133, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:19:48, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: 401569133, FitterDistrict: 250 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 10:19:48, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 80, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401569437, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-21, Starting Time: 14:00:24, Estimated Duration: 65, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401570143, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 09:39:10, Estimated Duration: 95, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401570143, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 09:39:10, Estimated Duration: 95, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401570143, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 09:39:10, Estimated Duration: 95, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401570143, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 09:39:10, Estimated Duration: 95, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: Z401570170, FitterDistrict: 442 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 10:36:32, Estimated Duration: 226, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e002, isAvailable=true], job=Job [Number: Z401570170, FitterDistrict: 442 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-22, Starting Time: 10:36:32, Estimated Duration: 226, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571164, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 09:27:34, Estimated Duration: 20, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571164, FitterDistrict: 220 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 09:27:34, Estimated Duration: 20, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571518, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 13:36:13, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571518, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 13:36:13, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571518, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 13:36:13, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401571518, FitterDistrict: 450 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-23, Starting Time: 13:36:13, Estimated Duration: 10, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401572399, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-24, Starting Time: 17:42:19, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e001, isAvailable=true], job=Job [Number: 401572399, FitterDistrict: 301 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-24, Starting Time: 17:42:19, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401572898, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-26, Starting Time: 14:21:12, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401572898, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-26, Starting Time: 14:21:12, Estimated Duration: 75, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 73, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 73, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 73, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 73, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e004, isAvailable=true], job=Job [Number: 401573868, FitterDistrict: 435 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 14:00:43, Estimated Duration: 85, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401573970, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 15:18:29, Estimated Duration: 215, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401573970, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 15:18:29, Estimated Duration: 320, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401573970, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 15:18:29, Estimated Duration: 320, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e003, isAvailable=true], job=Job [Number: 401573970, FitterDistrict: 340 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-27, Starting Time: 15:18:29, Estimated Duration: 215, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401574836, FitterDistrict: 455 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-28, Starting Time: 13:52:09, Estimated Duration: 195, Estimated End Time: null]]
+Oct 05, 2020 9:47:10 PM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST [id=e005, isAvailable=true], job=Job [Number: 401574836, FitterDistrict: 455 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-28, Starting Time: 13:52:09, Estimated Duration: 195, Estimated End Time: null]]

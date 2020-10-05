@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -72,7 +73,7 @@ public class Simulation {
 
 	private void runSim2(LocalDateTime currentTime, LocalDateTime endTime) throws SecurityException, IOException {
 
-		String path = "JobFiles/FutureJobs.csv";
+		String path = "JobFiles/RJ.csv";
 		JobFactory.readJobsFromCSV(path);
 
 		String path2 = "GSTFiles/gstTestData.csv";
@@ -81,7 +82,7 @@ public class Simulation {
 		do {
 			for (Job j : JobFactory.getJobPool()) {
 				if (currentTime.isEqual(j.getOrderCreateDateAndTime())) {
-					System.out.println(j.getOrderCreateDateAndTime());
+//					System.out.println(j.getOrderCreateDateAndTime());
 					jobQueue.add(j);
 				}
 			}
@@ -102,16 +103,28 @@ public class Simulation {
 						gst = simpleGetGst(jobCoord, GSTFactory.getGSTpool());
 						System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone.\n");
 					}
-					if (currentTime.equals(j.getEndDateAndTime()))
-						completedJobs.add(new CompletedJobRecord(gst, j));
-					jobQueue.remove(j);
+//					if (currentTime.equals(j.getEndDateAndTime()))
+//						completedJobs.add(new CompletedJobRecord(gst, j));
+//					jobQueue.remove(j);
 					// gst.setAvailable(true);
+					for(Iterator<Job> jobQueueIter = jobQueue.iterator();jobQueueIter.hasNext();) {
+						Job jo = jobQueueIter.next();
+					if (currentTime.equals(jo.getEndDateAndTime()))
+						System.out.println(" ");
+						completedJobs.add(new CompletedJobRecord(gst, jo));
+//					jobQueue.remove(j);
+					jobQueueIter.remove();
+					gst.setAvailable(true);
+					
+					}
 				}
 
 			}
 			// System.out.println(currentTime);
 			currentTime = currentTime.plusSeconds(1);
 		} while (currentTime.isBefore(endTime));
+		
+		log();
 
 	}
 
@@ -124,7 +137,7 @@ public class Simulation {
 	}
 
 	public GST findGst(Coordinate coord, int timeLimit, LocalDateTime depart) throws IOException {
-		// LocalDateTime depart = LocalDateTime.now();
+		 depart = LocalDateTime.now();
 		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(coord, timeLimit, depart);
 		Polygon p = AzureMapsApi.BuildPolygon(jsonObj);
 		ArrayList<GST> closeGSTs = new ArrayList<GST>();
@@ -176,12 +189,13 @@ public class Simulation {
 //		LocalTime time = LocalTime.parse(timeString);
 //		System.out.println("Enter the EndDate(YYYY-MM-DD): ");
 //		String endDateString = scan.nextLine();
-		LocalDate endDate = LocalDate.of(2021, 8, 24);
+		LocalDate endDate = LocalDate.of(2022, 8, 24);
 
 		LocalDateTime start = LocalDateTime.of(startDate, LocalTime.MIN);
-		LocalDateTime end = LocalDateTime.of(endDate, LocalTime.MIN);
+		LocalDateTime end = LocalDateTime.of(endDate, LocalTime.MAX);
 		s.runSim2(start, end);
-		s.log();
+//		s.log();
+//		System.out.println("Queue size: "+s.jobQueue.size());
 
 	}// end main
 

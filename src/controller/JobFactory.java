@@ -75,7 +75,7 @@ public class JobFactory {
 			e.printStackTrace();
 		}
 		System.out.println("init jobs finish.");
-		System.out.println("\nAdded Jobs from the file:\n");
+		System.out.println("\nAdded "+getJobPool().size()+" Jobs from the file:\n");
 		for(Job j : jobPool)
 			System.out.println(j);
 	}
