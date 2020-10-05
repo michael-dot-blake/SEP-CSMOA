@@ -82,10 +82,20 @@ public class Job implements Comparable<Job> {
 		this.postcode = postcode;
 		this.fitterDistrict = fitterDistrict;
 		this.jobDurationInMinutes = jobDurationInMinutes;
-		this.setTravelTimeInSeconds(travelTimeInSeconds);
+		this.travelTimeInSeconds = travelTimeInSeconds;
 		this.endDateAndTime = endDateAndTime;
 
 	}
+
+	private String formatSeconds(int travelTimeInSeconds) {
+		int seconds = travelTimeInSeconds % 60;
+		int mins = (travelTimeInSeconds / 60) % 60;
+		int hours = (travelTimeInSeconds / 60) / 60;
+		String timeString = String.format("%02d Hours %02d Minutes %02d Seconds ", hours, mins, seconds);
+		return timeString;
+
+	}
+
 	// Getters and setters
 
 	public String getMainActDescription() {
@@ -236,6 +246,14 @@ public class Job implements Comparable<Job> {
 		this.endDateAndTime = endDateAndTime;
 	}
 
+	public int getTravelTimeInSeconds() {
+		return travelTimeInSeconds;
+	}
+
+	public void setTravelTimeInSeconds(int travelTimeInSeconds) {
+		this.travelTimeInSeconds = travelTimeInSeconds;
+	}
+
 	@Override
 	public int compareTo(Job o) {
 		return 0;
@@ -245,16 +263,8 @@ public class Job implements Comparable<Job> {
 	public String toString() {
 		return "Job [Number: " + orderNum + ", FitterDistrict: " + fitterDistrict + " Job Priority: " + jobPriority
 				+ ", Activity Type: " + mainActType + ", Starting Date: " + orderCreateDate + ", Starting Time: "
-				+ orderCreateTime + ", Duration: " + jobDurationInMinutes + ", Travel Time: " + travelTimeInSeconds
-				+ " ,End Date And Time: " + endDateAndTime + "]";
-	}
-
-	public int getTravelTimeInSeconds() {
-		return travelTimeInSeconds;
-	}
-
-	public void setTravelTimeInSeconds(int travelTimeInSeconds) {
-		this.travelTimeInSeconds = travelTimeInSeconds;
+				+ orderCreateTime + ", Duration: " + jobDurationInMinutes + ", Travel Time: "
+				+ formatSeconds(travelTimeInSeconds) + " ,End Date And Time: " + endDateAndTime + "]";
 	}
 
 }
