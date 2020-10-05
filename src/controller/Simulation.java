@@ -25,6 +25,8 @@ import model.Job;
 /**
  * @author Michael Blake Simulation class to handle assigning jobs to GSTs in
  *         early stages of development
+ *         Clark Skinner worked on runsim/2(), getJobLocation(), findGst(),
+ *         simpleGetGst(), calcDistance().
  */
 public class Simulation {
 
@@ -110,7 +112,7 @@ public class Simulation {
 						}
 						else {
 							System.out.println("No GST found within 30min!!!");
-							gst = simpleGetGst(jobCoord);
+							gst = simpleGetGst(jobCoord, GSTFactory.getGSTpool());
 							System.out.println("Simple find executed.\n");
 							if (gst == null) {
 								System.err.println("Simple find went wrong!!!!!!!!");
@@ -197,7 +199,7 @@ public class Simulation {
 					}
 					else {
 							System.out.println("No GST found within 30min!!!");
-							gst = simpleGetGst(jobCoord);
+							gst = simpleGetGst(jobCoord, GSTFactory.getGSTpool());
 							System.out.println("Found the closest GST: "+gst.getgSTid()+ " outside isochrone.\n");
 //							if (gst == null) {
 //								System.err.println("Unable to find any GSTs");
@@ -231,25 +233,29 @@ public class Simulation {
 	//	LocalDateTime depart  = LocalDateTime.now();
 		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(coord, timeLimit, depart);
 		Polygon p = AzureMapsApi.BuildPolygon(jsonObj);
-		for (GST g : GSTFactory.getGSTpool()) {
+		ArrayList<GST> closeGSTs = new ArrayList<GST>();
+		for (GST g : GSTFactory.getGSTpool()) { 
 			Coordinate gstCoord = new Coordinate(g.getLat(), g.getLon());
 			//System.out.println("GST Co-ord is: "+gstCoord);
 			//System.out.println(AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord));
 			if (AzureMapsApi.checkIfLocationInIsochrone(p, gstCoord)) {
-				return g;
+				closeGSTs.add(g);
 			}
+		}
+		if (closeGSTs.size() != 0) {
+			return simpleGetGst(coord, closeGSTs);
 		}
 		return null;
 	}
 	
-	public GST simpleGetGst(Coordinate jobCoord) {
+	public GST simpleGetGst(Coordinate jobCoord, ArrayList<GST> gstPool) {
 		GST closeGst = null;
 		double jx = jobCoord.getX();
 		double jy = jobCoord.getY();
 		double gx = 0.0;
 		double gy = 0.0;
 		double minDistance = 200.00;
-		for (GST g : GSTFactory.getGSTpool()) {
+		for (GST g : gstPool) {
 			gx = g.getLat();
 			gy = g.getLon();
 			if (calcDistance(jx, jy, gx, gy)<minDistance) {
