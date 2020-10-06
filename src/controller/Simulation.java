@@ -95,6 +95,8 @@ public class Simulation {
 				for (Job j : jobQueue) {
 					Coordinate jobCoord = getJobLocation(j);
 					LocalDateTime jobTime = j.getOrderCreateDateAndTime();
+					System.out.println(j.getOrderCreateDateAndTime());
+					System.out.println(LocalDateTime.now());
 					int jobDuration = j.getJobDuration();
 					GST gst = findGst(jobCoord, 1800, jobTime);
 					System.out.println("For Job " + j.getOrderNum());
@@ -139,14 +141,14 @@ public class Simulation {
 		} while (currentTime.isBefore(endTime));
 
 		int jobsCompleted = completedJobs.size();
-		System.out.println(jobsCompleted);
-		System.out.println(complianceCounter);
+//		System.out.println(jobsCompleted);
+//		System.out.println(complianceCounter);
 
 		float complianceRate = (float) complianceCounter / jobsCompleted * 100;
 		String str = String.format("%2.02f", complianceRate);
 		int avgTravelTime = totalTravelTime / jobsCompleted;
 
-		System.out.println(complianceRate);
+//		System.out.println(complianceRate);
 
 		log(Job.formatSeconds(avgTravelTime), str);
 
@@ -161,6 +163,7 @@ public class Simulation {
 	}
 
 	public GST findGst(Coordinate coord, int timeLimit, LocalDateTime depart) throws IOException {
+		
 		depart = LocalDateTime.now();
 		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(coord, timeLimit, depart);
 		Polygon p = AzureMapsApi.BuildPolygon(jsonObj);
