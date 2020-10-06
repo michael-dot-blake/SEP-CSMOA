@@ -56,7 +56,7 @@ public class GST {
 	}
 	
 	public void setFinishTime(LocalDateTime endDateAndTime) {
-		this.setFinishTime(endDateAndTime);
+		this.finishTime = endDateAndTime;
 		
 	}
 

@@ -67,7 +67,7 @@ public class Simulation {
 
 	private void runSimulation(LocalDateTime currentTime, LocalDateTime endTime) throws SecurityException, IOException {
 
-		String path = "JobFiles/FutureJobs.csv";
+		String path = "JobFiles/OverlappingJobs.csv";
 		JobFactory.readJobsFromCSV(path);
 
 		String path2 = "GSTFiles/gstTestData.csv";
@@ -212,8 +212,8 @@ public class Simulation {
 	public static void main(String[] args) throws SecurityException, IOException {
 
 		Simulation s = new Simulation();
-		LocalDate startDate = LocalDate.of(2021, 8, 10);
-		LocalDate endDate = LocalDate.of(2021, 8, 14);
+		LocalDate startDate = LocalDate.of(2021, 1, 8);
+		LocalDate endDate = LocalDate.of(2021, 12, 26);
 		LocalDateTime start = LocalDateTime.of(startDate, LocalTime.MIN);
 		LocalDateTime end = LocalDateTime.of(endDate, LocalTime.MAX);
 		s.runSimulation(start, end);
