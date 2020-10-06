@@ -87,11 +87,11 @@ public class Job implements Comparable<Job> {
 
 	}
 
-	public String formatSeconds(int travelTimeInSeconds) {
+	public static String formatSeconds(int travelTimeInSeconds) {
 		int seconds = travelTimeInSeconds % 60;
 		int mins = (travelTimeInSeconds / 60) % 60;
 		int hours = (travelTimeInSeconds / 60) / 60;
-		String timeString = String.format("%02dh:%02dm:%02ds ", hours, mins, seconds);
+		String timeString = String.format("%02d Hours %02d Minutes %02d Seconds ", hours, mins, seconds);
 		return timeString;
 
 	}

@@ -32,7 +32,7 @@ public class Simulation {
 	// Store completed jobs
 	private ArrayList<CompletedJobRecord> completedJobs = new ArrayList<CompletedJobRecord>();
 
-	private void log() throws SecurityException, IOException {
+	private void log(String avgTravelTime, String percentJobCompliance) throws SecurityException, IOException {
 
 		try {
 			Log myLog = new Log("log.txt");
@@ -40,6 +40,8 @@ public class Simulation {
 			for (CompletedJobRecord cj : completedJobs) {
 				myLog.logger.log(Level.INFO, " " + cj.toString());
 			}
+			myLog.logger.log(Level.INFO, "Average Travel Time: " + avgTravelTime);
+			myLog.logger.log(Level.INFO, "Percent Compliance: " + percentJobCompliance + "%");
 
 		} catch (Exception e) {
 
@@ -79,6 +81,9 @@ public class Simulation {
 		String path2 = "GSTFiles/gstTestData.csv";
 		GSTFactory.readGSTsFromCSV(path2);
 
+		int totalTravelTime = 0;
+		int complianceCounter = 0;
+
 		do {
 			for (Job j : JobFactory.getJobPool()) {
 				if (currentTime.isEqual(j.getOrderCreateDateAndTime())) {
@@ -99,20 +104,23 @@ public class Simulation {
 						Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
 						int travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
 						j.setTravelTimeInSeconds(travelTime);
-						System.out.println("Travel Time is: " + j.formatSeconds(travelTime) + "\n");
+						System.out.println("Travel Time is: " + Job.formatSeconds(travelTime) + "\n");
 						j.setEndDateAndTime(jobTime.plusMinutes(jobDuration).plusSeconds(travelTime));
-						//gst.setAvailable(false);
-						
+						// gst.setAvailable(false);
+						totalTravelTime = totalTravelTime + travelTime;
+						complianceCounter++;
+
 					} else {
 						System.out.println("No GST found within 30min!!!");
 						gst = simpleGetGst(jobCoord, GSTFactory.getGSTpool());
 						System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone");
-						//gst.setAvailable(false);
+						// gst.setAvailable(false);
 						Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
 						int travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
 						j.setTravelTimeInSeconds(travelTime);
-						System.out.println("Travel Time is: " + j.formatSeconds(travelTime) + "\n");
+						System.out.println("Travel Time is: " + Job.formatSeconds(travelTime) + "\n");
 						j.setEndDateAndTime(jobTime.plusMinutes(jobDuration).plusSeconds(travelTime));
+						totalTravelTime = totalTravelTime + travelTime;
 					}
 					for (Iterator<Job> jobQueueIter = jobQueue.iterator(); jobQueueIter.hasNext();) {
 						Job jo = jobQueueIter.next();
@@ -120,7 +128,7 @@ public class Simulation {
 							System.out.println(" ");
 						completedJobs.add(new CompletedJobRecord(gst, jo));
 						jobQueueIter.remove();
-						//gst.setAvailable(true);
+						// gst.setAvailable(true);
 
 					}
 				}
@@ -130,7 +138,17 @@ public class Simulation {
 			currentTime = currentTime.plusSeconds(1);
 		} while (currentTime.isBefore(endTime));
 
-		log();
+		int jobsCompleted = completedJobs.size();
+		System.out.println(jobsCompleted);
+		System.out.println(complianceCounter);
+
+		float complianceRate = (float) complianceCounter / jobsCompleted * 100;
+		String str = String.format("%2.02f", complianceRate);
+		int avgTravelTime = totalTravelTime / jobsCompleted;
+
+		System.out.println(complianceRate);
+
+		log(Job.formatSeconds(avgTravelTime), str);
 
 	}
 
@@ -186,22 +204,11 @@ public class Simulation {
 	public static void main(String[] args) throws SecurityException, IOException {
 
 		Simulation s = new Simulation();
-		Scanner scan = new Scanner(System.in);
-//		System.out.println("Enter the Start Date(YYYY-MM-DD): ");
-//		String startDateString = scan.nextLine();
-		LocalDate startDate = LocalDate.of(2021, 8, 10);
-//		System.out.println("Enter the Time(HH:MM:SS): ");
-//		String timeString = scan.nextLine();
-//		LocalTime time = LocalTime.parse(timeString);
-//		System.out.println("Enter the EndDate(YYYY-MM-DD): ");
-//		String endDateString = scan.nextLine();
-		LocalDate endDate = LocalDate.of(2021, 8, 17);
-
+		LocalDate startDate = LocalDate.of(2021, 8, 8);
+		LocalDate endDate = LocalDate.of(2021, 8, 24);
 		LocalDateTime start = LocalDateTime.of(startDate, LocalTime.MIN);
 		LocalDateTime end = LocalDateTime.of(endDate, LocalTime.MAX);
 		s.runSimulation(start, end);
-//		s.log();
-//		System.out.println("Queue size: "+s.jobQueue.size());
 
 	}// end main
 
