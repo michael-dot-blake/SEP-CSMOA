@@ -55,8 +55,8 @@ public class GST {
 		return isAvailable;
 	}
 	
-	public void setFinishTime(LocalDateTime endDateAndTime) {
-		this.setFinishTime(endDateAndTime);
+	public void setFinishTime(LocalDateTime finishTime) {
+		this.setFinishTime(finishTime);
 		
 	}
 
