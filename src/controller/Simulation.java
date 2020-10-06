@@ -212,8 +212,8 @@ public class Simulation {
 	public static void main(String[] args) throws SecurityException, IOException {
 
 		Simulation s = new Simulation();
-		LocalDate startDate = LocalDate.of(2021, 8, 10);
-		LocalDate endDate = LocalDate.of(2021, 8, 14);
+		LocalDate startDate = LocalDate.of(2021, 8, 8);
+		LocalDate endDate = LocalDate.of(2021, 8, 27);
 		LocalDateTime start = LocalDateTime.of(startDate, LocalTime.MIN);
 		LocalDateTime end = LocalDateTime.of(endDate, LocalTime.MAX);
 		s.runSimulation(start, end);
