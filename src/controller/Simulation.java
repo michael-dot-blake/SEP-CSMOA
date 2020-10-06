@@ -7,7 +7,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.PriorityQueue;
-import java.util.Scanner;
 import java.util.logging.Level;
 
 import org.locationtech.jts.geom.Coordinate;
@@ -32,6 +31,8 @@ public class Simulation {
 	// Store completed jobs
 	private ArrayList<CompletedJobRecord> completedJobs = new ArrayList<CompletedJobRecord>();
 
+	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
+
 	private void log(String avgTravelTime, String percentJobCompliance) throws SecurityException, IOException {
 
 		try {
@@ -48,22 +49,13 @@ public class Simulation {
 		}
 	}
 
-	private LocalDateTime inputDateAndTime() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Year");
-		int year = sc.nextInt();
-		System.out.println("Enter Month 1 - 12");
-		int month = sc.nextInt();
-		System.out.println("Enter Day of Month");
-		int dayOfMonth = sc.nextInt();
-		LocalDate date = LocalDate.of(year, month, dayOfMonth);
-		System.out.println("Enter hour 0 - 23");
-		int hour = sc.nextInt();
-		System.out.println("Enter Minute 0 - 59");
-		int minute = sc.nextInt();
-		LocalTime time = LocalTime.of(hour, minute);
-		LocalDateTime dateTime = LocalDateTime.of(date, time);
-		return dateTime;
+	private String formatSeconds(int travelTimeInSeconds) {
+		int seconds = travelTimeInSeconds % 60;
+		int mins = (travelTimeInSeconds / 60) % 60;
+		int hours = (travelTimeInSeconds / 60) / 60;
+		String timeString = String.format("%02d Hours %02d Minutes %02d Seconds ", hours, mins, seconds);
+		return timeString;
+
 	}
 
 	/**
@@ -95,8 +87,6 @@ public class Simulation {
 				for (Job j : jobQueue) {
 					Coordinate jobCoord = getJobLocation(j);
 					LocalDateTime jobTime = j.getOrderCreateDateAndTime();
-					System.out.println(j.getOrderCreateDateAndTime());
-					System.out.println(LocalDateTime.now());
 					int jobDuration = j.getJobDuration();
 					GST gst = findGst(jobCoord, 1800, jobTime);
 					System.out.println("For Job " + j.getOrderNum());
@@ -106,7 +96,7 @@ public class Simulation {
 						Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
 						int travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
 						j.setTravelTimeInSeconds(travelTime);
-						System.out.println("Travel Time is: " + Job.formatSeconds(travelTime) + "\n");
+						System.out.println("Travel Time is: " + formatSeconds(travelTime) + "\n");
 						j.setEndDateAndTime(jobTime.plusMinutes(jobDuration).plusSeconds(travelTime));
 						// gst.setAvailable(false);
 						totalTravelTime = totalTravelTime + travelTime;
@@ -115,14 +105,25 @@ public class Simulation {
 					} else {
 						System.out.println("No GST found within 30min!!!");
 						gst = simpleGetGst(jobCoord, GSTFactory.getGSTpool());
-						System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone");
-						// gst.setAvailable(false);
-						Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
-						int travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
-						j.setTravelTimeInSeconds(travelTime);
-						System.out.println("Travel Time is: " + Job.formatSeconds(travelTime) + "\n");
-						j.setEndDateAndTime(jobTime.plusMinutes(jobDuration).plusSeconds(travelTime));
-						totalTravelTime = totalTravelTime + travelTime;
+						if (gst == null) {
+							System.out.println("NO AVAILABLE GST!\n");
+						} else {
+							System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone");
+							// gst.setAvailable(false);
+							Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
+							int travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
+							j.setTravelTimeInSeconds(travelTime);
+							System.out.println("Travel Time is: " + formatSeconds(travelTime) + "\n");
+							j.setEndDateAndTime(jobTime.plusMinutes(jobDuration).plusSeconds(travelTime));
+							totalTravelTime = totalTravelTime + travelTime;
+						}
+					}
+					if (gst != null) {
+						gst.setAvailable(false);
+						System.out.println("Job End Time is: " + j.getEndDateAndTime());
+						gst.setFinishTime(j.getEndDateAndTime());
+						busyGSTs.add(gst);
+						System.out.println("busyPool size: " + busyGSTs.size() + "\n");
 					}
 					for (Iterator<Job> jobQueueIter = jobQueue.iterator(); jobQueueIter.hasNext();) {
 						Job jo = jobQueueIter.next();
@@ -130,27 +131,21 @@ public class Simulation {
 							System.out.println(" ");
 						completedJobs.add(new CompletedJobRecord(gst, jo));
 						jobQueueIter.remove();
-						// gst.setAvailable(true);
-
 					}
 				}
 
 			}
+			checkGstFinished(currentTime);
 			// System.out.println(currentTime);
 			currentTime = currentTime.plusSeconds(1);
 		} while (currentTime.isBefore(endTime));
 
+		
 		int jobsCompleted = completedJobs.size();
-//		System.out.println(jobsCompleted);
-//		System.out.println(complianceCounter);
-
 		float complianceRate = (float) complianceCounter / jobsCompleted * 100;
 		String str = String.format("%2.02f", complianceRate);
 		int avgTravelTime = totalTravelTime / jobsCompleted;
-
-//		System.out.println(complianceRate);
-
-		log(Job.formatSeconds(avgTravelTime), str);
+		log(formatSeconds(avgTravelTime), str);
 
 	}
 
@@ -163,7 +158,6 @@ public class Simulation {
 	}
 
 	public GST findGst(Coordinate coord, int timeLimit, LocalDateTime depart) throws IOException {
-		
 		depart = LocalDateTime.now();
 		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(coord, timeLimit, depart);
 		Polygon p = AzureMapsApi.BuildPolygon(jsonObj);
@@ -172,7 +166,7 @@ public class Simulation {
 			Coordinate gstCoord = new Coordinate(g.getLat(), g.getLon());
 			// System.out.println("GST Co-ord is: "+gstCoord);
 			// System.out.println(AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord));
-			if (AzureMapsApi.checkIfLocationInIsochrone(p, gstCoord)) {
+			if (AzureMapsApi.checkIfLocationInIsochrone(p, gstCoord) && g.getIsAvailable()) {
 				closeGSTs.add(g);
 			}
 		}
@@ -192,7 +186,7 @@ public class Simulation {
 		for (GST g : gstPool) {
 			gx = g.getLat();
 			gy = g.getLon();
-			if (calcDistance(jx, jy, gx, gy) < minDistance) {
+			if (calcDistance(jx, jy, gx, gy) < minDistance && g.getIsAvailable()) {
 				minDistance = calcDistance(jx, jy, gx, gy);
 				closeGst = g;
 			}
@@ -204,14 +198,26 @@ public class Simulation {
 		return Math.abs(Math.sqrt((jx - gx) * (jx - gx) + (jy - gy) * (jy - gy)));
 	}
 
+	public void checkGstFinished(LocalDateTime currTime) {
+		for (Iterator<GST> busyGSTIter = busyGSTs.iterator(); busyGSTIter.hasNext();) {
+			GST go = busyGSTIter.next();
+			if (currTime.equals(go.getFinishTime())) {
+				go.setAvailable(true);
+				go.setFinishTime(null);
+				busyGSTIter.remove();
+			}
+		}
+	}
+
 	public static void main(String[] args) throws SecurityException, IOException {
 
 		Simulation s = new Simulation();
-		LocalDate startDate = LocalDate.of(2021, 8, 8);
-		LocalDate endDate = LocalDate.of(2021, 8, 24);
+		LocalDate startDate = LocalDate.of(2021, 8, 10);
+		LocalDate endDate = LocalDate.of(2021, 8, 14);
 		LocalDateTime start = LocalDateTime.of(startDate, LocalTime.MIN);
 		LocalDateTime end = LocalDateTime.of(endDate, LocalTime.MAX);
 		s.runSimulation(start, end);
+
 
 	}// end main
 
