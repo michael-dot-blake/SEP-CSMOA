@@ -54,10 +54,10 @@ public class GST {
 	public boolean getIsAvailable() {
 		return isAvailable;
 	}
-	
+
 	public void setFinishTime(LocalDateTime finishTime) {
-		this.setFinishTime(finishTime);
-		
+		this.finishTime = finishTime;
+
 	}
 
 	public Object getFinishTime() {
@@ -68,7 +68,5 @@ public class GST {
 	public String toString() {
 		return "GST id= " + gSTid;
 	}
-
-	
 
 }
