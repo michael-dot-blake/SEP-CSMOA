@@ -99,7 +99,7 @@ public class Simulation {
 						Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
 						int travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
 						j.setTravelTimeInSeconds(travelTime);
-						System.out.println("Travel Time is: " + travelTime + " seconds.\n");
+						System.out.println("Travel Time is: " + j.formatSeconds(travelTime) + "\n");
 						j.setEndDateAndTime(jobTime.plusMinutes(jobDuration).plusSeconds(travelTime));
 						//gst.setAvailable(false);
 						
@@ -111,7 +111,7 @@ public class Simulation {
 						Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
 						int travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
 						j.setTravelTimeInSeconds(travelTime);
-						System.out.println("Travel Time is: " + travelTime + " seconds.\n");
+						System.out.println("Travel Time is: " + j.formatSeconds(travelTime) + "\n");
 						j.setEndDateAndTime(jobTime.plusMinutes(jobDuration).plusSeconds(travelTime));
 					}
 					for (Iterator<Job> jobQueueIter = jobQueue.iterator(); jobQueueIter.hasNext();) {
