@@ -1,5 +1,7 @@
 package model;
 
+import java.time.LocalDateTime;
+
 /**
  * @author Yun Wang
  * 
@@ -12,6 +14,7 @@ public class GST {
 	private String gSTid;
 	private double lat, lon;
 	private boolean isAvailable;
+	private LocalDateTime finishTime;
 
 	public GST(String gSTid, double lat, double lon) {
 		this.gSTid = gSTid;
@@ -51,10 +54,21 @@ public class GST {
 	public boolean getIsAvailable() {
 		return isAvailable;
 	}
+	
+	public void setFinishTime(LocalDateTime endDateAndTime) {
+		this.setFinishTime(endDateAndTime);
+		
+	}
+
+	public Object getFinishTime() {
+		return finishTime;
+	}
 
 	@Override
 	public String toString() {
 		return "GST id= " + gSTid;
 	}
+
+	
 
 }
