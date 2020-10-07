@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -57,6 +59,7 @@ public class JobFactory {
 					
 					jobPool.add(new Job(jobId, jobType, jobDescription, jobIssueCode, jobIssueDescrp, jobActType, jobActDescrp, jobDate, jobTime, jobDateAndTime, jobPriority, jobSuburb, jobStreet, houseNum1, houseNum2, postCode, fitterDistrict, jobDurationInMinutes, travelTimeInSeconds, endDateAndTime));
 					jobAdded = true;
+					ListSort(jobPool);
 				}
 				catch (Exception e) {
 					System.out.println("job data parse error.");
@@ -84,6 +87,14 @@ public class JobFactory {
 		return jobPool;
 	}
 
-	
+	public static void ListSort(ArrayList<Job> jobPool) {
+		Collections.sort(jobPool, new Comparator<Job>() {
+			@Override
+			public int compare(Job j1, Job j2) {
+				return j1.getOrderCreateDateAndTime().compareTo(j2.getOrderCreateDateAndTime());
+
+			}
+		});
+	}
 
 }
