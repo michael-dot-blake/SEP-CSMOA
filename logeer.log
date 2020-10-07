@@ -1,0 +1,24 @@
+Oct 08, 2020 4:03:55 AM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST id= e004, job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Duration: 75, Travel Time: 01 Hours 36 Minutes 06 Seconds  ,End Date And Time: 2021-08-08T10:38:42]]
+Oct 08, 2020 4:03:55 AM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST id= e004, job=Job [Number: 401572898, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Duration: 75, Travel Time: 00 Hours 00 Minutes 00 Seconds  ,End Date And Time: null]]
+Oct 08, 2020 4:03:55 AM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST id= e003, job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Duration: 65, Travel Time: 00 Hours 18 Minutes 36 Seconds  ,End Date And Time: 2021-08-16T12:55:21]]
+Oct 08, 2020 4:03:55 AM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST id= e002, job=Job [Number: 401565224, FitterDistrict: 230 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 12:04:42, Duration: 100, Travel Time: 00 Hours 22 Minutes 56 Seconds  ,End Date And Time: 2021-08-16T14:07:38]]
+Oct 08, 2020 4:03:55 AM controller.Simulation log
+INFO: Average Travel Time: 00 Hours 34 Minutes 24 Seconds 
+Oct 08, 2020 4:03:55 AM controller.Simulation log
+INFO: Percent Compliance: 50.00%
+Oct 08, 2020 4:06:38 AM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST id= e004, job=Job [Number: 401555575, FitterDistrict: 502 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Duration: 75, Travel Time: 01 Hours 36 Minutes 07 Seconds  ,End Date And Time: 2021-08-08T10:38:43]]
+Oct 08, 2020 4:06:38 AM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST id= e004, job=Job [Number: 401572898, FitterDistrict: 500 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-08, Starting Time: 07:47:36, Duration: 75, Travel Time: 00 Hours 00 Minutes 00 Seconds  ,End Date And Time: null]]
+Oct 08, 2020 4:06:38 AM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST id= e003, job=Job [Number: 401563361, FitterDistrict: 310 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 11:31:45, Duration: 65, Travel Time: 00 Hours 18 Minutes 36 Seconds  ,End Date And Time: 2021-08-16T12:55:21]]
+Oct 08, 2020 4:06:38 AM controller.Simulation log
+INFO:  CompletedJobRecord [gst=GST id= e002, job=Job [Number: 401565224, FitterDistrict: 230 Job Priority: A, Activity Type: EMG, Starting Date: 2021-08-16, Starting Time: 12:04:42, Duration: 100, Travel Time: 00 Hours 22 Minutes 56 Seconds  ,End Date And Time: 2021-08-16T14:07:38]]
+Oct 08, 2020 4:06:38 AM controller.Simulation log
+INFO: Average Travel Time: 00 Hours 34 Minutes 24 Seconds 
+Oct 08, 2020 4:06:38 AM controller.Simulation log
+INFO: Percent Compliance: 50.00%
