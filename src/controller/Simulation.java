@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.logging.Level;
@@ -32,6 +33,15 @@ public class Simulation {
 	private ArrayList<CompletedJobRecord> completedJobs = new ArrayList<CompletedJobRecord>();
 
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
+	
+	private final String JOB_FILE_PATH = "JobFiles/Jobs.csv";
+	
+	private final String GST_FILE_PATH = "GSTFiles/gstData10.csv";
+	
+	public Simulation() {
+		JobFactory.readJobsFromCSV(JOB_FILE_PATH);
+		GSTFactory.readGSTsFromCSV(GST_FILE_PATH);
+	}
 
 	private void log(String avgTravelTime, String percentJobCompliance) throws SecurityException, IOException {
 
@@ -49,7 +59,7 @@ public class Simulation {
 		}
 	}
 
-	private String formatSeconds(int travelTimeInSeconds) {
+	public static String formatSeconds(int travelTimeInSeconds) {
 		int seconds = travelTimeInSeconds % 60;
 		int mins = (travelTimeInSeconds / 60) % 60;
 		int hours = (travelTimeInSeconds / 60) / 60;
@@ -89,7 +99,7 @@ public class Simulation {
 					Coordinate jobCoord = getJobLocation(j);
 					LocalDateTime jobTime = j.getOrderCreateDateAndTime();
 					int jobDuration = j.getJobDuration();
-					GST gst = findGst(jobCoord, 1800, jobTime);
+					GST gst = findClosestGst(jobCoord, 1800, jobTime);
 					System.out.println("For Job " + j.getOrderNum());
 
 					if (gst != null) {
@@ -162,25 +172,76 @@ public class Simulation {
 		String postcode = j.getPostcode();
 		return AzureMapsApi.getCoordinatesFromAddress(number, street, suburb, postcode);
 	}
+	
+	public GST findClosestGst(Coordinate jobCoord, int timeBudgetInSeconds, LocalDateTime departureTime)
+			throws IOException {
 
-	public GST findGst(Coordinate coord, int timeLimit, LocalDateTime depart) throws IOException {
-		depart = LocalDateTime.now();
-		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(coord, timeLimit, depart);
-		Polygon p = AzureMapsApi.BuildPolygon(jsonObj);
-		ArrayList<GST> closeGSTs = new ArrayList<GST>();
+		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(jobCoord, timeBudgetInSeconds, departureTime);
+		Polygon poly = AzureMapsApi.BuildPolygon(jsonObj);
+		ArrayList<GST> nearbyGSTs = new ArrayList<GST>();
+
 		for (GST g : GSTFactory.getGSTpool()) {
 			Coordinate gstCoord = new Coordinate(g.getLat(), g.getLon());
-			// System.out.println("GST Co-ord is: "+gstCoord);
-			// System.out.println(AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord));
-			if (AzureMapsApi.checkIfLocationInIsochrone(p, gstCoord) && g.getIsAvailable()) {
-				closeGSTs.add(g);
+			if (AzureMapsApi.checkIfLocationInIsochrone(poly, gstCoord)) {
+				nearbyGSTs.add(g);
+				System.out.println(nearbyGSTs.size());
 			}
 		}
-		if (closeGSTs.size() != 0) {
-			return simpleGetGst(coord, closeGSTs);
+	
+		if (nearbyGSTs.size() > 0) {
+			for (GST closeGst : nearbyGSTs) {
+				Coordinate gstCoord = new Coordinate(closeGst.getLat(), closeGst.getLon());
+				int travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
+				System.out.println(travelTime);
+				closeGst.setTravelTime(travelTime);
+
+			}
+			System.out.println(nearbyGSTs);
+			Collections.sort(nearbyGSTs);
+			GST closestGST = nearbyGSTs.get(0);
+			nearbyGSTs.remove(0);
+			resetGstTravelTime(nearbyGSTs);
+			System.out.println("The closest GST was "+closestGST.getgSTid());
+			return closestGST;
+
 		}
-		return null;
+
+		else {
+			System.out.println("NO GST found in isochrone");
+			return null;
+		}
+
 	}
+		
+		
+		
+	
+
+	public void resetGstTravelTime(ArrayList<GST> gstList) {
+
+		for (GST g : gstList) {
+			g.setTravelTime(0);
+		}
+	}
+
+//	public GST findGst(Coordinate coord, int timeLimit, LocalDateTime depart) throws IOException {
+//		depart = LocalDateTime.now();
+//		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(coord, timeLimit, depart);
+//		Polygon p = AzureMapsApi.BuildPolygon(jsonObj);
+//		ArrayList<GST> closeGSTs = new ArrayList<GST>();
+//		for (GST g : GSTFactory.getGSTpool()) {
+//			Coordinate gstCoord = new Coordinate(g.getLat(), g.getLon());
+//			// System.out.println("GST Co-ord is: "+gstCoord);
+//			// System.out.println(AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord));
+//			if (AzureMapsApi.checkIfLocationInIsochrone(p, gstCoord) && g.getIsAvailable()) {
+//				closeGSTs.add(g);
+//			}
+//		}
+//		if (closeGSTs.size() != 0) {
+//			return simpleGetGst(coord, closeGSTs);
+//		}
+//		return null;
+//	}
 
 	public GST simpleGetGst(Coordinate jobCoord, ArrayList<GST> gstPool) {
 		GST closeGst = null;
