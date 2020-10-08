@@ -9,12 +9,14 @@ import java.time.LocalDateTime;
  *         the simulation
  */
 
-public class GST {
+public class GST implements Comparable<GST> {
 
 	private String gSTid;
 	private double lat, lon;
 	private boolean isAvailable;
 	private LocalDateTime finishTime;
+
+	private int travelTime;
 
 	public GST(String gSTid, double lat, double lon) {
 		this.gSTid = gSTid;
@@ -63,6 +65,31 @@ public class GST {
 	public Object getFinishTime() {
 		return finishTime;
 	}
+
+	public void setTravelTime(int travelTime) {
+		this.travelTime = travelTime;
+
+	}
+
+	public int getTravelTime() {
+		return travelTime;
+	}
+	
+	@Override
+	public int compareTo(GST g1) {
+		if (this.travelTime > g1.travelTime) {
+			return 1;
+		}
+		if (this.travelTime < g1.travelTime) {
+			return -1;
+			
+		} else {
+			return 0;
+		}
+
+	}
+
+	
 
 	@Override
 	public String toString() {
