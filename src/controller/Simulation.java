@@ -36,16 +36,13 @@ public class Simulation {
 	private void log(String avgTravelTime, String percentJobCompliance) throws SecurityException, IOException {
 
 		try {
-//			FileHandler fh = new FileHandler("C:\\Users\\61469\\Desktop\\MyLog.log"); 
-			Log myLog = new Log("logeer.log");
-//			FileHandler fh = new FileHandler("C:/temp/test/MyLogFile.log"); 
+			Log myLog = new Log("log.log");
 			System.out.println(">>>>>>>>>>>END>>>>>>>>>>>>>>");
 			for (CompletedJobRecord cj : completedJobs) {
 				myLog.logger.log(Level.INFO, " " + cj.toString());
 			}
 			myLog.logger.log(Level.INFO, "Average Travel Time: " + avgTravelTime);
 			myLog.logger.log(Level.INFO, "Percent Compliance: " + percentJobCompliance + "%");
-//			myLog.addHandler(fh);
 
 		} catch (Exception e) {
 
@@ -148,8 +145,9 @@ public class Simulation {
 		int jobsCompleted = completedJobs.size();
 		float complianceRate = (float) complianceCounter / jobsCompleted * 100;
 		String str = String.format("%2.02f", complianceRate);
-		if(jobsCompleted == 0)
+		if(jobsCompleted == 0) {
 			System.err.println("No Completed Jobs");
+		}
 		else {
 			int avgTravelTime = totalTravelTime / jobsCompleted;
 			log(formatSeconds(avgTravelTime), str);
