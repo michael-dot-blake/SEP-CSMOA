@@ -70,7 +70,7 @@ public class Simulation {
 
 	private void runSimulation(LocalDateTime currentTime, LocalDateTime endTime) throws SecurityException, IOException {
 
-		String path = "JobFiles/OverlappingJobs.csv";
+		String path = "JobFiles/Jobs.csv";
 		JobFactory.readJobsFromCSV(path);
 
 		String path2 = "GSTFiles/gstTestData.csv";
@@ -148,8 +148,12 @@ public class Simulation {
 		int jobsCompleted = completedJobs.size();
 		float complianceRate = (float) complianceCounter / jobsCompleted * 100;
 		String str = String.format("%2.02f", complianceRate);
-		int avgTravelTime = totalTravelTime / jobsCompleted;
-		log(formatSeconds(avgTravelTime), str);
+		if(jobsCompleted == 0)
+			System.err.println("No Completed Jobs");
+		else {
+			int avgTravelTime = totalTravelTime / jobsCompleted;
+			log(formatSeconds(avgTravelTime), str);
+		}
 
 	}
 
