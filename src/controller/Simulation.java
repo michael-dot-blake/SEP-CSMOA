@@ -36,13 +36,16 @@ public class Simulation {
 	private void log(String avgTravelTime, String percentJobCompliance) throws SecurityException, IOException {
 
 		try {
-			Log myLog = new Log("log.txt");
+//			FileHandler fh = new FileHandler("C:\\Users\\61469\\Desktop\\MyLog.log"); 
+			Log myLog = new Log("logeer.log");
+//			FileHandler fh = new FileHandler("C:/temp/test/MyLogFile.log"); 
 			System.out.println(">>>>>>>>>>>END>>>>>>>>>>>>>>");
 			for (CompletedJobRecord cj : completedJobs) {
 				myLog.logger.log(Level.INFO, " " + cj.toString());
 			}
 			myLog.logger.log(Level.INFO, "Average Travel Time: " + avgTravelTime);
 			myLog.logger.log(Level.INFO, "Percent Compliance: " + percentJobCompliance + "%");
+//			myLog.addHandler(fh);
 
 		} catch (Exception e) {
 
@@ -75,6 +78,7 @@ public class Simulation {
 
 		int totalTravelTime = 0;
 		int complianceCounter = 0;
+		
 
 		do {
 			for (Job j : JobFactory.getJobPool()) {
@@ -144,8 +148,12 @@ public class Simulation {
 		int jobsCompleted = completedJobs.size();
 		float complianceRate = (float) complianceCounter / jobsCompleted * 100;
 		String str = String.format("%2.02f", complianceRate);
-		int avgTravelTime = totalTravelTime / jobsCompleted;
-		log(formatSeconds(avgTravelTime), str);
+		if(jobsCompleted == 0)
+			System.err.println("No Completed Jobs");
+		else {
+			int avgTravelTime = totalTravelTime / jobsCompleted;
+			log(formatSeconds(avgTravelTime), str);
+		}
 
 	}
 
@@ -212,8 +220,8 @@ public class Simulation {
 	public static void main(String[] args) throws SecurityException, IOException {
 
 		Simulation s = new Simulation();
-		LocalDate startDate = LocalDate.of(2021, 8, 8);
-		LocalDate endDate = LocalDate.of(2021, 8, 27);
+		LocalDate startDate = LocalDate.of(2021, 1, 8);
+		LocalDate endDate = LocalDate.of(2021, 12, 26);
 		LocalDateTime start = LocalDateTime.of(startDate, LocalTime.MIN);
 		LocalDateTime end = LocalDateTime.of(endDate, LocalTime.MAX);
 		s.runSimulation(start, end);
