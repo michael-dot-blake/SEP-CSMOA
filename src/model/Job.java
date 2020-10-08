@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import controller.Simulation;
+
 /**
  * @author Sawmya Patidar
  * 
@@ -84,15 +86,6 @@ public class Job implements Comparable<Job> {
 		this.jobDurationInMinutes = jobDurationInMinutes;
 		this.travelTimeInSeconds = travelTimeInSeconds;
 		this.endDateAndTime = endDateAndTime;
-
-	}
-
-	public static String formatSeconds(int travelTimeInSeconds) {
-		int seconds = travelTimeInSeconds % 60;
-		int mins = (travelTimeInSeconds / 60) % 60;
-		int hours = (travelTimeInSeconds / 60) / 60;
-		String timeString = String.format("%02d Hours %02d Minutes %02d Seconds ", hours, mins, seconds);
-		return timeString;
 
 	}
 
@@ -264,7 +257,7 @@ public class Job implements Comparable<Job> {
 		return "Job [Number: " + orderNum + ", FitterDistrict: " + fitterDistrict + " Job Priority: " + jobPriority
 				+ ", Activity Type: " + mainActType + ", Starting Date: " + orderCreateDate + ", Starting Time: "
 				+ orderCreateTime + ", Duration: " + jobDurationInMinutes + ", Travel Time: "
-				+ formatSeconds(travelTimeInSeconds) + " ,End Date And Time: " + endDateAndTime + "]";
+				+ Simulation.formatSeconds(travelTimeInSeconds) + " ,End Date And Time: " + endDateAndTime + "]";
 	}
 
 }
