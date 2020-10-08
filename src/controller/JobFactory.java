@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 import model.Job;
@@ -48,6 +49,7 @@ public class JobFactory {
 				String monthStr = reform[7].substring(4, 6);
 				String dayStr = reform[7].substring(6, reform[7].length());
 				try {
+					int jobOrderNum = Integer.parseInt(jobId);
 					LocalDate jobDate = LocalDate.parse(yearStr+"-"+monthStr+"-"+dayStr);
 					LocalTime jobTime = LocalTime.parse(jobTimeString);
 					LocalDateTime jobDateAndTime = LocalDateTime.of(jobDate, jobTime);
@@ -57,7 +59,8 @@ public class JobFactory {
 					LocalDateTime endDateAndTime = null;
 					int travelTimeInSeconds = 0;
 					
-					jobPool.add(new Job(jobId, jobType, jobDescription, jobIssueCode, jobIssueDescrp, jobActType, jobActDescrp, jobDate, jobTime, jobDateAndTime, jobPriority, jobSuburb, jobStreet, houseNum1, houseNum2, postCode, fitterDistrict, jobDurationInMinutes, travelTimeInSeconds, endDateAndTime));
+					jobPool.removeIf(jo -> jobOrderNum == (jo.getOrderNum()));
+					jobPool.add(new Job(jobOrderNum, jobType, jobDescription, jobIssueCode, jobIssueDescrp, jobActType, jobActDescrp, jobDate, jobTime, jobDateAndTime, jobPriority, jobSuburb, jobStreet, houseNum1, houseNum2, postCode, fitterDistrict, jobDurationInMinutes, travelTimeInSeconds, endDateAndTime));
 					jobAdded = true;
 					ListSort(jobPool);
 				}

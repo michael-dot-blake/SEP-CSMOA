@@ -13,7 +13,7 @@ import java.time.LocalTime;
 public class Job implements Comparable<Job> {
 
 	// instance variables to be initialised when a job is created
-	private String orderNum;
+	private int orderNum;
 	private String orderType;
 	private String orderDescription;
 	private String issueCode;
@@ -59,7 +59,7 @@ public class Job implements Comparable<Job> {
 	 * @param jobDuration
 	 * @param endDateAndTime
 	 */
-	public Job(String jobId, String orderType, String orderDescription, String issueCode, String issueDescription,
+	public Job(int jobId, String orderType, String orderDescription, String issueCode, String issueDescription,
 			String mainActType, String mainActDescription, LocalDate jobDate, LocalTime jobTime,
 			LocalDateTime startDateAndTime, String jobPriority, String suburb, String street, String houseNum1,
 			String houseNum2, String postcode, String fitterDistrict, int jobDurationInMinutes, int travelTimeInSeconds,
@@ -110,11 +110,11 @@ public class Job implements Comparable<Job> {
 		this.jobPriority = jobPriority;
 	}
 
-	public String getOrderNum() {
+	public int getOrderNum() {
 		return orderNum;
 	}
 
-	public void setOrderNum(String orderNum) {
+	public void setOrderNum(int orderNum) {
 		this.orderNum = orderNum;
 	}
 
