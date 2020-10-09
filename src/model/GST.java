@@ -15,7 +15,6 @@ public class GST implements Comparable<GST> {
 	private double lat, lon;
 	private boolean isAvailable;
 	private LocalDateTime finishTime;
-
 	private int travelTime;
 
 	public GST(String gSTid, double lat, double lon) {
@@ -23,6 +22,8 @@ public class GST implements Comparable<GST> {
 		this.lat = lat;
 		this.lon = lon;
 		isAvailable = true;
+		finishTime = null;
+		travelTime = 0;
 	}
 
 	public String getgSTid() {
@@ -62,7 +63,7 @@ public class GST implements Comparable<GST> {
 
 	}
 
-	public Object getFinishTime() {
+	public LocalDateTime getFinishTime() {
 		return finishTime;
 	}
 
