@@ -20,11 +20,9 @@ import model.GST;
 import model.Job;
 
 /**
- * @author Michael Blake 
- * @author Clark Skinner
- * 
- * Simulation class to handle assigning jobs to GSTs in
- *         
+ * @author Michael Blake Simulation class to handle assigning jobs to GSTs in
+ *         early stages of development Clark Skinner worked on runsim/2(),
+ *         getJobLocation(), findGst(), simpleGetGst(), calcDistance().
  */
 public class Simulation {
 
@@ -35,11 +33,11 @@ public class Simulation {
 	private ArrayList<CompletedJobRecord> completedJobs = new ArrayList<CompletedJobRecord>();
 
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
-
+	
 	private final String JOB_FILE_PATH = "JobFiles/Jobs.csv";
-
+	
 	private final String GST_FILE_PATH = "GSTFiles/gstData10.csv";
-
+	
 	public Simulation() {
 		JobFactory.readJobsFromCSV(JOB_FILE_PATH);
 		GSTFactory.readGSTsFromCSV(GST_FILE_PATH);
@@ -87,6 +85,7 @@ public class Simulation {
 
 		int totalTravelTime = 0;
 		int complianceCounter = 0;
+		
 
 		do {
 			for (Job j : JobFactory.getJobPool()) {
@@ -100,7 +99,7 @@ public class Simulation {
 					Coordinate jobCoord = getJobLocation(j);
 					LocalDateTime jobTime = j.getOrderCreateDateAndTime();
 					int jobDuration = j.getJobDuration();
-					GST gst = getClosestGstByRouteTime(jobCoord, 1800, jobTime);
+					GST gst = findClosestGst(jobCoord, 1800, jobTime);
 					System.out.println("For Job " + j.getOrderNum());
 
 					if (gst != null) {
@@ -116,7 +115,7 @@ public class Simulation {
 
 					} else {
 						System.out.println("No GST found within 30min!!!");
-						gst = getGstByStraightLineDistance(jobCoord, GSTFactory.getGSTpool());
+						gst = simpleGetGst(jobCoord, GSTFactory.getGSTpool());
 						if (gst == null) {
 							System.out.println("NO AVAILABLE GST!\n");
 						} else {
@@ -152,27 +151,29 @@ public class Simulation {
 			currentTime = currentTime.plusSeconds(1);
 		} while (currentTime.isBefore(endTime));
 
+		
 		int jobsCompleted = completedJobs.size();
 		float complianceRate = (float) complianceCounter / jobsCompleted * 100;
 		String str = String.format("%2.02f", complianceRate);
-		if (jobsCompleted == 0) {
+		if(jobsCompleted == 0) {
 			System.err.println("No Completed Jobs");
-		} else {
+		}
+		else {
 			int avgTravelTime = totalTravelTime / jobsCompleted;
 			log(formatSeconds(avgTravelTime), str);
 		}
 
 	}
 
-	private Coordinate getJobLocation(Job j) throws IOException {
+	public Coordinate getJobLocation(Job j) throws IOException {
 		String number = j.getHouseNum1();
 		String street = j.getStreet();
 		String suburb = j.getSuburb();
 		String postcode = j.getPostcode();
 		return AzureMapsApi.getCoordinatesFromAddress(number, street, suburb, postcode);
 	}
-
-	private GST getClosestGstByRouteTime(Coordinate jobCoord, int timeBudgetInSeconds, LocalDateTime departureTime)
+	
+	public GST findClosestGst(Coordinate jobCoord, int timeBudgetInSeconds, LocalDateTime departureTime)
 			throws IOException {
 
 		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(jobCoord, timeBudgetInSeconds, departureTime);
@@ -186,7 +187,7 @@ public class Simulation {
 				System.out.println(nearbyGSTs.size());
 			}
 		}
-
+	
 		if (nearbyGSTs.size() > 0) {
 			for (GST closeGst : nearbyGSTs) {
 				Coordinate gstCoord = new Coordinate(closeGst.getLat(), closeGst.getLon());
@@ -199,8 +200,8 @@ public class Simulation {
 			Collections.sort(nearbyGSTs);
 			GST closestGST = nearbyGSTs.get(0);
 			nearbyGSTs.remove(0);
-			resetGstTravelTimes(nearbyGSTs);
-			System.out.println("The closest GST was " + closestGST.getgSTid());
+			resetGstTravelTime(nearbyGSTs);
+			System.out.println("The closest GST was "+closestGST.getgSTid());
 			return closestGST;
 
 		}
@@ -211,16 +212,38 @@ public class Simulation {
 		}
 
 	}
+		
+		
+		
+	
 
-	private void resetGstTravelTimes(ArrayList<GST> gstList) {
+	public void resetGstTravelTime(ArrayList<GST> gstList) {
 
 		for (GST g : gstList) {
 			g.setTravelTime(0);
 		}
 	}
 
-	private GST getGstByStraightLineDistance(Coordinate jobCoord, ArrayList<GST> gstPool) {
-		
+//	public GST findGst(Coordinate coord, int timeLimit, LocalDateTime depart) throws IOException {
+//		depart = LocalDateTime.now();
+//		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(coord, timeLimit, depart);
+//		Polygon p = AzureMapsApi.BuildPolygon(jsonObj);
+//		ArrayList<GST> closeGSTs = new ArrayList<GST>();
+//		for (GST g : GSTFactory.getGSTpool()) {
+//			Coordinate gstCoord = new Coordinate(g.getLat(), g.getLon());
+//			// System.out.println("GST Co-ord is: "+gstCoord);
+//			// System.out.println(AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord));
+//			if (AzureMapsApi.checkIfLocationInIsochrone(p, gstCoord) && g.getIsAvailable()) {
+//				closeGSTs.add(g);
+//			}
+//		}
+//		if (closeGSTs.size() != 0) {
+//			return simpleGetGst(coord, closeGSTs);
+//		}
+//		return null;
+//	}
+
+	public GST simpleGetGst(Coordinate jobCoord, ArrayList<GST> gstPool) {
 		GST closeGst = null;
 		double jx = jobCoord.getX();
 		double jy = jobCoord.getY();
@@ -238,11 +261,11 @@ public class Simulation {
 		return closeGst;
 	}
 
-	private double calcDistance(double jx, double jy, double gx, double gy) {
+	public double calcDistance(double jx, double jy, double gx, double gy) {
 		return Math.abs(Math.sqrt((jx - gx) * (jx - gx) + (jy - gy) * (jy - gy)));
 	}
 
-	private void checkGstFinished(LocalDateTime currTime) {
+	public void checkGstFinished(LocalDateTime currTime) {
 		for (Iterator<GST> busyGSTIter = busyGSTs.iterator(); busyGSTIter.hasNext();) {
 			GST go = busyGSTIter.next();
 			if (currTime.equals(go.getFinishTime())) {
@@ -261,6 +284,7 @@ public class Simulation {
 		LocalDateTime start = LocalDateTime.of(startDate, LocalTime.MIN);
 		LocalDateTime end = LocalDateTime.of(endDate, LocalTime.MAX);
 		s.runSimulation(start, end);
+
 
 	}// end main
 
