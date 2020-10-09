@@ -14,35 +14,47 @@ public class GSTFactory {
 	public static void readGSTsFromCSV(String filename) {
 		System.out.println("\nGST init start...\n");
 		try {
-			File file = new File(filename);
-			Scanner sc = new Scanner(file);
-			String header = sc.nextLine();
-			//System.out.println("GST header: "+header);
-			while (sc.hasNext()) {
-				boolean gstAdded = false;
-				String row = sc.nextLine();
-				String[] reform = row.split(",");
-				String GSTid = reform[0];
-				String latString = reform[1];
-				String lonString = reform[2];
-				double lat = 0;
-				double lon = 0;
-				try {
-					lat = Double.parseDouble(latString);
-					lon = Double.parseDouble(lonString);
-					gstPool.add(new GST(GSTid, lat, lon));
-					gstAdded = true;
+			File file = new File(filename);	
+			
+			if(file.exists() && !file.isDirectory()) { 
+				
+				Scanner sc = new Scanner(file);
+				String header = sc.nextLine();
+				//System.out.println("GST header: "+header);
+				while (sc.hasNext()) {
+					boolean gstAdded = false;
+					String row = sc.nextLine();
+					String[] reform = row.split(",");
+					String GSTid = reform[0];
+					String latString = reform[1];
+					String lonString = reform[2];
+					double lat = 0;
+					double lon = 0;
+					try {
+						lat = Double.parseDouble(latString);
+						lon = Double.parseDouble(lonString);
+						gstPool.add(new GST(GSTid, lat, lon));
+						gstAdded = true;
+					}
+					catch (Exception e) {
+						System.out.println("co-ord parse error.");
+						e.printStackTrace();
+					}
+					if (!gstAdded) {
+						System.err.println("\nFAILED TO INIT GST!");
+						System.out.println("GST id:"+GSTid+" lat:"+lat+" lon:"+lon);
+					}
 				}
-				catch (Exception e) {
-					System.out.println("co-ord parse error.");
-					e.printStackTrace();
-				}
-				if (!gstAdded) {
-					System.err.println("\nFAILED TO INIT GST!");
-					System.out.println("GST id:"+GSTid+" lat:"+lat+" lon:"+lon);
-				}
+				sc.close();
+			    
 			}
-			sc.close();
+			else {
+				System.out.println("GST File Not Found!");
+				System.out.println("WARNING!! Please Provide Proper File Name & File Diresctory");
+			
+				System.exit(0);
+			}
+
 		}
 		catch (FileNotFoundException e) {
 			System.out.println("Something went wrong with GST file.\n");
