@@ -12,8 +12,27 @@ import com.google.gson.JsonObject;
 
 import model.GST;
 
+
+/**
+ * @author Michael Blake
+ * 
+ * A class to test the functionality of sorting travel times
+ * and returning the lowest number from the Azure Maps Api
+ *
+ */
 public class TestRouteTimeSorting {
 
+	/**
+	 * Main test method. Will check if GSTs are within isochrone then sort
+	 * them in ascending order of travel time. Once sorted, the method returns
+	 * the GST object at index 0
+	 * 
+	 * @param jobCoord
+	 * @param timeBudgetInSeconds
+	 * @param departureTime
+	 * @return GST
+	 * @throws IOException
+	 */
 	public static GST findClosestGst(Coordinate jobCoord, int timeBudgetInSeconds, LocalDateTime departureTime)
 			throws IOException {
 
