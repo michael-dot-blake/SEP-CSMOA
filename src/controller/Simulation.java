@@ -77,8 +77,8 @@ public class Simulation {
 
 	private void runSimulation(LocalDateTime currentTime, LocalDateTime endTime) throws SecurityException, IOException {
 
-		String path = "JobFiles/Jobs.csv";
-		JobFactory.readJobsFromCSV(path);
+//		String path = "JobFiles/Jobs.csv";
+//		JobFactory.readJobsFromCSV(path);
 
 		String path2 = "GSTFiles/gstTestData.csv";
 		GSTFactory.readGSTsFromCSV(path2);
@@ -260,14 +260,16 @@ public class Simulation {
 	}
 
 	public static void main(String[] args) throws SecurityException, IOException {
-
 		Simulation s = new Simulation();
-		LocalDate startDate = LocalDate.of(2021, 1, 8);
-		LocalDate endDate = LocalDate.of(2021, 12, 26);
+		
+		String path = "JobFiles/Jobs.csv";
+		JobFactory.readJobsFromCSV(path);
+
+		LocalDate startDate = JobFactory.getJobPool().get(0).getOrderCreateDate();
+		LocalDate endDate = JobFactory.getJobPool().get(JobFactory.getJobPool().size() - 1).getOrderCreateDate();
 		LocalDateTime start = LocalDateTime.of(startDate, LocalTime.MIN);
 		LocalDateTime end = LocalDateTime.of(endDate, LocalTime.MAX);
 		s.runSimulation(start, end);
-
 
 	}// end main
 
