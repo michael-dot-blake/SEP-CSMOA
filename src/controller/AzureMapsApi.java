@@ -26,8 +26,6 @@ public class AzureMapsApi {
 	private static final String STATE = "NSW";
 	private static final String API_KEY = "5nXsFMSUBlUyt_Hvq0fgM6u6tKXy80wgwWfvZaLJuj0";
 
-	
-
 	/**
 	 * A method which takes an address and calls the Azure Maps Api to return
 	 * coordinates in latitude and longitude. It will replace all whitespace within
@@ -44,17 +42,16 @@ public class AzureMapsApi {
 	 * @throws IOException
 	 */
 	public static Coordinate getCoordinatesFromAddress(String streetNo, String streetName, String suburbName,
-			String postCode ) throws IOException {
+			String postCode) throws IOException {
 
 		streetNo = streetNo.replace(" ", "%").trim();
 		streetName = streetName.replace(" ", "%").trim();
 		suburbName = suburbName.replace(" ", "%").trim();
 		postCode = postCode.replace(" ", "%").trim();
-		
 
 		URL url = new URL("https://atlas.microsoft.com/search/address/json?subscription-key=" + API_KEY
 				+ "&api-version=1.0&language=en-US&query=" + streetNo + "," + streetName + "," + suburbName + ","
-				+ STATE + "," + postCode );
+				+ STATE + "," + postCode);
 
 		URLConnection conn = url.openConnection();
 		HttpURLConnection http = (HttpURLConnection) conn;
@@ -63,7 +60,6 @@ public class AzureMapsApi {
 		http.connect();
 		int responseCode = http.getResponseCode();
 		String inline = "";
-		// System.out.println(responseCode + " getCoordinates");
 
 		if (responseCode != 200) {
 			throw new RuntimeException("HttpResponseCode: " + responseCode);
@@ -78,7 +74,6 @@ public class AzureMapsApi {
 			double lat = json.get("lat").getAsDouble();
 			double lon = json.get("lon").getAsDouble();
 			Coordinate coord = new Coordinate(lat, lon);
-			// System.out.println("Address Location: " + coord);
 			sc.close();
 			return coord;
 
@@ -96,10 +91,11 @@ public class AzureMapsApi {
 	 * @param timeBudgetInSeconds
 	 * @throws IOException
 	 */
-	public static JsonObject getIsochroneCoords(Coordinate coord, int timeBudgetInSeconds, LocalDateTime dateTime) throws IOException {
-		URL url = new URL(
-				"https://atlas.microsoft.com/route/range/json?subscription-key=" + API_KEY + "&api-version=1.0&query="
-						+ coord.getX() + "," + coord.getY() + "&timeBudgetInSec=" + timeBudgetInSeconds +"&departAt="+ dateTime);
+	public static JsonObject getIsochroneCoords(Coordinate coord, int timeBudgetInSeconds, LocalDateTime dateTime)
+			throws IOException {
+		URL url = new URL("https://atlas.microsoft.com/route/range/json?subscription-key=" + API_KEY
+				+ "&api-version=1.0&query=" + coord.getX() + "," + coord.getY() + "&timeBudgetInSec="
+				+ timeBudgetInSeconds + "&departAt=" + dateTime);
 
 		URLConnection conn = url.openConnection();
 		HttpURLConnection http = (HttpURLConnection) conn;
@@ -144,6 +140,8 @@ public class AzureMapsApi {
 		JsonObject range = (JsonObject) ((JsonObject) jsonObject.getAsJsonObject("reachableRange"));
 		JsonArray jsonArray = range.getAsJsonArray("boundary");
 
+		// Loop through JsonArray and create Coordinate objects based on latitude and
+		// longitude values returned by the API call and add them to an Array
 		for (int i = 0; i < jsonArray.size(); i++) {
 			JsonPrimitive jsonLat = (JsonPrimitive) ((JsonObject) range.getAsJsonArray("boundary").get(i))
 					.get("latitude");
@@ -155,18 +153,16 @@ public class AzureMapsApi {
 			points.add(c);
 		}
 
+		// Manually add the first point to the end of the array to create a closed set
+		// of coordinates
 		JsonPrimitive lastLat = (JsonPrimitive) ((JsonObject) range.getAsJsonArray("boundary").get(0)).get("latitude");
 		JsonPrimitive lastLon = (JsonPrimitive) ((JsonObject) range.getAsJsonArray("boundary").get(0)).get("longitude");
 		double lat2 = lastLat.getAsDouble();
 		double lon2 = lastLon.getAsDouble();
 		Coordinate lastCoord = new Coordinate(lat2, lon2);
-
 		points.add(lastCoord);
 
-//		for (Coordinate c : points) {
-//			System.out.println(c);
-//		}
-
+		// Create polygon object from array of coordinates returned by API call
 		Polygon poly = gf.createPolygon(
 				new LinearRing(new CoordinateArraySequence(points.toArray(new Coordinate[points.size()])), gf), null);
 		return poly;
@@ -185,10 +181,21 @@ public class AzureMapsApi {
 			return false;
 		}
 	}
-	
+
+	/**
+	 * A method which takes two coordinates and calls the Azure Maps API to return
+	 * the travel time between the two points in seconds. The method then returns
+	 * this number as an integer
+	 * 
+	 * @param startCoord
+	 * @param endCoord
+	 * @return travelTimeInSeconds
+	 * @throws IOException
+	 */
 	public static int getRouteTime(Coordinate startCoord, Coordinate endCoord) throws IOException {
 		URL url = new URL("https://atlas.microsoft.com/route/directions/json?subscription-key=" + API_KEY
-				+ "&api-version=1.0&query=" + startCoord.getX() + "," + startCoord.getY() + ":" + endCoord.getX() + "," + endCoord.getY());
+				+ "&api-version=1.0&query=" + startCoord.getX() + "," + startCoord.getY() + ":" + endCoord.getX() + ","
+				+ endCoord.getY());
 
 		URLConnection conn = url.openConnection();
 		HttpURLConnection http = (HttpURLConnection) conn;
@@ -197,7 +204,6 @@ public class AzureMapsApi {
 		http.connect();
 		int responseCode = http.getResponseCode();
 		String inline = "";
-		//System.out.println(responseCode);
 
 		if (responseCode != 200) {
 			throw new RuntimeException("HttpResponseCode: " + responseCode);
@@ -214,17 +220,12 @@ public class AzureMapsApi {
 			JsonElement summary = ((JsonObject) routes.get(0)).get("summary");
 			JsonPrimitive travelTime = summary.getAsJsonObject().getAsJsonPrimitive("travelTimeInSeconds");
 			int travelTimeInSeconds = travelTime.getAsInt();
-			
-//			Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//			String prettyJson = gson.toJson(summary);
-//			System.out.println(prettyJson);
 			sc.close();
 			return travelTimeInSeconds;
 
 		}
 
 	}
-
 
 	public static void main(String[] args) throws IOException {
 
@@ -233,7 +234,7 @@ public class AzureMapsApi {
 		Coordinate coord = getCoordinatesFromAddress("13", "Bundle St", "Caddens", "2747");
 		JsonObject jsonObj = getIsochroneCoords(coord, 6000, departAt);
 		Polygon p = BuildPolygon(jsonObj);
-		
+
 		Coordinate gstCoord = new Coordinate(-33.78, 150.74);
 
 		// centre of isochrone. Should return true
@@ -244,13 +245,13 @@ public class AzureMapsApi {
 
 		// coordinates for LosAngeles. Should return false
 		Coordinate losAngelesCoord = new Coordinate(34.0522, 118.2437);
-		
+
 		System.out.println(getRouteTime(gstCoord, centerCoord));
 //
 //		System.out.println(checkIfLocationInIsochrone(p, centerCoord));
 //		System.out.println(checkIfLocationInIsochrone(p, edgeCoord));
 //		System.out.println(checkIfLocationInIsochrone(p, losAngelesCoord));
-        
+
 	}
 
 }
