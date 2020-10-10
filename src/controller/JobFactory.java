@@ -16,10 +16,10 @@ public class JobFactory {
 	
 	private static ArrayList<Job> jobPool = new ArrayList<Job>();
 	
-	public static void readJobsFromCSV(String path) {
+	public static void readJobsFromCSV(String filename) {
 		System.out.println("init jobs start...");
 		try {
-			File file = new File(path);
+			File file = new File(filename);
 			
 			
 			if(file.exists() && !file.isDirectory()) {
@@ -95,10 +95,11 @@ public class JobFactory {
 			System.out.println("Something went wrong with job file.\n");
 			e.printStackTrace();
 		}
-		System.out.println("init jobs finish.");
+		
 		System.out.println("\nAdded "+getJobPool().size()+" Jobs from the file:\n");
 		for(Job j : jobPool)
 			System.out.println(j);
+		System.out.println("\ninit jobs finish.");
 	}
 
 	public static ArrayList<Job> getJobPool() {

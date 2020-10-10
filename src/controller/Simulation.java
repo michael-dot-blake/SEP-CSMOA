@@ -34,7 +34,7 @@ public class Simulation {
 
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
 	
-	private final String JOB_FILE_PATH = "JobFiles/Jobs.csv";
+	private final static String JOB_FILE_PATH = "JobFiles/Jobs.csv";
 	
 	private final String GST_FILE_PATH = "GSTFiles/gstData10.csv";
 	
@@ -262,8 +262,7 @@ public class Simulation {
 	public static void main(String[] args) throws SecurityException, IOException {
 		Simulation s = new Simulation();
 		
-		String path = "JobFiles/Jobs.csv";
-		JobFactory.readJobsFromCSV(path);
+		JobFactory.readJobsFromCSV(JOB_FILE_PATH);
 
 		LocalDate startDate = JobFactory.getJobPool().get(0).getOrderCreateDate();
 		LocalDate endDate = JobFactory.getJobPool().get(JobFactory.getJobPool().size() - 1).getOrderCreateDate();
