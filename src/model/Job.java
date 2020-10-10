@@ -33,6 +33,7 @@ public class Job implements Comparable<Job> {
 	private String postcode;
 	private String fitterDistrict;
 	private int jobDurationInMinutes;
+	private GST assignedGST;
 
 	// instance variables to be set prior to the creation of a completedJobRecord
 	// object
@@ -86,6 +87,7 @@ public class Job implements Comparable<Job> {
 		this.jobDurationInMinutes = jobDurationInMinutes;
 		this.travelTimeInSeconds = travelTimeInSeconds;
 		this.endDateAndTime = endDateAndTime;
+		this.assignedGST = null;
 
 	}
 
@@ -245,6 +247,14 @@ public class Job implements Comparable<Job> {
 
 	public void setTravelTimeInSeconds(int travelTimeInSeconds) {
 		this.travelTimeInSeconds = travelTimeInSeconds;
+	}
+	
+	public GST getAssignedGST() {
+		return assignedGST;
+	}
+	
+	public void setAssignedGST(GST g) {
+		this.assignedGST = g;
 	}
 
 	@Override
