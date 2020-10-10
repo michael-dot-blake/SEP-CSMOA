@@ -109,18 +109,18 @@ public class Simulation {
 						j.setTravelTimeInSeconds(travelTime);
 						System.out.println("Travel Time is: " + formatSeconds(travelTime) + "\n");
 						j.setEndDateAndTime(jobTime.plusMinutes(jobDuration).plusSeconds(travelTime));
-						// gst.setAvailable(false);
+						gst.setAvailable(false);
 						totalTravelTime = totalTravelTime + travelTime;
 						complianceCounter++;
 
 					} else {
 						System.out.println("No GST found within 30min!!!");
-						gst = simpleGetGst(jobCoord, GSTFactory.getGSTpool());
+						gst = findGstByStraightLineDistance(jobCoord, GSTFactory.getGSTpool());
 						if (gst == null) {
 							System.out.println("NO AVAILABLE GST!\n");
 						} else {
 							System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone");
-							// gst.setAvailable(false);
+							gst.setAvailable(false);
 							Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
 							int travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
 							j.setTravelTimeInSeconds(travelTime);
@@ -224,26 +224,9 @@ public class Simulation {
 		}
 	}
 
-//	public GST findGst(Coordinate coord, int timeLimit, LocalDateTime depart) throws IOException {
-//		depart = LocalDateTime.now();
-//		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(coord, timeLimit, depart);
-//		Polygon p = AzureMapsApi.BuildPolygon(jsonObj);
-//		ArrayList<GST> closeGSTs = new ArrayList<GST>();
-//		for (GST g : GSTFactory.getGSTpool()) {
-//			Coordinate gstCoord = new Coordinate(g.getLat(), g.getLon());
-//			// System.out.println("GST Co-ord is: "+gstCoord);
-//			// System.out.println(AzureMapsApi.checkIfLocationInIsoChrone(p, gstCoord));
-//			if (AzureMapsApi.checkIfLocationInIsochrone(p, gstCoord) && g.getIsAvailable()) {
-//				closeGSTs.add(g);
-//			}
-//		}
-//		if (closeGSTs.size() != 0) {
-//			return simpleGetGst(coord, closeGSTs);
-//		}
-//		return null;
-//	}
 
-	public GST simpleGetGst(Coordinate jobCoord, ArrayList<GST> gstPool) {
+
+	public GST findGstByStraightLineDistance(Coordinate jobCoord, ArrayList<GST> gstPool) {
 		GST closeGst = null;
 		double jx = jobCoord.getX();
 		double jy = jobCoord.getY();
