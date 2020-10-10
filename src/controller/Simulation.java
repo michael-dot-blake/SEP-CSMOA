@@ -37,7 +37,7 @@ public class Simulation {
 	private final static String JOB_FILE_PATH = "JobFiles/Jobs.csv";
 
 	
-	//private final String GST_FILE_PATH = "GSTFiles/gstData10.csv";
+	private final String GST_FILE_PATH = "GSTFiles/gstData10.csv";
 	
 
 	private void log(String avgTravelTime, String percentJobCompliance) throws SecurityException, IOException {
@@ -77,7 +77,7 @@ public class Simulation {
 //		String path = "JobFiles/Jobs.csv";
 //		JobFactory.readJobsFromCSV(path);
 
-		String path2 = "GSTFiles/gstTestData.csv";
+		String path2 = GST_FILE_PATH;
 		GSTFactory.readGSTsFromCSV(path2);
 
 		int totalTravelTime = 0;
