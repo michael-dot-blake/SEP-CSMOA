@@ -173,16 +173,10 @@ public class Job implements Comparable<Job> {
 		return jobPriority;
 	}
 
-	// adding 1 second for the job's create time if the time doesn't have second's field,
-   //  to avoid getting bad request for the API calls 
 	public LocalDateTime getOrderCreateDateAndTime() {
-
-		if (this.orderCreateDateAndTime.getSecond() == 00) {
-			return orderCreateDateAndTime.plusSeconds(01);
-		} else
-			return orderCreateDateAndTime;
+		return orderCreateDateAndTime;
 	}
-
+	
 	public String getSuburb() {
 		return suburb;
 	}
