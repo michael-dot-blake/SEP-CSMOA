@@ -34,7 +34,7 @@ public class Simulation {
 
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
 	
-	private final static String JOB_FILE_PATH = "JobFiles/Jobs.csv";
+	private final String JOB_FILE_PATH = "JobFiles/FutureJobs.csv";
 
 	
 	private final String GST_FILE_PATH = "GSTFiles/gstData10.csv";
@@ -72,13 +72,9 @@ public class Simulation {
 	 * @throws SecurityException
 	 */
 
-	private void runSimulation(LocalDateTime currentTime, LocalDateTime endTime) throws SecurityException, IOException {
+	private void simulate(LocalDateTime currentTime, LocalDateTime endTime) throws SecurityException, IOException {
 
-//		String path = "JobFiles/Jobs.csv";
-//		JobFactory.readJobsFromCSV(path);
-
-		String path2 = GST_FILE_PATH;
-		GSTFactory.readGSTsFromCSV(path2);
+		
 
 		int totalTravelTime = 0;
 		int complianceCounter = 0;
@@ -166,7 +162,7 @@ public class Simulation {
 
 	}
 
-	public Coordinate getJobLocation(Job j) throws IOException {
+	private Coordinate getJobLocation(Job j) throws IOException {
 		String number = j.getHouseNum1();
 		String street = j.getStreet();
 		String suburb = j.getSuburb();
@@ -174,7 +170,7 @@ public class Simulation {
 		return AzureMapsApi.getCoordinatesFromAddress(number, street, suburb, postcode);
 	}
 	
-	public GST findClosestGst(Coordinate jobCoord, int timeBudgetInSeconds, LocalDateTime departureTime)
+	private GST findClosestGst(Coordinate jobCoord, int timeBudgetInSeconds, LocalDateTime departureTime)
 			throws IOException {
 
 		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(jobCoord, timeBudgetInSeconds, departureTime);
@@ -218,7 +214,7 @@ public class Simulation {
 		
 	
 
-	public void resetGstTravelTime(ArrayList<GST> gstList) {
+	private void resetGstTravelTime(ArrayList<GST> gstList) {
 
 		for (GST g : gstList) {
 			g.setTravelTime(0);
@@ -227,7 +223,7 @@ public class Simulation {
 
 
 
-	public GST findGstByStraightLineDistance(Coordinate jobCoord, ArrayList<GST> gstPool) {
+	private GST findGstByStraightLineDistance(Coordinate jobCoord, ArrayList<GST> gstPool) {
 		GST closeGst = null;
 		double jx = jobCoord.getX();
 		double jy = jobCoord.getY();
@@ -245,11 +241,11 @@ public class Simulation {
 		return closeGst;
 	}
 
-	public double calcDistance(double jx, double jy, double gx, double gy) {
+	private double calcDistance(double jx, double jy, double gx, double gy) {
 		return Math.abs(Math.sqrt((jx - gx) * (jx - gx) + (jy - gy) * (jy - gy)));
 	}
 
-	public void checkGstFinished(LocalDateTime currTime) {
+	private void checkGstFinished(LocalDateTime currTime) {
 		for (Iterator<GST> busyGSTIter = busyGSTs.iterator(); busyGSTIter.hasNext();) {
 			GST go = busyGSTIter.next();
 			if (currTime.equals(go.getFinishTime())) {
@@ -259,17 +255,23 @@ public class Simulation {
 			}
 		}
 	}
-
-	public static void main(String[] args) throws SecurityException, IOException {
-		Simulation s = new Simulation();
-		
+	
+	private void runSimulation() throws SecurityException, IOException {
 		JobFactory.readJobsFromCSV(JOB_FILE_PATH);
-
+		GSTFactory.readGSTsFromCSV(GST_FILE_PATH);
 		LocalDate startDate = JobFactory.getJobPool().get(0).getOrderCreateDate();
 		LocalDate endDate = JobFactory.getJobPool().get(JobFactory.getJobPool().size() - 1).getOrderCreateDate();
 		LocalDateTime start = LocalDateTime.of(startDate, LocalTime.MIN);
 		LocalDateTime end = LocalDateTime.of(endDate, LocalTime.MAX);
-		s.runSimulation(start, end);
+		simulate(start, end);
+		
+		
+	}
+	public static void main(String[] args) throws SecurityException, IOException {
+		
+		Simulation s = new Simulation();
+		s.runSimulation();
+		
 
 	}// end main
 
