@@ -46,7 +46,7 @@ public class AzureMapsApi {
 			String postCode) throws IOException {
 
 		streetNo = streetNo.replace(" ", "%").trim();
-		streetName = streetName.replace(" ", "%").trim();
+		streetName = streetName.replace(" ", "%").replace("&", "%").trim();
 		suburbName = suburbName.replace(" ", "%").trim();
 		postCode = postCode.replace(" ", "%").trim();
 
@@ -99,8 +99,6 @@ public class AzureMapsApi {
 				+ "&api-version=1.0&query=" + coord.getX() + "," + coord.getY() + "&timeBudgetInSec="
 				+ timeBudgetInSeconds + "&departAt=" + formatDateTime(dateTime));
 
-		System.out.println(formatDateTime(dateTime));
-		
 		URLConnection conn = url.openConnection();
 		HttpURLConnection http = (HttpURLConnection) conn;
 		http.setRequestMethod("GET");
@@ -239,7 +237,8 @@ public class AzureMapsApi {
 
 //		// test functionality for the api calls
 //		LocalDateTime departAt = LocalDateTime.of(2020, 12, 19, 16, 39, 57);
-//		Coordinate coord = getCoordinatesFromAddress("13", "Bundle St", "Caddens", "2747");
+		Coordinate coord = getCoordinatesFromAddress("", "CORNER OF HEASLIP ST AND", "CONISTON", "2500");
+		System.out.println(coord);
 //		JsonObject jsonObj = getIsochroneCoords(coord, 6000, departAt);
 //		Polygon p = BuildPolygon(jsonObj);
 //
