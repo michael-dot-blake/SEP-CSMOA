@@ -173,8 +173,14 @@ public class Job implements Comparable<Job> {
 		return jobPriority;
 	}
 
+	// adding 1 second for the job's create time if the time doesn't have second's field,
+   //  to avoid getting bad request for the API calls 
 	public LocalDateTime getOrderCreateDateAndTime() {
-		return orderCreateDateAndTime;
+
+		if (this.orderCreateDateAndTime.getSecond() == 00) {
+			return orderCreateDateAndTime.plusSeconds(01);
+		} else
+			return orderCreateDateAndTime;
 	}
 
 	public String getSuburb() {
@@ -248,13 +254,17 @@ public class Job implements Comparable<Job> {
 	public void setTravelTimeInSeconds(int travelTimeInSeconds) {
 		this.travelTimeInSeconds = travelTimeInSeconds;
 	}
-	
+
 	public GST getAssignedGST() {
 		return assignedGST;
 	}
-	
+
 	public void setAssignedGST(GST g) {
 		this.assignedGST = g;
+	}
+
+	public void setOrderCreateDateAndTime(LocalDateTime orderCreateDateAndTime) {
+		this.orderCreateDateAndTime = orderCreateDateAndTime;
 	}
 
 	@Override

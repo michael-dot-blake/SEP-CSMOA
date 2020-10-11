@@ -50,7 +50,7 @@ public class GSTFactory {
 			}
 			else {
 				System.out.println("GST File Not Found!");
-				System.out.println("WARNING!! Please Provide Proper File Name & File Diresctory");
+				System.out.println("WARNING!! Please Provide Proper File Name & File Directory");
 			
 				System.exit(0);
 			}
