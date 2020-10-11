@@ -97,8 +97,10 @@ public class AzureMapsApi {
 
 		URL url = new URL("https://atlas.microsoft.com/route/range/json?subscription-key=" + API_KEY
 				+ "&api-version=1.0&query=" + coord.getX() + "," + coord.getY() + "&timeBudgetInSec="
-				+ timeBudgetInSeconds + "&departAt=" + print(dateTime));
+				+ timeBudgetInSeconds + "&departAt=" + formatDateTime(dateTime));
 
+		System.out.println(formatDateTime(dateTime));
+		
 		URLConnection conn = url.openConnection();
 		HttpURLConnection http = (HttpURLConnection) conn;
 		http.setRequestMethod("GET");
@@ -229,7 +231,7 @@ public class AzureMapsApi {
 
 	}
 
-	public static String print(LocalDateTime dateTime) {
+	public static String formatDateTime(LocalDateTime dateTime) {
 		return dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 	}
 
