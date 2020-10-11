@@ -19,6 +19,7 @@ public class GSTFactory {
 			if(file.exists() && !file.isDirectory()) { 
 				
 				Scanner sc = new Scanner(file);
+				@SuppressWarnings("unused")
 				String header = sc.nextLine();
 				//System.out.println("GST header: "+header);
 				while (sc.hasNext()) {

@@ -25,6 +25,7 @@ public class JobFactory {
 			if(file.exists() && !file.isDirectory()) {
 				
 				Scanner sc = new Scanner(file);
+				@SuppressWarnings("unused")
 				String header = sc.nextLine();
 				//System.out.println("Job header: "+header);
 				while (sc.hasNext()) {
