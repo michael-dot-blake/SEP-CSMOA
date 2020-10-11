@@ -5,6 +5,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -93,9 +94,10 @@ public class AzureMapsApi {
 	 */
 	public static JsonObject getIsochroneCoords(Coordinate coord, int timeBudgetInSeconds, LocalDateTime dateTime)
 			throws IOException {
+
 		URL url = new URL("https://atlas.microsoft.com/route/range/json?subscription-key=" + API_KEY
 				+ "&api-version=1.0&query=" + coord.getX() + "," + coord.getY() + "&timeBudgetInSec="
-				+ timeBudgetInSeconds + "&departAt=" + dateTime);
+				+ timeBudgetInSeconds + "&departAt=" + print(dateTime));
 
 		URLConnection conn = url.openConnection();
 		HttpURLConnection http = (HttpURLConnection) conn;
@@ -227,26 +229,30 @@ public class AzureMapsApi {
 
 	}
 
+	public static String print(LocalDateTime dateTime) {
+		return dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+	}
+
 	public static void main(String[] args) throws IOException {
 
-		// test functionality for the api calls
-		LocalDateTime departAt = LocalDateTime.of(2020, 12, 19, 16, 39, 57);
-		Coordinate coord = getCoordinatesFromAddress("13", "Bundle St", "Caddens", "2747");
-		JsonObject jsonObj = getIsochroneCoords(coord, 6000, departAt);
-		Polygon p = BuildPolygon(jsonObj);
-
-		Coordinate gstCoord = new Coordinate(-33.78, 150.74);
-
-		// centre of isochrone. Should return true
-		Coordinate centerCoord = new Coordinate(-33.77494, 150.7393);
-
-		// edge point. Should return false
-		Coordinate edgeCoord = new Coordinate(-34.3018, 150.9385);
-
-		// coordinates for LosAngeles. Should return false
-		Coordinate losAngelesCoord = new Coordinate(34.0522, 118.2437);
-
-		System.out.println(getRouteTime(gstCoord, centerCoord));
+//		// test functionality for the api calls
+//		LocalDateTime departAt = LocalDateTime.of(2020, 12, 19, 16, 39, 57);
+//		Coordinate coord = getCoordinatesFromAddress("13", "Bundle St", "Caddens", "2747");
+//		JsonObject jsonObj = getIsochroneCoords(coord, 6000, departAt);
+//		Polygon p = BuildPolygon(jsonObj);
+//
+//		Coordinate gstCoord = new Coordinate(-33.78, 150.74);
+//
+//		// centre of isochrone. Should return true
+//		Coordinate centerCoord = new Coordinate(-33.77494, 150.7393);
+//
+//		// edge point. Should return false
+//		Coordinate edgeCoord = new Coordinate(-34.3018, 150.9385);
+//
+//		// coordinates for LosAngeles. Should return false
+//		Coordinate losAngelesCoord = new Coordinate(34.0522, 118.2437);
+//
+//		System.out.println(getRouteTime(gstCoord, centerCoord));
 //
 //		System.out.println(checkIfLocationInIsochrone(p, centerCoord));
 //		System.out.println(checkIfLocationInIsochrone(p, edgeCoord));
