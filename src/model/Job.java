@@ -3,6 +3,7 @@ package model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 
 import controller.Simulation;
 
@@ -38,6 +39,7 @@ public class Job implements Comparable<Job> {
 	// instance variables to be set prior to the creation of a completedJobRecord
 	// object
 	private LocalDateTime endDateAndTime;
+	private int idleTime;
 	private int travelTimeInSeconds;
 
 	/**
@@ -88,6 +90,7 @@ public class Job implements Comparable<Job> {
 		this.travelTimeInSeconds = travelTimeInSeconds;
 		this.endDateAndTime = endDateAndTime;
 		this.assignedGST = null;
+		this.idleTime = 0;
 
 	}
 
@@ -176,7 +179,7 @@ public class Job implements Comparable<Job> {
 	public LocalDateTime getOrderCreateDateAndTime() {
 		return orderCreateDateAndTime;
 	}
-	
+
 	public String getSuburb() {
 		return suburb;
 	}
@@ -260,6 +263,22 @@ public class Job implements Comparable<Job> {
 	public void setOrderCreateDateAndTime(LocalDateTime orderCreateDateAndTime) {
 		this.orderCreateDateAndTime = orderCreateDateAndTime;
 	}
+
+	public int getIdleTime() {
+		return idleTime;
+	}
+
+	public void setIdleTime(int idleTime) {
+		this.idleTime = idleTime;
+	}
+
+	public long calculateIdleTime(LocalDateTime orderCreateTime, LocalDateTime timeJobAssigned) {
+		
+		long seconds = orderCreateTime.until(timeJobAssigned, ChronoUnit.SECONDS);
+		return seconds;
+	}
+
+	
 
 	@Override
 	public int compareTo(Job o) {
