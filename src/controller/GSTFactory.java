@@ -9,6 +9,8 @@ import model.GST;
 
 public class GSTFactory {
 	
+	private static int numGSTs;
+	
 	private static ArrayList<GST> gstPool = new ArrayList<GST>();
 	
 	public static void readGSTsFromCSV(String filename) {
@@ -35,6 +37,9 @@ public class GSTFactory {
 						lat = Double.parseDouble(latString);
 						lon = Double.parseDouble(lonString);
 						gstPool.add(new GST(GSTid, lat, lon));
+						
+						//needs testing
+						numGSTs++;
 						gstAdded = true;
 					}
 					catch (Exception e) {
@@ -69,6 +74,10 @@ public class GSTFactory {
 	
 	public static ArrayList<GST> getGSTpool() {
 		return gstPool;
+	}
+
+	public static int getNumGSTs() {
+		return numGSTs;
 	}
 
 }
