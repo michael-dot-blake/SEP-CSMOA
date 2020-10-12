@@ -30,7 +30,9 @@ public class Simulation {
 
 	// Queue storage for jobs
 	private PriorityQueue<Job> jobQueue = new PriorityQueue<Job>();
-	
+
+	private PriorityQueue<Job> idleJobQueue = new PriorityQueue<Job>();
+
 	// Store completed jobs
 	private ArrayList<CompletedJobRecord> completedJobs = new ArrayList<CompletedJobRecord>();
 
@@ -41,8 +43,6 @@ public class Simulation {
 	private final String GST_FILE_PATH = "GSTFiles/gstData1.csv";
 
 	private void log(String avgTravelTime, String percentJobCompliance) throws SecurityException, IOException {
-		
-		
 
 		try {
 			Log myLog = new Log("log.log");
@@ -58,10 +58,10 @@ public class Simulation {
 		}
 	}
 
-	public static String formatSeconds(int travelTimeInSeconds) {
-		int seconds = travelTimeInSeconds % 60;
-		int mins = (travelTimeInSeconds / 60) % 60;
-		int hours = (travelTimeInSeconds / 60) / 60;
+	public static String formatSeconds(long timeInput) {
+		long seconds = timeInput % 60;
+		long mins = (timeInput / 60) % 60;
+		long hours = (timeInput / 60) / 60;
 		String timeString = String.format("%02d Hours %02d Minutes %02d Seconds ", hours, mins, seconds);
 		return timeString;
 
@@ -76,20 +76,39 @@ public class Simulation {
 
 	private void simulate(LocalDateTime currentTime, LocalDateTime endTime) throws SecurityException, IOException {
 
-		int totalTravelTime = 0;
 		int complianceCounter = 0;
+		long totalTravelTime = 0;
+		long jobIdleTime = 0;
 
 		do {
+			int availableGSTs = GSTFactory.getGSTpool().size() - busyGSTs.size();
 			for (Job j : JobFactory.getJobPool()) {
-				if (currentTime.isEqual(j.getOrderCreateDateAndTime())) {
+
+				if (currentTime.equals(j.getOrderCreateDateAndTime()) && availableGSTs == 0) {
+					idleJobQueue.add(j);
+					System.out.println("Idle Job Queue size is " + idleJobQueue.size());
+				}
+
+				if (currentTime.equals(j.getOrderCreateDateAndTime()) && availableGSTs > 0 && idleJobQueue.isEmpty()) {
+					System.out.println("BusyPool size is " + busyGSTs.size());
+					System.out.println("Total GSTs " + GSTFactory.getGSTpool().size());
 					jobQueue.add(j);
+					System.out.println("Job Queue size is " + jobQueue.size());
 				}
-				if (busyGSTs.size() == GSTFactory.getGSTpool().size()) {
-					//System.out.println("NO AVAILABLE GST at this Time!\n");
-					break;
+
+				if (!idleJobQueue.isEmpty() && availableGSTs > 0) {
+					for (Iterator<Job> iter = idleJobQueue.iterator(); iter.hasNext();) {
+						Job current = iter.next();
+						jobQueue.add(current);
+						jobIdleTime = current.calculateIdleTime(current.getOrderCreateDateAndTime(), currentTime);
+						current.setIdleTime(jobIdleTime);
+						iter.remove();
+						break;
+					}
 				}
+
 			}
-			
+
 			if (jobQueue.size() > 0) {
 				for (Job j : jobQueue) {
 					if (j.getAssignedGST() == null) {
@@ -106,46 +125,45 @@ public class Simulation {
 							travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
 							j.setTravelTimeInSeconds(travelTime);
 							System.out.println("Travel Time is: " + formatSeconds(travelTime) + "\n");
-							j.setEndDateAndTime(jobTime.plusMinutes(jobDuration).plusSeconds(travelTime));
+							j.setEndDateAndTime(
+									jobTime.plusMinutes(jobDuration).plusSeconds(travelTime).plusSeconds(jobIdleTime));
 							totalTravelTime = totalTravelTime + travelTime;
 							complianceCounter++;
 						} else {
 							System.out.println("No GST found within 30min!!!");
 							gst = findGstByStraightLineDistance(jobCoord, GSTFactory.getGSTpool());
-							
 							System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone");
 							Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
 							travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
 							j.setTravelTimeInSeconds(travelTime);
 							System.out.println("Travel Time is: " + formatSeconds(travelTime) + "\n");
-							j.setEndDateAndTime(jobTime.plusMinutes(jobDuration).plusSeconds(travelTime));
+							j.setEndDateAndTime(
+									jobTime.plusMinutes(jobDuration).plusSeconds(travelTime).plusSeconds(jobIdleTime));
 							totalTravelTime = totalTravelTime + travelTime;
 
 						}
 						if (gst != null) {
 							j.setAssignedGST(gst);
 							gst.setAvailable(false);
-							System.out.println("Job End Time is: " + j.getEndDateAndTime()+"\n");
+							System.out.println("Job End Time is: " + j.getEndDateAndTime() + "\n");
 							gst.setFinishTime(j.getEndDateAndTime().plusSeconds(travelTime));
 							busyGSTs.add(gst);
-							System.out.println("GST finish time is: "+gst.getFinishTime());
+							System.out.println("GST finish time is: " + gst.getFinishTime());
 							System.out.println("busyPool size: " + busyGSTs.size() + "\n");
 						}
 					}
 				}
-
-			}
-			for (Iterator<Job> jobQueueIter = jobQueue.iterator(); jobQueueIter.hasNext();) {
-				Job jo = jobQueueIter.next();
-				if (currentTime.equals(jo.getEndDateAndTime())) {
-					System.out.println(" ");
-					completedJobs.add(new CompletedJobRecord(jo.getAssignedGST(), jo));
-					jobQueueIter.remove();
+				for (Iterator<Job> jobQueueIter = jobQueue.iterator(); jobQueueIter.hasNext();) {
+					Job jo = jobQueueIter.next();
+					if (currentTime.equals(jo.getEndDateAndTime()) || currentTime.equals(jo.getEndDateAndTime().plusSeconds(jo.getIdleTime()))) {
+						System.out.println(" ");
+						completedJobs.add(new CompletedJobRecord(jo.getAssignedGST(), jo));
+						jobQueueIter.remove();
+					}
 				}
 			}
-			checkGstFinished(currentTime);
 
-			// System.out.println(currentTime);
+			checkGstFinished(currentTime);
 			currentTime = currentTime.plusSeconds(1);
 		} while (currentTime.isBefore(endTime));
 
@@ -155,7 +173,7 @@ public class Simulation {
 		if (jobsCompleted == 0) {
 			System.err.println("No Completed Jobs");
 		} else {
-			int avgTravelTime = totalTravelTime / jobsCompleted;
+			long avgTravelTime = totalTravelTime / jobsCompleted;
 			log(formatSeconds(avgTravelTime), str);
 		}
 
