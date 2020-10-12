@@ -61,9 +61,9 @@ public class GSTFactory {
 			System.out.println("Something went wrong with GST file.\n");
 			e.printStackTrace();
 		}
-		for (GST gst : gstPool) {
-			System.out.println(gst);
-		}
+//		for (GST gst : gstPool) {
+//			System.out.println(gst);
+//		}
 		System.out.println("\nGST init finish.\n");
 	}
 	

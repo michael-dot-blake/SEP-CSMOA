@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Deque;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.logging.Level;
@@ -31,16 +33,16 @@ public class Simulation {
 	// Queue storage for jobs
 	private PriorityQueue<Job> jobQueue = new PriorityQueue<Job>();
 
-	private PriorityQueue<Job> idleJobQueue = new PriorityQueue<Job>();
+	private Deque<Job> idleJobQueue = new ArrayDeque<Job>();
 
 	// Store completed jobs
 	private ArrayList<CompletedJobRecord> completedJobs = new ArrayList<CompletedJobRecord>();
 
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
 
-	private String JOB_FILE_PATH = "JobFiles/Jobs.csv";
+	private String JOB_FILE_PATH = "JobFiles/OneDayJob.csv";
 
-	private String GST_FILE_PATH = "GSTFiles/gstTestData.csv";
+	private String GST_FILE_PATH = "GSTFiles/gstData10.csv";
 	
 	private String LOG_FILE_NAME = "log.log";
 
@@ -51,6 +53,11 @@ public class Simulation {
 			System.out.println(">>>>>>>>>>>END>>>>>>>>>>>>>>");
 			for (CompletedJobRecord cj : completedJobs) {
 				myLog.logger.log(Level.INFO, " " + cj.toString());
+			}
+			
+			myLog.logger.log(Level.INFO, "The Following jobs were incomplete with current staffing");
+			for (Job ijq : idleJobQueue) {
+				myLog.logger.log(Level.INFO, " " + ijq.toString());
 			}
 			myLog.logger.log(Level.INFO, "Average Travel Time: " + avgTravelTime);
 			myLog.logger.log(Level.INFO, "Percent Compliance: " + percentJobCompliance + "%");
@@ -87,7 +94,7 @@ public class Simulation {
 			for (Job j : JobFactory.getJobPool()) {
 
 				if (currentTime.equals(j.getOrderCreateDateAndTime()) && availableGSTs == 0) {
-					idleJobQueue.add(j);
+					idleJobQueue.addLast(j);
 					System.out.println("Idle Job Queue size is " + idleJobQueue.size());
 				}
 
@@ -98,17 +105,17 @@ public class Simulation {
 					System.out.println("Job Queue size is " + jobQueue.size());
 				}
 
-				if (!idleJobQueue.isEmpty() && availableGSTs > 0) {
-					for (Iterator<Job> iter = idleJobQueue.iterator(); iter.hasNext();) {
+				if (!idleJobQueue.isEmpty() && availableGSTs > 0 && jobQueue.isEmpty()) {
+					Iterator<Job> iter = idleJobQueue.iterator(); iter.hasNext(); {
 						Job current = iter.next();
 						jobQueue.add(current);
+						System.out.println("Job Added from idle to active queue");
 						jobIdleTime = current.calculateIdleTime(current.getOrderCreateDateAndTime(), currentTime);
 						current.setIdleTime(jobIdleTime);
 						iter.remove();
-						break;
 					}
 				}
-
+			
 			}
 
 			if (jobQueue.size() > 0) {
@@ -118,9 +125,7 @@ public class Simulation {
 						LocalDateTime jobTime = j.getOrderCreateDateAndTime();
 						int jobDuration = j.getJobDuration();
 						GST gst = findClosestGst(jobCoord, 1800, jobTime);
-						System.out.println("For Job " + j.getOrderNum());
 						int travelTime = 0;
-
 						if (gst != null) {
 							System.out.println("Found GST: " + gst.getgSTid() + " in 30min isochrone.");
 							Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
@@ -159,7 +164,7 @@ public class Simulation {
 				for (Iterator<Job> jobQueueIter = jobQueue.iterator(); jobQueueIter.hasNext();) {
 					Job jo = jobQueueIter.next();
 					if (currentTime.equals(jo.getEndDateAndTime()) || currentTime.equals(jo.getEndDateAndTime().plusSeconds(jo.getIdleTime()))) {
-						System.out.println(" ");
+						System.out.println("Job Completed");
 						completedJobs.add(new CompletedJobRecord(jo.getAssignedGST(), jo));
 						jobQueueIter.remove();
 					}
@@ -171,7 +176,8 @@ public class Simulation {
 		} while (currentTime.isBefore(endTime));
 
 		int jobsCompleted = completedJobs.size();
-		float complianceRate = (float) complianceCounter / jobsCompleted * 100;
+		int incompleteJobs = idleJobQueue.size();
+		float complianceRate = (float) complianceCounter / (jobsCompleted+incompleteJobs) * 100;
 		String str = String.format("%2.02f", complianceRate);
 		if (jobsCompleted == 0) {
 			System.err.println("No Completed Jobs");

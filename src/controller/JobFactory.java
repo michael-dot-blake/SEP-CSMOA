@@ -98,8 +98,8 @@ public class JobFactory {
 		}
 		
 		System.out.println("\nAdded "+getJobPool().size()+" Jobs from the file:\n");
-		for(Job j : jobPool)
-			System.out.println(j);
+//		for(Job j : jobPool)
+//			System.out.println(j);
 		System.out.println("\ninit jobs finish.");
 	}
 

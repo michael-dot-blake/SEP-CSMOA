@@ -274,7 +274,7 @@ public class Job implements Comparable<Job> {
 
 	public long calculateIdleTime(LocalDateTime orderCreateTime, LocalDateTime timeJobAssigned) {
 		long seconds = orderCreateTime.until(timeJobAssigned, ChronoUnit.SECONDS);
-		System.out.println(seconds);
+		//System.out.println(seconds);
 		return seconds;
 	}
 
