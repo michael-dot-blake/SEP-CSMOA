@@ -93,11 +93,6 @@ public class Simulation {
 			int availableGSTs = GSTFactory.getGSTpool().size() - busyGSTs.size();
 			for (Job j : JobFactory.getJobPool()) {
 
-				if (currentTime.equals(j.getOrderCreateDateAndTime()) && availableGSTs == 0) {
-					idleJobQueue.addLast(j);
-					System.out.println("Idle Job Queue size is " + idleJobQueue.size());
-				}
-
 				if (currentTime.equals(j.getOrderCreateDateAndTime()) && availableGSTs > 0 && idleJobQueue.isEmpty()) {
 					System.out.println("BusyPool size is " + busyGSTs.size());
 					System.out.println("Total GSTs " + GSTFactory.getGSTpool().size());
@@ -115,6 +110,12 @@ public class Simulation {
 						iter.remove();
 					}
 				}
+				
+				if (currentTime.equals(j.getOrderCreateDateAndTime()) && availableGSTs == 0) {
+					idleJobQueue.addLast(j);
+					System.out.println("Idle Job Queue size is " + idleJobQueue.size());
+				}
+
 			
 			}
 
@@ -154,24 +155,18 @@ public class Simulation {
 							gst.setAvailable(false);
 							System.out.println("Job End Time is: " + j.getEndDateAndTime() + "\n");
 							System.out.println("Job Idle Time is: " + j.getIdleTime() + "\n");
-							gst.setFinishTime(j.getEndDateAndTime().plusSeconds(travelTime));
+							gst.setFinishTime(j.getEndDateAndTime().plusSeconds(travelTime).plusSeconds(j.getIdleTime()));
 							busyGSTs.add(gst);
 							System.out.println("GST finish time is: " + gst.getFinishTime());
 							System.out.println("busyPool size: " + busyGSTs.size() + "\n");
 						}
 					}
 				}
-				for (Iterator<Job> jobQueueIter = jobQueue.iterator(); jobQueueIter.hasNext();) {
-					Job jo = jobQueueIter.next();
-					if (currentTime.equals(jo.getEndDateAndTime()) || currentTime.equals(jo.getEndDateAndTime().plusSeconds(jo.getIdleTime()))) {
-						System.out.println("Job Completed");
-						completedJobs.add(new CompletedJobRecord(jo.getAssignedGST(), jo));
-						jobQueueIter.remove();
-					}
-				}
+				
 			}
 
 			checkGstFinished(currentTime);
+			removeCompletedJobFromQueue(currentTime);
 			currentTime = currentTime.plusSeconds(1);
 		} while (currentTime.isBefore(endTime));
 
@@ -186,6 +181,18 @@ public class Simulation {
 			log(formatSeconds(avgTravelTime), str);
 		}
 
+	}
+	
+	private void removeCompletedJobFromQueue(LocalDateTime currentTime) {
+		for (Iterator<Job> jobQueueIter = jobQueue.iterator(); jobQueueIter.hasNext();) {
+			Job jo = jobQueueIter.next();
+			if (currentTime.equals(jo.getEndDateAndTime()) || currentTime.equals(jo.getEndDateAndTime().plusSeconds(jo.getIdleTime()))) {
+				System.out.println("Job Completed");
+				completedJobs.add(new CompletedJobRecord(jo.getAssignedGST(), jo));
+				jobQueueIter.remove();
+			}
+		}
+		
 	}
 
 	private Coordinate getJobLocation(Job j) throws IOException {
