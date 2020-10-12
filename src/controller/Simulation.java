@@ -36,16 +36,18 @@ public class Simulation {
 
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
 
-	private final String JOB_FILE_PATH = "JobFiles/FutureJobs.csv";
+	private String JOB_FILE_PATH = "JobFiles/Jobs.csv";
 
-	private final String GST_FILE_PATH = "GSTFiles/gstData1.csv";
+	private String GST_FILE_PATH = "GSTFiles/gstTestData.csv";
+	
+	private String LOG_FILE_NAME = "log.log";
 
 	private void log(String avgTravelTime, String percentJobCompliance) throws SecurityException, IOException {
 		
 		
 
 		try {
-			Log myLog = new Log("log.log");
+			Log myLog = new Log(LOG_FILE_NAME);
 			System.out.println(">>>>>>>>>>>END>>>>>>>>>>>>>>");
 			for (CompletedJobRecord cj : completedJobs) {
 				myLog.logger.log(Level.INFO, " " + cj.toString());
@@ -260,10 +262,19 @@ public class Simulation {
 		simulate(start, end);
 
 	}
+	
+	private void initFileNames(String jobFile, String gstFile, String outputFile) {
+		JOB_FILE_PATH = jobFile;
+		GST_FILE_PATH = gstFile;
+		LOG_FILE_NAME = outputFile;
+	}
 
 	public static void main(String[] args) throws SecurityException, IOException {
 
 		Simulation s = new Simulation();
+		if (args.length == 3) {
+			s.initFileNames(args[0], args[1], args[2]);
+		}
 		s.runSimulation();
 
 	}// end main
