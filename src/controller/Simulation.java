@@ -148,7 +148,6 @@ public class Simulation {
 							j.setAssignedGST(gst);
 							gst.setAvailable(false);
 							System.out.println("Job End Time is: " + j.getEndDateAndTime() + "\n");
-							System.out.println("Job Idle Time is: " + j.getIdleTime() + "\n");
 							gst.setFinishTime(j.getEndDateAndTime().plusSeconds(travelTime));
 							busyGSTs.add(gst);
 							System.out.println("GST finish time is: " + gst.getFinishTime());
