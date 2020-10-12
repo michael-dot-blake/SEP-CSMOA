@@ -84,12 +84,12 @@ public class Simulation {
 				if (currentTime.isEqual(j.getOrderCreateDateAndTime())) {
 					jobQueue.add(j);
 				}
-				
-			if (busyGSTs.size() == GSTFactory.getGSTpool().size()) {
-				break;
+				if (busyGSTs.size() == GSTFactory.getGSTpool().size()) {
+					//System.out.println("NO AVAILABLE GST at this Time!\n");
+					break;
+				}
 			}
-				
-			}
+			
 			if (jobQueue.size() > 0) {
 				for (Job j : jobQueue) {
 					if (j.getAssignedGST() == null) {
@@ -98,11 +98,12 @@ public class Simulation {
 						int jobDuration = j.getJobDuration();
 						GST gst = findClosestGst(jobCoord, 1800, jobTime);
 						System.out.println("For Job " + j.getOrderNum());
+						int travelTime = 0;
 
 						if (gst != null) {
 							System.out.println("Found GST: " + gst.getgSTid() + " in 30min isochrone.");
 							Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
-							int travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
+							travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
 							j.setTravelTimeInSeconds(travelTime);
 							System.out.println("Travel Time is: " + formatSeconds(travelTime) + "\n");
 							j.setEndDateAndTime(jobTime.plusMinutes(jobDuration).plusSeconds(travelTime));
@@ -111,25 +112,23 @@ public class Simulation {
 						} else {
 							System.out.println("No GST found within 30min!!!");
 							gst = findGstByStraightLineDistance(jobCoord, GSTFactory.getGSTpool());
+							
+							System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone");
+							Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
+							travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
+							j.setTravelTimeInSeconds(travelTime);
+							System.out.println("Travel Time is: " + formatSeconds(travelTime) + "\n");
+							j.setEndDateAndTime(jobTime.plusMinutes(jobDuration).plusSeconds(travelTime));
+							totalTravelTime = totalTravelTime + travelTime;
 
-							if (gst == null) {
-								System.out.println("NO AVAILABLE GST at this Time!\n");
-							} else {
-								System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone");
-								Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
-								int travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
-								j.setTravelTimeInSeconds(travelTime);
-								System.out.println("Travel Time is: " + formatSeconds(travelTime) + "\n");
-								j.setEndDateAndTime(jobTime.plusMinutes(jobDuration).plusSeconds(travelTime));
-								totalTravelTime = totalTravelTime + travelTime;
-							}
 						}
 						if (gst != null) {
 							j.setAssignedGST(gst);
 							gst.setAvailable(false);
-							System.out.println("Job End Time is: " + j.getEndDateAndTime());
-							gst.setFinishTime(j.getEndDateAndTime());
+							System.out.println("Job End Time is: " + j.getEndDateAndTime()+"\n");
+							gst.setFinishTime(j.getEndDateAndTime().plusSeconds(travelTime));
 							busyGSTs.add(gst);
+							System.out.println("GST finish time is: "+gst.getFinishTime());
 							System.out.println("busyPool size: " + busyGSTs.size() + "\n");
 						}
 					}
