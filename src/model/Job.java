@@ -39,7 +39,7 @@ public class Job implements Comparable<Job> {
 	// instance variables to be set prior to the creation of a completedJobRecord
 	// object
 	private LocalDateTime endDateAndTime;
-	private int idleTime;
+	private long idleTime;
 	private int travelTimeInSeconds;
 
 	/**
@@ -264,17 +264,17 @@ public class Job implements Comparable<Job> {
 		this.orderCreateDateAndTime = orderCreateDateAndTime;
 	}
 
-	public int getIdleTime() {
+	public void setIdleTime(long idleTime) {
+		this.idleTime = idleTime;
+	}
+	
+	public long getIdleTime() {
 		return idleTime;
 	}
 
-	public void setIdleTime(int idleTime) {
-		this.idleTime = idleTime;
-	}
-
 	public long calculateIdleTime(LocalDateTime orderCreateTime, LocalDateTime timeJobAssigned) {
-		
 		long seconds = orderCreateTime.until(timeJobAssigned, ChronoUnit.SECONDS);
+		System.out.println(seconds);
 		return seconds;
 	}
 
@@ -290,7 +290,7 @@ public class Job implements Comparable<Job> {
 		return "Job [Number: " + orderNum + ", FitterDistrict: " + fitterDistrict + " Job Priority: " + jobPriority
 				+ ", Activity Type: " + mainActType + ", Starting Date: " + orderCreateDate + ", Starting Time: "
 				+ orderCreateTime + ", Duration: " + jobDurationInMinutes + ", Travel Time: "
-				+ Simulation.formatSeconds(travelTimeInSeconds) + " ,End Date And Time: " + endDateAndTime + "]";
+				+ Simulation.formatSeconds(travelTimeInSeconds) +", Idle Time: " +Simulation.formatSeconds(idleTime) + ", End Date And Time: " + endDateAndTime + "]";
 	}
 
 }
