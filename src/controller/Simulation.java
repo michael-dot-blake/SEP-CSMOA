@@ -42,9 +42,9 @@ public class Simulation {
 
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
 
-	private String JOB_FILE_PATH = "JobFiles/OneDayJob.csv";
+	private String JOB_FILE_PATH = "JobFiles/testHisData.csv";
 
-	private String GST_FILE_PATH = "GSTFiles/gstTestData.csv";
+	private String GST_FILE_PATH = "GSTFiles/gstData1.csv";
 
 	private String LOG_FILE_NAME = "log.log";
 
@@ -70,10 +70,10 @@ public class Simulation {
 	}
 
 	public static String formatSeconds(long timeInput) {
-		long seconds = timeInput % 60;
+//		long seconds = timeInput % 60;
 		long mins = (timeInput / 60) % 60;
 		long hours = (timeInput / 60) / 60;
-		String timeString = String.format("%02d Hours %02d Minutes %02d Seconds ", hours, mins, seconds);
+		String timeString = String.format("%02d Minutes ", (hours * 60)+mins);
 		return timeString;
 
 	}
@@ -310,11 +310,12 @@ public class Simulation {
 	private void runSimulation() throws SecurityException, IOException {
 		JobFactory.readJobsFromCSV(JOB_FILE_PATH);
 		GSTFactory.readGSTsFromCSV(GST_FILE_PATH);
-		LocalDate startDate = JobFactory.getJobPool().get(0).getOrderCreateDate();
-		LocalDate endDate = JobFactory.getJobPool().get(JobFactory.getJobPool().size() - 1).getOrderCreateDate();
-		LocalDateTime start = LocalDateTime.of(startDate, LocalTime.MIN);
-		LocalDateTime end = LocalDateTime.of(endDate, LocalTime.MAX);
-		simulate(start, end);
+		LocalDateTime startDate = JobFactory.getJobPool().get(0).getOrderCreateDateAndTime();
+		LocalDateTime endDate = JobFactory.getJobPool().get(JobFactory.getJobPool().size() - 1).getOrderCreateDateAndTime().plusDays(1);
+//		LocalDateTime start = LocalDateTime.(startDate);
+//		LocalDateTime end = LocalDateTime.of(endDate, LocalTime.MAX);
+//		simulate(start, end);
+		simulate(startDate, endDate);
 
 	}
 
