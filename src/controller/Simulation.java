@@ -1,9 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,7 +44,7 @@ public class Simulation {
 
 	private String GST_FILE_PATH = "GSTFiles/gstData1.csv";
 
-	private String LOG_FILE_NAME = "log.log";
+	private static final String LOG_FILE_NAME = "log.log";
 
 	private void log(String avgTravelTime, String percentJobCompliance) throws SecurityException, IOException {
 
@@ -63,7 +61,8 @@ public class Simulation {
 			}
 			myLog.logger.log(Level.INFO, "Average Travel Time: " + avgTravelTime);
 			myLog.logger.log(Level.INFO, "Percent Compliance: " + percentJobCompliance + "%");
-
+			
+			myLog.fh.close();
 		} catch (Exception e) {
 
 		}
@@ -73,7 +72,7 @@ public class Simulation {
 //		long seconds = timeInput % 60;
 		long mins = (timeInput / 60) % 60;
 		long hours = (timeInput / 60) / 60;
-		String timeString = String.format("%02d Minutes ", (hours * 60)+mins);
+		String timeString = String.format("%02d Minutes", (hours * 60)+mins);
 		return timeString;
 
 	}
@@ -322,7 +321,7 @@ public class Simulation {
 	private void initFileNames(String jobFile, String gstFile, String outputFile) {
 		JOB_FILE_PATH = jobFile;
 		GST_FILE_PATH = gstFile;
-		LOG_FILE_NAME = outputFile;
+//		LOG_FILE_NAME = outputFile;
 	}
 
 	public static void main(String[] args) throws SecurityException, IOException {
