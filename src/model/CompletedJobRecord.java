@@ -21,7 +21,7 @@ public class CompletedJobRecord {
 
 	@Override
 	public String toString() {
-		return "CompletedJobRecord [gst=" + gst + ", job=" + job + "]";
+		return "CompletedJobRecord: [Assigned "+ gst + "," + job + "]";
 	}
 	
 	
