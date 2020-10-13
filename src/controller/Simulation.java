@@ -92,8 +92,6 @@ public class Simulation {
 		long jobIdleTime = 0;
 		availableGSTPool = GSTFactory.getGSTpool();
 
-		// currently method not properly removing jobs from queue. However not crashing
-		// when GST not found
 		do {
 			int availableGSTs = availableGSTPool.size();
 			for (Job j : JobFactory.getJobPool()) {
