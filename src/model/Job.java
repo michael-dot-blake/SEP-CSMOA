@@ -292,10 +292,9 @@ public class Job implements Comparable<Job> {
 
 	@Override
 	public String toString() {
-		return "Job [Number: " + orderNum + ", FitterDistrict: " + fitterDistrict + " Job Priority: " + jobPriority
-				+ ", Activity Type: " + mainActType + ", Starting Date: " + orderCreateDate + ", Starting Time: "
-				+ orderCreateTime + ", Duration: " + jobDurationInMinutes + ", Travel Time: "
-				+ Simulation.formatSeconds(travelTimeInSeconds) + ", Idle Time: " + Simulation.formatSeconds(idleTime)
+		return " Job [Num: " + orderNum + ", FitterDistrict: " + fitterDistrict + " Job Priority: " + jobPriority
+				+ ", Start Date and Time: " + getOrderCreateDateAndTime() + ", Duration: " + jobDurationInMinutes +", Travel_Time: "
+				+ Simulation.formatSeconds(travelTimeInSeconds) + ", Idle_Time: " + Simulation.formatSeconds(idleTime)
 				+ ", End Date And Time: " + endDateAndTime + "]";
 	}
 
