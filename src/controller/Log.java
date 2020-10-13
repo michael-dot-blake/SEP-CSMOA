@@ -23,7 +23,6 @@ public class Log {
 			logger.addHandler(fh);
 			SimpleFormatter formatter = new SimpleFormatter();
 			fh.setFormatter(formatter);
-			fh.close();
 		
 	}
 
