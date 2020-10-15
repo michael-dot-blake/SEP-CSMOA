@@ -61,9 +61,10 @@ public class JobFactory {
 						//The following variables will be empty when a job is created and set when the job is completed
 						LocalDateTime endDateAndTime = null;
 						int travelTimeInSeconds = 0;
+						int idleTime = 0;
 						
 						jobPool.removeIf(jo -> jobOrderNum == (jo.getOrderNum()));
-						jobPool.add(new Job(jobOrderNum, jobType, jobDescription, jobIssueCode, jobIssueDescrp, jobActType, jobActDescrp, jobDate, jobTime, jobDateAndTime, jobPriority, jobSuburb, jobStreet, houseNum1, houseNum2, postCode, fitterDistrict, jobDurationInMinutes, travelTimeInSeconds, endDateAndTime));
+						jobPool.add(new Job(jobOrderNum, jobType, jobDescription, jobIssueCode, jobIssueDescrp, jobActType, jobActDescrp, jobDate, jobTime, jobDateAndTime, jobPriority, jobSuburb, jobStreet, houseNum1, houseNum2, postCode, fitterDistrict, jobDurationInMinutes, idleTime, travelTimeInSeconds, endDateAndTime));
 						jobAdded = true;
 						ListSort(jobPool);
 					}
