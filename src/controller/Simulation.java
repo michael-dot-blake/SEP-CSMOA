@@ -8,12 +8,13 @@ import java.util.Collections;
 import java.util.Deque;
 import java.util.Iterator;
 import java.util.PriorityQueue;
-import java.util.logging.Level;
 
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Polygon;
 
 import com.google.gson.JsonObject;
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 import model.CompletedJobRecord;
 import model.GST;
@@ -40,39 +41,17 @@ public class Simulation {
 
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
 
-	private String JOB_FILE_PATH = "JobFiles/testHisData.csv";
+	private String JOB_FILE_PATH = "JobFiles/jobTestData.csv";
 
-	private String GST_FILE_PATH = "GSTFiles/gstData1.csv";
+	private String GST_FILE_PATH = "GSTFiles/gstData10.csv";
 
-	private static final String LOG_FILE_NAME = "log.log";
-
-	private void log(String avgTravelTime, String percentJobCompliance) throws SecurityException, IOException {
-
-		try {
-			Log myLog = new Log(LOG_FILE_NAME);
-			System.out.println(">>>>>>>>>>>END>>>>>>>>>>>>>>");
-			for (CompletedJobRecord cj : completedJobs) {
-				myLog.logger.log(Level.INFO, " " + cj.toString());
-			}
-
-			myLog.logger.log(Level.INFO, "The Following jobs were incomplete with current staffing");
-			for (Job ijq : idleJobQueue) {
-				myLog.logger.log(Level.INFO, " " + ijq.toString());
-			}
-			myLog.logger.log(Level.INFO, "Average Travel Time: " + avgTravelTime);
-			myLog.logger.log(Level.INFO, "Percent Compliance: " + percentJobCompliance + "%");
-			
-			myLog.fh.close();
-		} catch (Exception e) {
-
-		}
-	}
+	private static final String LOG_FILE_NAME = "output.csv";
 
 	public static String formatSeconds(long timeInput) {
-//		long seconds = timeInput % 60;
+		// long seconds = timeInput % 60;
 		long mins = (timeInput / 60) % 60;
-		long hours = (timeInput / 60) / 60;
-		String timeString = String.format("%02d Minutes", (hours * 60)+mins);
+		// long hours = (timeInput / 60) / 60;
+		String timeString = String.format("%02d Minutes", mins);
 		return timeString;
 
 	}
@@ -82,13 +61,17 @@ public class Simulation {
 	 * 
 	 * @throws IOException
 	 * @throws SecurityException
+	 * @throws CsvRequiredFieldEmptyException
+	 * @throws CsvDataTypeMismatchException
+	 * @throws InterruptedException
 	 */
 
-	private void simulate(LocalDateTime currentTime, LocalDateTime endTime) throws SecurityException, IOException {
+	private void simulate(LocalDateTime currentTime, LocalDateTime endTime) throws SecurityException, IOException,
+			CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, InterruptedException {
 
 		int complianceCounter = 0;
 		long totalTravelTime = 0;
-		long jobIdleTime = 0;
+		int jobIdleTime = 0;
 		availableGSTPool = GSTFactory.getGSTpool();
 
 		do {
@@ -104,10 +87,11 @@ public class Simulation {
 					iter.hasNext();
 					{
 						Job current = iter.next();
-						jobQueue.add(current);
 						System.out.println("Job Added from idle to active queue");
-						jobIdleTime = current.calculateIdleTime(current.getOrderCreateDateAndTime(), currentTime);
+						jobIdleTime = Job.calculateIdleTime(current.getOrderCreateDateAndTime(), currentTime);
 						current.setIdleTime(jobIdleTime);
+						current.setEndDateAndTime(current.getOrderCreateDateAndTime().plusMinutes(jobIdleTime));
+						jobQueue.add(current);
 						iter.remove();
 						break;
 					}
@@ -140,13 +124,12 @@ public class Simulation {
 									jobTime.plusMinutes(jobDuration).plusSeconds(travelTime).plusSeconds(jobIdleTime));
 							totalTravelTime = totalTravelTime + travelTime;
 							j.setAssignedGST(gst);
-							gst.setAvailable(false);
 							System.out.println("Job End Time is: " + j.getEndDateAndTime() + "\n");
 							System.out.println("Job Idle Time is: " + formatSeconds(j.getIdleTime()) + "\n");
 							gst.setFinishTime(
 									j.getEndDateAndTime().plusSeconds(travelTime).plusSeconds(j.getIdleTime()));
-							busyGSTs.add(gst);
 							availableGSTPool.remove(gst);
+							busyGSTs.add(gst);
 							System.out.println("GST finish time is: " + gst.getFinishTime());
 							System.out.println("busyPool size: " + busyGSTs.size() + "\n");
 							complianceCounter++;
@@ -162,9 +145,8 @@ public class Simulation {
 									jobTime.plusMinutes(jobDuration).plusSeconds(travelTime).plusSeconds(jobIdleTime));
 							totalTravelTime = totalTravelTime + travelTime;
 							j.setAssignedGST(gst);
-							gst.setAvailable(false);
 							System.out.println("Job End Time is: " + j.getEndDateAndTime() + "\n");
-							System.out.println("Job Idle Time is: " + j.getIdleTime() + "\n");
+							System.out.println("Job Idle Time is: " + formatSeconds(j.getIdleTime()) + "\n");
 							gst.setFinishTime(
 									j.getEndDateAndTime().plusSeconds(travelTime).plusSeconds(j.getIdleTime()));
 							busyGSTs.add(gst);
@@ -181,21 +163,28 @@ public class Simulation {
 
 				}
 			}
-
-			checkGstFinished(currentTime);
 			removeCompletedJobFromQueue(currentTime);
+			checkGstFinished(currentTime);
 			currentTime = currentTime.plusSeconds(1);
 		} while (currentTime.isBefore(endTime));
 
 		int jobsCompleted = completedJobs.size();
 		int incompleteJobs = idleJobQueue.size();
-		float complianceRate = (float) complianceCounter / (jobsCompleted + incompleteJobs) * 100;
-		String str = String.format("%2.02f", complianceRate);
 		if (jobsCompleted == 0) {
 			System.err.println("No Completed Jobs");
 		} else {
 			long avgTravelTime = totalTravelTime / jobsCompleted;
-			log(formatSeconds(avgTravelTime), str);
+			float complianceRate = (float) complianceCounter / (jobsCompleted + incompleteJobs) * 100;
+			String compString = "Compliance Rate: " + (String.format("%.0f%%",complianceRate));
+			String travTimeString = "Travel Time Mins: " + (avgTravelTime/60);
+			String incompleteJobString = "Incomplete Jobs: " + Integer.toString(incompleteJobs);
+			String[] comp = new String[] { compString };
+			String[] trav = new String[] { travTimeString };
+			String[] incomplete = new String[] { incompleteJobString };
+			Log.writeToCsv(completedJobs, LOG_FILE_NAME);
+			Log.appendSingleLineToCSV(comp, LOG_FILE_NAME);
+			Log.appendSingleLineToCSV(trav, LOG_FILE_NAME);
+			Log.appendSingleLineToCSV(incomplete, LOG_FILE_NAME);
 		}
 
 	}
@@ -203,8 +192,7 @@ public class Simulation {
 	private void removeCompletedJobFromQueue(LocalDateTime currentTime) {
 		for (Iterator<Job> jobQueueIter = jobQueue.iterator(); jobQueueIter.hasNext();) {
 			Job jo = jobQueueIter.next();
-			if (currentTime.equals(jo.getEndDateAndTime())
-					|| currentTime.equals(jo.getEndDateAndTime().plusSeconds(jo.getIdleTime()))) {
+			if (currentTime.equals(jo.getEndDateAndTime().plusMinutes(jo.getIdleTime()))) {
 				System.out.println("Job Completed");
 				completedJobs.add(new CompletedJobRecord(jo.getAssignedGST(), jo));
 				jobQueueIter.remove();
@@ -231,7 +219,7 @@ public class Simulation {
 
 		for (GST g : GSTFactory.getGSTpool()) {
 			Coordinate gstCoord = new Coordinate(g.getLat(), g.getLon());
-			if (AzureMapsApi.checkIfLocationInIsochrone(poly, gstCoord) && g.getIsAvailable()) {
+			if (AzureMapsApi.checkIfLocationInIsochrone(poly, gstCoord)) {
 				nearbyGSTs.add(g);
 				// System.out.println(nearbyGSTs.size());
 			}
@@ -279,7 +267,7 @@ public class Simulation {
 		for (GST g : gstPool) {
 			gx = g.getLat();
 			gy = g.getLon();
-			if (calcDistance(jx, jy, gx, gy) < minDistance && g.getIsAvailable()) {
+			if (calcDistance(jx, jy, gx, gy) < minDistance) {
 				minDistance = calcDistance(jx, jy, gx, gy);
 				closeGst = g;
 			}
@@ -295,25 +283,23 @@ public class Simulation {
 		for (Iterator<GST> busyGSTIter = busyGSTs.iterator(); busyGSTIter.hasNext();) {
 			GST go = busyGSTIter.next();
 			if (currTime.equals(go.getFinishTime())) {
-				go.setAvailable(true);
 				go.setFinishTime(null);
 				System.out.println("GST re-added to availablePool");
-				availableGSTPool.add(go);
 				busyGSTIter.remove();
+				availableGSTPool.add(go);
 				System.out.println("GST Removed from BusyPool");
 
 			}
 		}
 	}
 
-	private void runSimulation() throws SecurityException, IOException {
+	private void runSimulation() throws SecurityException, IOException, CsvDataTypeMismatchException,
+			CsvRequiredFieldEmptyException, InterruptedException {
 		JobFactory.readJobsFromCSV(JOB_FILE_PATH);
 		GSTFactory.readGSTsFromCSV(GST_FILE_PATH);
 		LocalDateTime startDate = JobFactory.getJobPool().get(0).getOrderCreateDateAndTime();
-		LocalDateTime endDate = JobFactory.getJobPool().get(JobFactory.getJobPool().size() - 1).getOrderCreateDateAndTime().plusDays(1);
-//		LocalDateTime start = LocalDateTime.(startDate);
-//		LocalDateTime end = LocalDateTime.of(endDate, LocalTime.MAX);
-//		simulate(start, end);
+		LocalDateTime endDate = JobFactory.getJobPool().get(JobFactory.getJobPool().size() - 1)
+				.getOrderCreateDateAndTime().plusDays(1);
 		simulate(startDate, endDate);
 
 	}
@@ -324,7 +310,8 @@ public class Simulation {
 //		LOG_FILE_NAME = outputFile;
 	}
 
-	public static void main(String[] args) throws SecurityException, IOException {
+	public static void main(String[] args) throws SecurityException, IOException, CsvDataTypeMismatchException,
+			CsvRequiredFieldEmptyException, InterruptedException {
 
 		Simulation s = new Simulation();
 		if (args.length == 3) {
