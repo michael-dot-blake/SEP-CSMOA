@@ -1,28 +1,34 @@
 package controller;
 
-import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
+import java.io.Writer;
+import java.util.List;
+
+import com.opencsv.CSVWriter;
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 public class Log {
 	
-	public Logger logger;
-	FileHandler fh;
+	public static <T> void writeToCsv(List<T> list, String filename)
+			throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, InterruptedException {
+		Writer writer = new FileWriter(filename);
+
+		StatefulBeanToCsv<T> beanToCsv = new StatefulBeanToCsvBuilder<T>(writer)
+				.withSeparator(',').withLineEnd(CSVWriter.DEFAULT_LINE_END).withOrderedResults(true).build();
+		beanToCsv.write(list);
+		beanToCsv.getCapturedExceptions();
+		writer.close();
+
+	}
 	
-	public Log(String file_name) throws SecurityException, IOException {
-		
-		File f = new File(file_name);
-		if(!f.exists()) {
-			f.createNewFile();
-		}
-		
-		fh = new FileHandler(file_name, true); 
-			logger = Logger.getLogger("test");
-			logger.addHandler(fh);
-			SimpleFormatter formatter = new SimpleFormatter();
-			fh.setFormatter(formatter);
+	public static void appendSingleLineToCSV(String[] textToAppend, String filename) throws IOException {
+		 CSVWriter writer = new CSVWriter(new FileWriter(filename, true));
+		 writer.writeNext(textToAppend);
+		 writer.close();
 		
 	}
 
