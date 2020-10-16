@@ -45,7 +45,7 @@ public class Simulation {
 
 	private String GST_FILE_PATH = "GSTFiles/gstData10.csv";
 
-	private static final String LOG_FILE_NAME = "output.csv";
+	private String LOG_FILE_NAME = "output.csv";
 
 	public static String formatSeconds(long timeInput) {
 		// long seconds = timeInput % 60;
@@ -156,7 +156,6 @@ public class Simulation {
 						} else {
 							System.out.println("No GST available");
 							break;
-
 						}
 
 					}
@@ -175,8 +174,8 @@ public class Simulation {
 		} else {
 			long avgTravelTime = totalTravelTime / jobsCompleted;
 			float complianceRate = (float) complianceCounter / (jobsCompleted + incompleteJobs) * 100;
-			String compString = "Compliance Rate: " + (String.format("%.0f%%",complianceRate));
-			String travTimeString = "Travel Time Mins: " + (avgTravelTime/60);
+			String compString = "Compliance Rate: " + (String.format("%.0f%%", complianceRate));
+			String travTimeString = "Travel Time Mins: " + (avgTravelTime / 60);
 			String incompleteJobString = "Incomplete Jobs: " + Integer.toString(incompleteJobs);
 			String[] comp = new String[] { compString };
 			String[] trav = new String[] { travTimeString };
@@ -188,7 +187,11 @@ public class Simulation {
 		}
 
 	}
-
+	
+	/**
+	 * @param currentTime
+	 * 
+	 */
 	private void removeCompletedJobFromQueue(LocalDateTime currentTime) {
 		for (Iterator<Job> jobQueueIter = jobQueue.iterator(); jobQueueIter.hasNext();) {
 			Job jo = jobQueueIter.next();
@@ -201,6 +204,14 @@ public class Simulation {
 
 	}
 
+	/**
+	 * A method to pass address details to Azure Maps Api and return a coordinate
+	 * object
+	 * 
+	 * @param Job j
+	 * @return Coordinate
+	 * @throws IOException
+	 */
 	private Coordinate getJobLocation(Job j) throws IOException {
 		String number = j.getHouseNum1();
 		String street = j.getStreet();
