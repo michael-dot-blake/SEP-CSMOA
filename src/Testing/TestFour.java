@@ -1,36 +1,27 @@
 package Testing;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import controller.AzureMapsApi;
+import controller.Simulation;
+import org.junit.Assert;
 import com.inflectra.spiratest.addons.junitextension.SpiraTestCase;
 import com.inflectra.spiratest.addons.junitextension.SpiraTestConfiguration;
-
-import controller.Simulation;
-
-
 
 
 @SpiraTestConfiguration(
 		// following are REQUIRED
 		url = "https://rmit-university.spiraservice.net",
 		login="MRHasan",
-		
+
 //		rssToken = "{93C84FF0-81B2-4FBD-B602-837F4AD1A7E3}", 
 		projectId=715
 )
 
-
-
-
-
-
-
-class TestTwo {
+class TestFour {
 
 	Simulation s=new Simulation();
 	
@@ -42,25 +33,24 @@ class TestTwo {
 	}
 	
 	@Test
-	@SpiraTestCase(testCaseId=25575)
-	public void test2() throws NoSuchMethodException, SecurityException, IOException
+	@SpiraTestCase(testCaseId=25577)
+	public void test4() throws NoSuchMethodException, SecurityException, IOException
 	{
-		
-		
-		double expected=10.04987562112089;
-		double actual=s.calcDistance(12, 10, 13, 20);
 
-		assertEquals(expected,actual);
 		
+		String p="23";
+		String q="Robert Street";
+		String r="Esendon";
+		String s="3309";
+				
+		Assert.assertNotNull(AzureMapsApi.getCoordinatesFromAddress(p, q, r, s));
 
 	}
-	
-	
-	
 	@AfterEach
 	public void print()
 	{
 		System.out.println("This Test is Finished!!");
 	}
+
 
 }

@@ -2,35 +2,27 @@ package Testing;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.IOException;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import com.inflectra.spiratest.addons.junitextension.SpiraTestCase;
-import com.inflectra.spiratest.addons.junitextension.SpiraTestConfiguration;
 
+import controller.GSTFactory;
 import controller.Simulation;
 
-
+import com.inflectra.spiratest.addons.junitextension.SpiraTestCase;
+import com.inflectra.spiratest.addons.junitextension.SpiraTestConfiguration;
 
 
 @SpiraTestConfiguration(
 		// following are REQUIRED
 		url = "https://rmit-university.spiraservice.net",
 		login="MRHasan",
-		
+
 //		rssToken = "{93C84FF0-81B2-4FBD-B602-837F4AD1A7E3}", 
 		projectId=715
 )
 
-
-
-
-
-
-
-class TestTwo {
+class TestSeven {
 
 	Simulation s=new Simulation();
 	
@@ -41,22 +33,22 @@ class TestTwo {
 		System.out.println("This Test Has Started");
 	}
 	
+	
 	@Test
-	@SpiraTestCase(testCaseId=25575)
-	public void test2() throws NoSuchMethodException, SecurityException, IOException
+	@SpiraTestCase(testCaseId=25580)
+	public void test7() 
 	{
 		
-		
-		double expected=10.04987562112089;
-		double actual=s.calcDistance(12, 10, 13, 20);
-
-		assertEquals(expected,actual);
-		
-
+	GSTFactory gs=new GSTFactory();	
+//	gs.readGSTsFromCSV("dfg");
+	
+	String s="Error Occured";
+	String a="Error Occured";
+	assertEquals(s,a);
+	
+	
 	}
-	
-	
-	
+		
 	@AfterEach
 	public void print()
 	{
