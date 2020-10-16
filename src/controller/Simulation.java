@@ -161,7 +161,7 @@ public class Simulation {
 			System.err.println("No Completed Jobs");
 		} else {
 			long avgTravelTime = totalTravelTime / jobsCompleted;
-			float complianceRate = (float) complianceCounter / (jobsCompleted + incompleteJobs +jobQueue.size()) * 100;
+			float complianceRate = (float) complianceCounter / (jobsCompleted + incompleteJobs) * 100;
 			String compString = "Compliance Rate: " + (String.format("%.0f%%",complianceRate));
 			String travTimeString = "Travel Time Mins: " + (avgTravelTime/60);
 			String incompleteJobString = "Incomplete Jobs: " + Integer.toString(incompleteJobs);
@@ -217,7 +217,6 @@ public class Simulation {
 				closeGst.setTravelTime(travelTime);
 
 			}
-			System.out.println(nearbyGSTs);
 			Collections.sort(nearbyGSTs);
 			GST closestGST = nearbyGSTs.get(0);
 			nearbyGSTs.remove(0);
