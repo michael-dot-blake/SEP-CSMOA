@@ -25,7 +25,7 @@ import com.google.gson.JsonPrimitive;
 public class AzureMapsApi {
 
 	private static final String STATE = "NSW";
-	private static final String API_KEY = "";
+	private static final String API_KEY = "5nXsFMSUBlUyt_Hvq0fgM6u6tKXy80wgwWfvZaLJuj0";
 
 	/**
 	 * A method which takes an address and calls the Azure Maps Api to return
@@ -233,32 +233,5 @@ public class AzureMapsApi {
 		return dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 	}
 
-	public static void main(String[] args) throws IOException {
-
-//		// test functionality for the api calls
-//		LocalDateTime departAt = LocalDateTime.of(2020, 12, 19, 16, 39, 57);
-		Coordinate coord = getCoordinatesFromAddress("", "CORNER OF HEASLIP ST AND", "CONISTON", "2500");
-		System.out.println(coord);
-//		JsonObject jsonObj = getIsochroneCoords(coord, 6000, departAt);
-//		Polygon p = BuildPolygon(jsonObj);
-//
-//		Coordinate gstCoord = new Coordinate(-33.78, 150.74);
-//
-//		// centre of isochrone. Should return true
-//		Coordinate centerCoord = new Coordinate(-33.77494, 150.7393);
-//
-//		// edge point. Should return false
-//		Coordinate edgeCoord = new Coordinate(-34.3018, 150.9385);
-//
-//		// coordinates for LosAngeles. Should return false
-//		Coordinate losAngelesCoord = new Coordinate(34.0522, 118.2437);
-//
-//		System.out.println(getRouteTime(gstCoord, centerCoord));
-//
-//		System.out.println(checkIfLocationInIsochrone(p, centerCoord));
-//		System.out.println(checkIfLocationInIsochrone(p, edgeCoord));
-//		System.out.println(checkIfLocationInIsochrone(p, losAngelesCoord));
-
-	}
 
 }
