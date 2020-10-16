@@ -40,7 +40,7 @@ public class Job implements Comparable<Job> {
 	// instance variables to be set prior to the creation of a completedJobRecord
 	// object
 	private LocalDateTime endDateAndTime;
-	private int idleTime;
+	private long idleTime;
 	private int travelTimeInSeconds;
 
 	/**
@@ -270,17 +270,17 @@ public class Job implements Comparable<Job> {
 		this.orderCreateDateAndTime = orderCreateDateAndTime;
 	}
 
-	public void setIdleTime(int jobIdleTime) {
+	public void setIdleTime(long jobIdleTime) {
 		this.idleTime = jobIdleTime;
 	}
 
-	public int getIdleTime() {
+	public long getIdleTime() {
 		return idleTime;
 	}
 
-	public static int calculateIdleTime(LocalDateTime orderCreateTime, LocalDateTime timeJobAssigned) {
-		long minutes = orderCreateTime.until(timeJobAssigned, ChronoUnit.MINUTES);
-		return (int) minutes;
+	public static long calculateIdleTime(LocalDateTime orderCreateTime, LocalDateTime timeJobAssigned) {
+		long seconds = orderCreateTime.until(timeJobAssigned, ChronoUnit.SECONDS);
+		return seconds;
 	}
 
 	@Override

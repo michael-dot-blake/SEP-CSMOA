@@ -41,16 +41,16 @@ public class Simulation {
 
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
 
-	private String JOB_FILE_PATH = "JobFiles/00timeJob.csv";
+	private String JOB_FILE_PATH = "JobFiles/OverlappingJobs.csv";
 
-	private String GST_FILE_PATH = "GSTFiles/gstData10.csv";
+	private String GST_FILE_PATH = "GSTFiles/gstData1.csv";
 
 	private String LOG_FILE_NAME = "output.csv";
 
 	public static String formatSeconds(long timeInput) {
-		// long seconds = timeInput % 60;
+		//long seconds = timeInput % 60;
 		long mins = (timeInput / 60) % 60;
-		// long hours = (timeInput / 60) / 60;
+		//long hours = (timeInput / 60) / 60;
 		String timeString = String.format("%02d Minutes", mins);
 		return timeString;
 
@@ -71,7 +71,7 @@ public class Simulation {
 
 		int complianceCounter = 0;
 		long totalTravelTime = 0;
-		int jobIdleTime = 0;
+		long jobIdleTime = 0;
 		availableGSTPool = GSTFactory.getGSTpool();
 
 		do {
@@ -155,6 +155,7 @@ public class Simulation {
 			checkGstFinished(currentTime);
 			currentTime = currentTime.plusSeconds(1);
 		} while (currentTime.isBefore(endTime));
+		
 		System.out.println("Simulation Complete. Data output to "+LOG_FILE_NAME);
 		int jobsCompleted = completedJobs.size();
 		int incompleteJobs = idleJobQueue.size();
@@ -184,7 +185,7 @@ public class Simulation {
 	private void removeCompletedJobFromQueue(LocalDateTime currentTime) {
 		for (Iterator<Job> jobQueueIter = jobQueue.iterator(); jobQueueIter.hasNext();) {
 			Job jo = jobQueueIter.next();
-			if (currentTime.equals(jo.getEndDateAndTime().plusMinutes(jo.getIdleTime()))) {
+			if (currentTime.equals(jo.getEndDateAndTime().plusSeconds(jo.getIdleTime()))) {
 				completedJobs.add(new CompletedJobRecord(jo.getAssignedGST(), jo));
 				jobQueueIter.remove();
 				System.out.println("Job Completed");

@@ -44,7 +44,7 @@ public class CompletedJobRecord {
 		this.suburb = job.getSuburb();
 		this.postcode = job.getPostcode();
 		this.startDateAndTime = job.getOrderCreateDateAndTime().toString();
-		this.idleTime = Long.toString(job.getIdleTime());
+		this.idleTime = Long.toString(job.getIdleTime() / 60);
 		this.travelTime = (job.getTravelTimeInSeconds() / 60);
 		this.jobDuration = job.getJobDuration();
 		this.endDateAndTime = job.getEndDateAndTime().toString();
