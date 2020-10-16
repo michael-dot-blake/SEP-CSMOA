@@ -278,7 +278,7 @@ public class Job implements Comparable<Job> {
 		return idleTime;
 	}
 
-	public static long calculateIdleTime(LocalDateTime orderCreateTime, LocalDateTime timeJobAssigned) {
+	public static long calculateTimeBetween(LocalDateTime orderCreateTime, LocalDateTime timeJobAssigned) {
 		long seconds = orderCreateTime.until(timeJobAssigned, ChronoUnit.SECONDS);
 		return seconds;
 	}
@@ -295,5 +295,6 @@ public class Job implements Comparable<Job> {
 				+ ", Travel_Time: " + (travelTimeInSeconds/60) + ", Idle_Time: " + idleTime
 				+ ", End Date And Time: " + endDateAndTime + "]";
 	}
+
 
 }
