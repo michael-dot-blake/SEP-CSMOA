@@ -22,6 +22,8 @@ import com.inflectra.spiratest.addons.junitextension.SpiraTestConfiguration;
 )
 
 class TestFour {
+	
+	//Initialization of Test
 
 	Simulation s=new Simulation();
 	
@@ -29,6 +31,7 @@ class TestFour {
 	@BeforeEach
 	public void initialize()
 	{
+		//Message to indicate the starting of test
 		System.out.println("This Test Has Started");
 	}
 	
@@ -37,18 +40,19 @@ class TestFour {
 	public void test4() throws NoSuchMethodException, SecurityException, IOException
 	{
 
-		
+		//Creation of Methods
 		String p="23";
 		String q="Robert Street";
 		String r="Esendon";
 		String s="3309";
-				
+				//Assertions 
 		Assert.assertNotNull(AzureMapsApi.getCoordinatesFromAddress(p, q, r, s));
 
 	}
 	@AfterEach
 	public void print()
 	{
+		//Finishing of Test
 		System.out.println("This Test is Finished!!");
 	}
 

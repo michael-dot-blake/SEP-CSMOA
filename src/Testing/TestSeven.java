@@ -23,13 +23,14 @@ import com.inflectra.spiratest.addons.junitextension.SpiraTestConfiguration;
 )
 
 class TestSeven {
-
+   // Initializaton of Test
 	Simulation s=new Simulation();
 	
 	
 	@BeforeEach
 	public void initialize()
 	{
+		//Starting of Test
 		System.out.println("This Test Has Started");
 	}
 	
@@ -44,6 +45,7 @@ class TestSeven {
 	
 	String s="Error Occured";
 	String a="Error Occured";
+	//Assertions 
 	assertEquals(s,a);
 	
 	
@@ -52,6 +54,7 @@ class TestSeven {
 	@AfterEach
 	public void print()
 	{
+		//Finishing of Test
 		System.out.println("This Test is Finished!!");
 	}
 

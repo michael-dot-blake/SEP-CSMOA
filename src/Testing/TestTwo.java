@@ -31,6 +31,7 @@ import controller.Simulation;
 
 
 class TestTwo {
+	// Initialization of Test
 
 	Simulation s=new Simulation();
 	
@@ -38,6 +39,7 @@ class TestTwo {
 	@BeforeEach
 	public void initialize()
 	{
+		//Begining Mesage of Test 
 		System.out.println("This Test Has Started");
 	}
 	
@@ -49,6 +51,7 @@ class TestTwo {
 		
 		double expected=10.04987562112089;
 		double actual=s.calcDistance(12, 10, 13, 20);
+		//Assertions 
 
 		assertEquals(expected,actual);
 		
@@ -60,6 +63,7 @@ class TestTwo {
 	@AfterEach
 	public void print()
 	{
+		//Finsing of Test 
 		System.out.println("This Test is Finished!!");
 	}
 

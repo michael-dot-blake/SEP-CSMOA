@@ -23,6 +23,8 @@ import com.inflectra.spiratest.addons.junitextension.SpiraTestConfiguration;
 )
 
 class TestEight {
+	
+	//Initialization for Test
 
 	Simulation s=new Simulation();
 	
@@ -30,6 +32,7 @@ class TestEight {
 	@BeforeEach
 	public void initialize()
 	{
+		//System output when testing starts
 		System.out.println("This Test Has Started");
 	}
 	
@@ -37,11 +40,12 @@ class TestEight {
 	@SpiraTestCase(testCaseId=25581)
 	public void test8() 
 	{
+		// Creation of Object
 		JobFactory js=new  JobFactory();
 		ArrayList<Job> s=js.getJobPool();
 		int x=s.size();
 		int y=0;
-		
+		//Assertions
 		assertEquals(x,y);
 		
 
@@ -52,6 +56,7 @@ class TestEight {
 	@AfterEach
 	public void print()
 	{
+		//Finishing of Test
 		System.out.println("This Test is Finished!!");
 	}
 

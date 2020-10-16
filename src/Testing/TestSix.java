@@ -26,12 +26,14 @@ import com.inflectra.spiratest.addons.junitextension.SpiraTestConfiguration;
 
 class TestSix {
 
+	//Initialization of Test
 	Simulation s=new Simulation();
 	
 	
 	@BeforeEach
 	public void initialize()
 	{
+		//Begining of Test
 		System.out.println("This Test Has Started");
 	}
 	
@@ -40,7 +42,8 @@ class TestSix {
 	public void test6() throws NoSuchMethodException, SecurityException, IOException
 	{
 		
-//	GSTFactory gs=new GSTFactory();	
+//	GSTFactory gs=new GSTFactory();
+		//Assertiong 
 	assertNotNull(GSTFactory.getGSTpool());
 
 
@@ -49,6 +52,7 @@ class TestSix {
 	@AfterEach
 	public void print()
 	{
+		//Finishing of Test
 		System.out.println("This Test is Finished!!");
 	}
 

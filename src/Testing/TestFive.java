@@ -25,6 +25,8 @@ import com.inflectra.spiratest.addons.junitextension.SpiraTestConfiguration;
 )
 
 class TestFive {
+	
+	//Initialization of Test
 
 	Simulation s=new Simulation();
 	
@@ -32,6 +34,7 @@ class TestFive {
 	@BeforeEach
 	public void initialize()
 	{
+		//Starting of Test
 		System.out.println("This Test Has Started");
 	}
 	
@@ -39,9 +42,11 @@ class TestFive {
 	@SpiraTestCase(testCaseId=25578)
 	public void test5() throws NoSuchMethodException, SecurityException, IOException
 	{
+		//Creation of Objects
 		LocalDateTime datetime1 = LocalDateTime.of(2021, 1, 14, 10, 34);
 		String ex=AzureMapsApi.formatDateTime(datetime1);
 		String Ac="2021-01-14T10:34:00";
+		//Assertions
 		assertEquals(ex,Ac);
 		
 		
@@ -53,6 +58,7 @@ class TestFive {
 	@AfterEach
 	public void print()
 	{
+		//Finihsing of Testing
 		System.out.println("This Test is Finished!!");
 	}
 

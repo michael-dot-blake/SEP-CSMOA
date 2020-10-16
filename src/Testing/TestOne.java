@@ -28,12 +28,15 @@ import controller.Simulation;
 
 class TestOne {
 	
+	//Initialization of Test
+	
 	Simulation s=new Simulation();
 	
 	
 	@BeforeEach
 	public void initialize()
 	{
+		// Starting Message for Begining of Test
 		System.out.println("This Test Has Started");
 	}
 
@@ -45,7 +48,7 @@ class TestOne {
 		String expected="01 Minutes";
 		String actual=Simulation.formatSeconds(60);
 		
-		
+		//Assertions 
 		assertEquals(expected,actual);
 				
 	}
@@ -53,6 +56,7 @@ class TestOne {
 	@AfterEach
 	public void print()
 	{
+		//Finishing of Test
 		System.out.println("This Test is Finished!!");
 	}
 
