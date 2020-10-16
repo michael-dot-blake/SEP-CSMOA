@@ -80,8 +80,6 @@ public class GST implements Comparable<GST> {
 
 	}
 
-	
-
 	@Override
 	public String toString() {
 		return "GST id= " + gSTid;

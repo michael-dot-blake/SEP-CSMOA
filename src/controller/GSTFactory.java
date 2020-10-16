@@ -12,7 +12,6 @@ public class GSTFactory {
 	private static ArrayList<GST> gstPool = new ArrayList<GST>();
 	
 	public static void readGSTsFromCSV(String filename) {
-		System.out.println("\nGST init start...\n");
 		try {
 			File file = new File(filename);	
 			
@@ -46,6 +45,7 @@ public class GSTFactory {
 						System.out.println("GST id:"+GSTid+" lat:"+lat+" lon:"+lon);
 					}
 				}
+				System.out.println("Number of GSTs in the Simulation: "+gstPool.size());
 				sc.close();
 			    
 			}
