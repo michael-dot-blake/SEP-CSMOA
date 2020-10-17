@@ -49,7 +49,7 @@ public class Simulation {
 
 	public static String formatSeconds(long timeInput) {
 		//long seconds = timeInput % 60;
-		long mins = (timeInput / 60) % 60;
+		long mins = (timeInput / 60) ;
 		//long hours = (timeInput / 60) / 60;
 		String timeString = String.format("%02d Minutes", mins);
 		return timeString;
@@ -127,9 +127,10 @@ public class Simulation {
 							complianceCounter++;
 						} else if (gst == null && !availableGSTPool.isEmpty()) {
 							gst = findGstByStraightLineDistance(jobCoord, availableGSTPool);
-							System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone\n");
+							System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone");
 							Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
 							travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
+							System.out.println("Travel Time is: " + formatSeconds(travelTime) + "\n");
 							j.setTravelTimeInSeconds(travelTime);
 							j.setEndDateAndTime(
 									jobTime.plusMinutes(jobDuration).plusSeconds(travelTime).plusSeconds(jobIdleTime));
