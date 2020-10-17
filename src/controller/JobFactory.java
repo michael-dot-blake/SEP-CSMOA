@@ -84,7 +84,7 @@ public class JobFactory {
 			else
 			{
 				System.out.println("Job File Not Found!");
-				System.out.println("WARNING!! Please Provide Proper File Name & File Diresctory");
+				System.out.println("WARNING!! Please Provide Proper File Name & File Directory");
 			
 				System.exit(0);
 			}

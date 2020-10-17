@@ -41,12 +41,12 @@ public class Simulation {
 
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
 
-	private String JOB_FILE_PATH = "JobFiles/OneDayJob.csv";
+	private String JOB_FILE_PATH;
 
-	private String GST_FILE_PATH = "GSTFiles/gstDemo1.csv";
+	private String GST_FILE_PATH;
 
-	private String LOG_FILE_NAME = "output.csv";
-
+	private String LOG_FILE_NAME;
+	
 	public static String formatSeconds(long timeInput) {
 		//long seconds = timeInput % 60;
 		long mins = (timeInput / 60) % 60;
@@ -163,7 +163,7 @@ public class Simulation {
 			long avgTravelTime = totalTravelTime / jobsCompleted;
 			float complianceRate = (float) complianceCounter / (jobsCompleted + incompleteJobs) * 100;
 			String compString = "Compliance Rate: " + (String.format("%.0f%%",complianceRate));
-			String travTimeString = "Travel Time Mins: " + (avgTravelTime/60);
+			String travTimeString = "Average Travel Time Mins: " + (avgTravelTime/60);
 			String incompleteJobString = "Incomplete Jobs: " + Integer.toString(incompleteJobs);
 			String[] comp = new String[] { compString };
 			String[] trav = new String[] { travTimeString };
@@ -172,6 +172,7 @@ public class Simulation {
 			Log.appendSingleLineToCSV(comp, LOG_FILE_NAME);
 			Log.appendSingleLineToCSV(trav, LOG_FILE_NAME);
 			Log.appendSingleLineToCSV(incomplete, LOG_FILE_NAME);
+			System.out.println("Program complete. Output written to "+LOG_FILE_NAME);
 		}
 
 	}
@@ -299,6 +300,7 @@ public class Simulation {
 			s.initFileNames(args[0], args[1], args[2]);
 		}
 		s.runSimulation();
+		
 
 	}// end main
 
