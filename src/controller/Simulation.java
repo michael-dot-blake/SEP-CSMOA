@@ -113,7 +113,7 @@ public class Simulation {
 						if (gst != null) {
 							System.out.println("Found GST: " + gst.getgSTid() + " in 30min isochrone.");
 							Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
-							travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
+							travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord, currentTime);
 							j.setTravelTimeInSeconds(travelTime);
 							System.out.println("Travel Time is: " + formatSeconds(travelTime) + "\n");
 							j.setEndDateAndTime(
@@ -129,7 +129,7 @@ public class Simulation {
 							gst = findGstByStraightLineDistance(jobCoord, availableGSTPool);
 							System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone");
 							Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
-							travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
+							travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord, currentTime);
 							System.out.println("Travel Time is: " + formatSeconds(travelTime) + "\n");
 							j.setTravelTimeInSeconds(travelTime);
 							j.setEndDateAndTime(
@@ -215,7 +215,7 @@ public class Simulation {
 		if (nearbyGSTs.size() > 0) {
 			for (GST closeGst : nearbyGSTs) {
 				Coordinate gstCoord = new Coordinate(closeGst.getLat(), closeGst.getLon());
-				int travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord);
+				int travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord, departureTime);
 				closeGst.setTravelTime(travelTime);
 
 			}
