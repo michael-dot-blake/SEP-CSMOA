@@ -39,7 +39,7 @@ public class CompletedJobRecord {
 	public CompletedJobRecord(GST gst, Job job) {
 		this.gst = gst;
 		this.job = job;
-		this.createNum = Integer.toString(job.getOrderNum());
+		this.createNum = job.getOrderNum();
 		this.address = job.getHouseNum1() + " " + job.getStreet();
 		this.suburb = job.getSuburb();
 		this.postcode = job.getPostcode();

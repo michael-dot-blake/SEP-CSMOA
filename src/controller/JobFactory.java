@@ -13,20 +13,19 @@ import java.util.Scanner;
 import model.Job;
 
 public class JobFactory {
-	
+
 	private static ArrayList<Job> jobPool = new ArrayList<Job>();
-	
+
 	public static void readJobsFromCSV(String filename) {
 		try {
 			File file = new File(filename);
-			
-			
-			if(file.exists() && !file.isDirectory()) {
-				
+
+			if (file.exists() && !file.isDirectory()) {
+
 				Scanner sc = new Scanner(file);
 				@SuppressWarnings("unused")
 				String header = sc.nextLine();
-				//System.out.println("Job header: "+header);
+				// System.out.println("Job header: "+header);
 				while (sc.hasNext()) {
 					boolean jobAdded = false;
 					String row = sc.nextLine();
@@ -51,53 +50,57 @@ public class JobFactory {
 					String monthStr = reform[7].substring(4, 6);
 					String dayStr = reform[7].substring(6, reform[7].length());
 					try {
-						int jobOrderNum = Integer.parseInt(jobId);
-						LocalDate jobDate = LocalDate.parse(yearStr+"-"+monthStr+"-"+dayStr);
+						String jobOrderNum = jobId;
+						LocalDate jobDate = LocalDate.parse(yearStr + "-" + monthStr + "-" + dayStr);
 						LocalTime jobTime = LocalTime.parse(jobTimeString);
 						LocalDateTime jobDateAndTime = LocalDateTime.of(jobDate, jobTime);
 						int jobDurationInMinutes = Integer.parseInt(jobDurationString);
-						
-						//The following variables will be empty when a job is created and set when the job is completed
+
+						// The following variables will be empty when a job is created and set when the
+						// job is completed
 						LocalDateTime endDateAndTime = null;
 						int travelTimeInSeconds = 0;
 						int idleTime = 0;
-						
+
 						jobPool.removeIf(jo -> jobOrderNum == (jo.getOrderNum()));
-						jobPool.add(new Job(jobOrderNum, jobType, jobDescription, jobIssueCode, jobIssueDescrp, jobActType, jobActDescrp, jobDate, jobTime, jobDateAndTime, jobPriority, jobSuburb, jobStreet, houseNum1, houseNum2, postCode, fitterDistrict, jobDurationInMinutes, idleTime, travelTimeInSeconds, endDateAndTime));
+						jobPool.add(new Job(jobOrderNum, jobType, jobDescription, jobIssueCode, jobIssueDescrp,
+								jobActType, jobActDescrp, jobDate, jobTime, jobDateAndTime, jobPriority, jobSuburb,
+								jobStreet, houseNum1, houseNum2, postCode, fitterDistrict, jobDurationInMinutes,
+								idleTime, travelTimeInSeconds, endDateAndTime));
 						jobAdded = true;
 						ListSort(jobPool);
-					}
-					catch (Exception e) {
+					} catch (Exception e) {
 						System.out.println("job data parse error.");
 						e.printStackTrace();
 					}
 					if (!jobAdded) {
 						System.err.println("\nFAILED TO INIT JOB!");
-						System.out.println("Job num: "+jobId+", Job Type: "+jobType+", Job Description: "+jobDescription+", Job IsssueCode: "+jobIssueCode+", Job IssueDescription: "+jobIssueDescrp+", Job Activity: "+jobActType+", Job Activity Description: "+jobActDescrp+", Date: "+reform[7]+", Time: "+jobTimeString+
-								", Priority: "+jobPriority+", Suburb: "+jobSuburb+", Street: "+jobStreet+", House Num1: "+houseNum1+", House Num2: "+houseNum2+", Poscode: "+postCode+", Fitter District: "+fitterDistrict+", Work Time Elapsed: "+jobDurationString );
+						System.out.println("Job num: " + jobId + ", Job Type: " + jobType + ", Job Description: "
+								+ jobDescription + ", Job IsssueCode: " + jobIssueCode + ", Job IssueDescription: "
+								+ jobIssueDescrp + ", Job Activity: " + jobActType + ", Job Activity Description: "
+								+ jobActDescrp + ", Date: " + reform[7] + ", Time: " + jobTimeString + ", Priority: "
+								+ jobPriority + ", Suburb: " + jobSuburb + ", Street: " + jobStreet + ", House Num1: "
+								+ houseNum1 + ", House Num2: " + houseNum2 + ", Poscode: " + postCode
+								+ ", Fitter District: " + fitterDistrict + ", Work Time Elapsed: " + jobDurationString);
 					}
 				}
 				sc.close();
-			    
+
 			}
-			
-			else
-			{
+
+			else {
 				System.out.println("Job File Not Found!");
 				System.out.println("WARNING!! Please Provide Proper File Name & File Directory");
-			
+
 				System.exit(0);
 			}
-			
-			
 
-		}
-		catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			System.out.println("Something went wrong with job file.\n");
 			e.printStackTrace();
 		}
-		
-		System.out.println("Number of Jobs in the Simulation: "+jobPool.size());
+
+		System.out.println("Number of Jobs in the Simulation: " + jobPool.size());
 	}
 
 	public static ArrayList<Job> getJobPool() {
