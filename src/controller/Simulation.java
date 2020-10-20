@@ -41,11 +41,11 @@ public class Simulation {
 
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
 
-	private String JOB_FILE_PATH;
+	private String JOB_FILE_PATH = "JobFiles/OneDayJob.csv";
 
-	private String GST_FILE_PATH;
+	private String GST_FILE_PATH = "GSTFiles/gstData20.csv";
 
-	private String LOG_FILE_NAME;
+	private String LOG_FILE_NAME = "output.csv";
 	
 	public static String formatSeconds(long timeInput) {
 		//long seconds = timeInput % 60;
@@ -163,19 +163,25 @@ public class Simulation {
 		} else {
 			long avgTravelTime = totalTravelTime / jobsCompleted;
 			float complianceRate = (float) complianceCounter / (jobsCompleted + incompleteJobs) * 100;
-			String compString = "Compliance Rate: " + (String.format("%.0f%%",complianceRate));
-			String travTimeString = "Average Travel Time Mins: " + (avgTravelTime/60);
-			String incompleteJobString = "Incomplete Jobs: " + Integer.toString(incompleteJobs);
-			String[] comp = new String[] { compString };
-			String[] trav = new String[] { travTimeString };
-			String[] incomplete = new String[] { incompleteJobString };
-			Log.writeToCsv(completedJobs, LOG_FILE_NAME);
-			Log.appendSingleLineToCSV(comp, LOG_FILE_NAME);
-			Log.appendSingleLineToCSV(trav, LOG_FILE_NAME);
-			Log.appendSingleLineToCSV(incomplete, LOG_FILE_NAME);
-			System.out.println("Program complete. Output written to "+LOG_FILE_NAME);
+			generateOutput(avgTravelTime, complianceRate, incompleteJobs);
+			
 		}
 
+	}
+	
+	private void generateOutput(long avgTravelTime, float complianceRate, int incompleteJobs) throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException, InterruptedException {
+		String compString = "Compliance Rate: " + (String.format("%.0f%%",complianceRate));
+		String travTimeString = "Average Travel Time Mins: " + (avgTravelTime/60);
+		String incompleteJobString = "Incomplete Jobs: " + Integer.toString(incompleteJobs);
+		String[] comp = new String[] { compString };
+		String[] trav = new String[] { travTimeString };
+		String[] incomplete = new String[] { incompleteJobString };
+		Log.writeToCsv(completedJobs, LOG_FILE_NAME);
+		Log.appendSingleLineToCSV(comp, LOG_FILE_NAME);
+		Log.appendSingleLineToCSV(trav, LOG_FILE_NAME);
+		Log.appendSingleLineToCSV(incomplete, LOG_FILE_NAME);
+		System.out.println("Run Successful. Output written to "+LOG_FILE_NAME);
+		
 	}
 
 	private void removeCompletedJobFromQueue(LocalDateTime currentTime) {
@@ -212,22 +218,15 @@ public class Simulation {
 			}
 		}
 
+		System.out.println("GSTs in Isochrone: "+nearbyGSTs);
 		if (nearbyGSTs.size() > 0) {
-			for (GST closeGst : nearbyGSTs) {
+			GST closeGst = findGstByStraightLineDistance(jobCoord, nearbyGSTs);
 				Coordinate gstCoord = new Coordinate(closeGst.getLat(), closeGst.getLon());
 				int travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord, departureTime);
 				closeGst.setTravelTime(travelTime);
-
+				return closeGst;
 			}
-			Collections.sort(nearbyGSTs);
-			GST closestGST = nearbyGSTs.get(0);
-			nearbyGSTs.remove(0);
-			resetGstTravelTime(nearbyGSTs);
-			System.out.println("The closest GST was " + closestGST.getgSTid());
-			return closestGST;
-
-		}
-
+				
 		else {
 			System.out.println("NO GST found in isochrone");
 			return null;

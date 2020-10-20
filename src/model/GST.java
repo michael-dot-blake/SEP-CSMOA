@@ -15,6 +15,7 @@ public class GST implements Comparable<GST> {
 	private double lat, lon;
 	private LocalDateTime finishTime;
 	private int travelTime;
+	private int idleTime;
 
 	public GST(String gSTid, double lat, double lon) {
 		this.gSTid = gSTid;
@@ -22,6 +23,7 @@ public class GST implements Comparable<GST> {
 		this.lon = lon;
 		finishTime = null;
 		travelTime = 0;
+		idleTime = 0;
 	}
 
 	public String getgSTid() {
@@ -66,6 +68,14 @@ public class GST implements Comparable<GST> {
 		return travelTime;
 	}
 	
+	public int getIdleTime() {
+		return idleTime;
+	}
+
+	public void setIdleTime(int idleTime) {
+		this.idleTime = idleTime;
+	}
+
 	@Override
 	public int compareTo(GST g1) {
 		if (this.travelTime > g1.travelTime) {
