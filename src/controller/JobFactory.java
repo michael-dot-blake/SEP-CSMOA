@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
+import model.GST;
 import model.Job;
 
 public class JobFactory {
@@ -31,42 +32,41 @@ public class JobFactory {
 					String row = sc.nextLine();
 					String[] reform = row.split(",");
 					String jobId = reform[0];
-					String jobType = reform[1];
-					String jobDescription = reform[2];
-					String jobIssueCode = reform[3];
-					String jobIssueDescrp = reform[4];
-					String jobActType = reform[5];
-					String jobActDescrp = reform[6];
-					String jobTimeString = reform[8];
-					String jobPriority = reform[9];
-					String jobSuburb = reform[10];
-					String jobStreet = reform[11];
-					String houseNum1 = reform[12];
-					String houseNum2 = reform[13];
-					String postCode = reform[14];
-					String fitterDistrict = reform[15];
-					String jobDurationString = reform[16];
-					String yearStr = reform[7].substring(0, 4);
-					String monthStr = reform[7].substring(4, 6);
-					String dayStr = reform[7].substring(6, reform[7].length());
+					String jobPriority = reform[1];
+					String houseNum1 = reform[2];
+					String jobStreet = reform[3];
+					String jobSuburb = reform[4];
+					String postCode = reform[5];
+					String jobTimeString = reform[6];
+					String jobDurationString = reform[7];
+					String yearStr = reform[8].substring(0, 4);
+					String monthStr = reform[8].substring(4, 6);
+					String dayStr = reform[8].substring(6, reform[8].length());
 					try {
-						String jobOrderNum = jobId;
 						LocalDate jobDate = LocalDate.parse(yearStr + "-" + monthStr + "-" + dayStr);
 						LocalTime jobTime = LocalTime.parse(jobTimeString);
 						LocalDateTime jobDateAndTime = LocalDateTime.of(jobDate, jobTime);
-						int jobDurationInMinutes = Integer.parseInt(jobDurationString);
+						int jobDurationInMinutes = 0;
+						if (jobDurationString.length() == 0) {
+							jobDurationInMinutes = 30;
+						} else {
+							System.out.println("Job Duration is not null");
+							jobDurationInMinutes = Integer.parseInt(jobDurationString);
+							System.out.println(jobDurationInMinutes);
+
+						}
 
 						// The following variables will be empty when a job is created and set when the
 						// job is completed
 						LocalDateTime endDateAndTime = null;
 						int travelTimeInSeconds = 0;
-						int idleTime = 0;
+						long idleTime = 0;
+						GST assignedGST = null;
 
-						jobPool.removeIf(jo -> jobOrderNum == (jo.getOrderNum()));
-						jobPool.add(new Job(jobOrderNum, jobType, jobDescription, jobIssueCode, jobIssueDescrp,
-								jobActType, jobActDescrp, jobDate, jobTime, jobDateAndTime, jobPriority, jobSuburb,
-								jobStreet, houseNum1, houseNum2, postCode, fitterDistrict, jobDurationInMinutes,
-								idleTime, travelTimeInSeconds, endDateAndTime));
+						jobPool.removeIf(jo -> jobId.equals(jo.getOrderNum()));
+						jobPool.add(new Job(jobId, jobPriority, houseNum1, jobStreet, jobSuburb, postCode,
+								jobDateAndTime, jobDurationInMinutes, assignedGST, endDateAndTime, idleTime,
+								travelTimeInSeconds));
 						jobAdded = true;
 						ListSort(jobPool);
 					} catch (Exception e) {
@@ -75,13 +75,6 @@ public class JobFactory {
 					}
 					if (!jobAdded) {
 						System.err.println("\nFAILED TO INIT JOB!");
-						System.out.println("Job num: " + jobId + ", Job Type: " + jobType + ", Job Description: "
-								+ jobDescription + ", Job IsssueCode: " + jobIssueCode + ", Job IssueDescription: "
-								+ jobIssueDescrp + ", Job Activity: " + jobActType + ", Job Activity Description: "
-								+ jobActDescrp + ", Date: " + reform[7] + ", Time: " + jobTimeString + ", Priority: "
-								+ jobPriority + ", Suburb: " + jobSuburb + ", Street: " + jobStreet + ", House Num1: "
-								+ houseNum1 + ", House Num2: " + houseNum2 + ", Poscode: " + postCode
-								+ ", Fitter District: " + fitterDistrict + ", Work Time Elapsed: " + jobDurationString);
 					}
 				}
 				sc.close();
