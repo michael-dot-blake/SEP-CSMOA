@@ -1,5 +1,7 @@
 package model;
 
+import java.time.LocalDateTime;
+
 import com.opencsv.bean.CsvBindByName;
 
 /**
@@ -32,7 +34,7 @@ public class CompletedJobRecord {
 	@CsvBindByName(column = "I-Job Duration mins")
 	private Integer jobDuration;
 	@CsvBindByName(column = "J-End Date Time")
-	private String endDateAndTime;
+	private LocalDateTime endDateAndTime;
 
 	/**
 	 * @param gst
@@ -50,8 +52,12 @@ public class CompletedJobRecord {
 		this.idleTime = Long.toString(job.getIdleTime() / 60);
 		this.travelTime = (job.getTravelTimeInSeconds() / 60);
 		this.jobDuration = job.getJobDuration();
-		this.endDateAndTime = job.getEndDateAndTime().toString();
+		this.endDateAndTime = job.getEndDateAndTime();
 
+	}
+	
+	public LocalDateTime getEndDateAndTime() {
+		return endDateAndTime;
 	}
 
 	@Override
