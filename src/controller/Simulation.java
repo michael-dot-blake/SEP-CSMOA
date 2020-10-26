@@ -39,6 +39,8 @@ public class Simulation {
 	private ArrayList<GST> availableGSTPool = new ArrayList<GST>();
 
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
+		
+	private LocalDate nextDay;
 
 	private String JOB_FILE_PATH;
 
@@ -74,7 +76,7 @@ public class Simulation {
 		long totalTravelTime = 0;
 		long jobIdleTime = 0;
 		LocalDate thisDay = LocalDate.parse(currentTime.getYear()+"-"+currentTime.getMonthValue()+"-"+currentTime.getDayOfMonth());
-		LocalDate nextDay = null;
+		nextDay = null;
 		
 		availableGSTPool = GSTFactory.getNextGSTs(thisDay);
 		ArrayList<Job> jobPool = JobFactory.getJobPool();
@@ -203,12 +205,13 @@ public class Simulation {
 		return runTimeInSeconds - SECONDS_IN_A_DAY;
 	}
 	
-	private void checkDay(LocalDate thisDay, LocalDate nextDay) {
-		if (nextDay == null) {
-			nextDay = thisDay.plusDays(1);
+	private void checkDay(LocalDate currThisDay, LocalDate currNextDay) {
+		if (currNextDay == null) {
+			currNextDay = currThisDay.plusDays(1);
 		}
-		else if (thisDay == nextDay) {
-			availableGSTPool = GSTFactory.getNextGSTs(thisDay);
+		else if (currThisDay == currNextDay) {
+			availableGSTPool = GSTFactory.getNextGSTs(currThisDay);
+			nextDay = currThisDay.plusDays(1);
 		}
 	}
 
