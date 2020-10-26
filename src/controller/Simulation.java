@@ -46,7 +46,7 @@ public class Simulation {
 	private String LOG_FILE_NAME;
 	
 	//An Integer representing the size of the isochrone in seconds
-	private final int ISOCHRONE_BOUNDARY = 1800;
+	private final int COMPLIANCE_TIME = 1800;
 	
 	private static final int SECONDS_IN_A_DAY = 86400;
 	
@@ -108,12 +108,15 @@ public class Simulation {
 						Coordinate jobCoord = SimUtils.getJobLocation(j);
 						LocalDateTime jobTime = j.getOrderCreateDateAndTime();
 						int jobDuration = j.getJobDuration();
-						GST gst = SimUtils.findClosestGst(jobCoord, ISOCHRONE_BOUNDARY, jobTime);
+						GST gst = SimUtils.findClosestGst(jobCoord, COMPLIANCE_TIME, jobTime);
 						int travelTime = 0;
 						if (gst != null) {
 							System.out.println("Found the closest GST: " + gst.getgSTid() + " in 30min isochrone.");
 							Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
 							travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord, currentTime);
+							if (travelTime < COMPLIANCE_TIME) {
+								complianceCounter++;
+							}
 							j.setTravelTimeInSeconds(travelTime);
 							System.out.println("Travel Time is: " + SimUtils.formatSeconds(travelTime) + "\n");
 							j.setEndDateAndTime(
@@ -124,13 +127,12 @@ public class Simulation {
 									j.getEndDateAndTime().plusSeconds(travelTime * 2).plusSeconds(j.getIdleTime()));
 							availableGSTPool.remove(gst);
 							busyGSTs.add(gst);
-							complianceCounter++;
 						} else if (gst == null && !availableGSTPool.isEmpty()) {
 							gst = SimUtils.findGstByStraightLineDistance(jobCoord, availableGSTPool);
 							System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone");
 							Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
 							travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord, currentTime);
-							if (travelTime < ISOCHRONE_BOUNDARY) {
+							if (travelTime < COMPLIANCE_TIME) {
 								complianceCounter++;
 							}
 							System.out.println("Travel Time is: " + SimUtils.formatSeconds(travelTime) + "\n");
