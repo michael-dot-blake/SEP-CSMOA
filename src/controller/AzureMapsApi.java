@@ -23,16 +23,17 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 
 public class AzureMapsApi {
-	
+
 	/**
 	 * @author Michael Blake
 	 * 
-	 * Class to handle executing API calls to the Azure Maps API in Java
+	 *         Class to handle executing API calls to the Azure Maps API in Java
 	 */
 
+	// The Data provided did not specify a state so this has been hardcoded in
 	private static final String STATE = "NSW";
-	
-	//Insert Azure Maps API key here
+
+	// Insert Azure Maps API key here
 	private static final String API_KEY = "5nXsFMSUBlUyt_Hvq0fgM6u6tKXy80wgwWfvZaLJuj0";
 
 	/**
@@ -94,7 +95,11 @@ public class AzureMapsApi {
 	 * A method which takes an object of type Coordinate which contains a latitude
 	 * and longitude value and calls the Azure Maps API. The API call will then
 	 * respond with latitude and longitude values for the boundaries of an isochrone
-	 * which extend to a set integer defined as an integer timeBudgetInSeconds.
+	 * which extend to a set integer defined as timeBudgetInSeconds. E.g. passing
+	 * 1800 as an argument will return the points of an isochrone which are 30 mins
+	 * away from the defined point. The method to call the api also accepts a
+	 * LocalDateTime object as the API returns different results based on time of
+	 * day.
 	 * 
 	 * @param coord
 	 * @param timeBudgetInSeconds
@@ -202,7 +207,8 @@ public class AzureMapsApi {
 	 * @return travelTimeInSeconds
 	 * @throws IOException
 	 */
-	public static int getRouteTime(Coordinate startCoord, Coordinate endCoord, LocalDateTime dateTime) throws IOException {
+	public static int getRouteTime(Coordinate startCoord, Coordinate endCoord, LocalDateTime dateTime)
+			throws IOException {
 		URL url = new URL("https://atlas.microsoft.com/route/directions/json?subscription-key=" + API_KEY
 				+ "&api-version=1.0&query=" + startCoord.getX() + "," + startCoord.getY() + ":" + endCoord.getX() + ","
 				+ endCoord.getY() + "&departAt=" + formatDateTime(dateTime));
@@ -240,6 +246,5 @@ public class AzureMapsApi {
 	public static String formatDateTime(LocalDateTime dateTime) {
 		return dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
 	}
-
 
 }

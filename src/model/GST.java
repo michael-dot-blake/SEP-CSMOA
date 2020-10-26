@@ -31,25 +31,25 @@ public class GST implements Comparable<GST> {
 
 	public String[] parseMyJobsToday() {
 		int totalTravelTime = 0;
-		long totalIdleTime = 0;
+		float idleTimePercentage = 0;
 		int jobsCompleted = 0;
 
 		if (myJobsToday.size() == 0) {
 			String id = this.getgSTid();
 			String travTimeString = "Total Travel Time Mins: 0";
-			String idleTimeString = "Total Idle Time Mins: " + SimUtils.formatSeconds(Simulation.getRunTime());
+			String idleTimeString = "Total Idle Time Mins: 100%";
 			String jobsCompletedString = "Total Jobs Completed Today: 0";
 			String[] stats = new String[] { id, travTimeString, idleTimeString, jobsCompletedString };
 			return stats;
 		} else {
 			for (Job j : myJobsToday) {
 				totalTravelTime = totalTravelTime + (j.getTravelTimeInSeconds() * 2);
-				totalIdleTime = Simulation.getRunTime() - (j.getJobDuration() * 60) - (j.getTravelTimeInSeconds() * 2);
+				idleTimePercentage = (float) ((Simulation.getRunTime()) - (j.getJobDuration() * 60) - (j.getTravelTimeInSeconds() * 2)) / (Simulation.getRunTime()) * 100;
 				jobsCompleted = myJobsToday.size();
 			}
 			String id = this.getgSTid();
 			String travTimeString = "Total Travel Time Mins: " + SimUtils.formatSeconds(totalTravelTime);
-			String idleTimeString = "Approximate Idle Time Mins: " + SimUtils.formatSeconds(totalIdleTime);
+			String idleTimeString = "Percentage of Time Idle: " + (String.format("%.0f%%", idleTimePercentage));
 			String jobsCompletedString = "Total Jobs Completed Today: " + Integer.toString(jobsCompleted);
 			String[] stats = new String[] { id, travTimeString, idleTimeString, jobsCompletedString };
 			return stats;
