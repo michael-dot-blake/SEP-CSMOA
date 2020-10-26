@@ -8,6 +8,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import model.GST;
@@ -67,6 +68,16 @@ public class JobFactory {
 						jobPool.add(new Job(jobId, jobPriority, houseNum1, jobStreet, jobSuburb, postCode,
 								jobDateAndTime, jobDurationInMinutes, assignedGST, endDateAndTime, idleTime,
 								travelTimeInSeconds));
+
+						//Loop through Job Pool and remove priority B and C jobs
+						for (Iterator<Job> jobPoolIter = jobPool.iterator(); jobPoolIter.hasNext();) {
+							Job ji = jobPoolIter.next();
+							if (ji.getJobPriority().equals("B") || ji.getJobPriority().equals("C")) {
+								jobPoolIter.remove();
+
+							}
+						}
+
 						jobAdded = true;
 						ListSort(jobPool);
 					} catch (Exception e) {
@@ -78,6 +89,10 @@ public class JobFactory {
 					}
 				}
 				sc.close();
+
+				for (Job j : jobPool) {
+					System.out.println(j);
+				}
 
 			}
 
