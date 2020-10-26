@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -17,13 +18,15 @@ public class GST implements Comparable<GST> {
 
 	private String gSTid;
 	private double lat, lon;
+	private LocalDate shift;
 	private LocalDateTime finishTime;
 	private ArrayList<Job> myJobsToday;
 
-	public GST(String gSTid, double lat, double lon) {
+	public GST(String gSTid, double lat, double lon, LocalDate shift) {
 		this.gSTid = gSTid;
 		this.lat = lat;
 		this.lon = lon;
+		this.shift = shift;
 		finishTime = null;
 		myJobsToday = new ArrayList<Job>();
 
@@ -78,6 +81,10 @@ public class GST implements Comparable<GST> {
 
 	public void setLon(double lon) {
 		this.lon = lon;
+	}
+	
+	public LocalDate getShiftDate() {
+		return shift;
 	}
 
 	public void setFinishTime(LocalDateTime finishTime) {
