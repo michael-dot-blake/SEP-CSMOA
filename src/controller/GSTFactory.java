@@ -2,6 +2,7 @@ package controller;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -28,12 +29,15 @@ public class GSTFactory {
 					String GSTid = reform[0];
 					String latString = reform[1];
 					String lonString = reform[2];
+					String dateString = reform[3];
 					double lat = 0;
 					double lon = 0;
+					LocalDate date = null;
 					try {
 						lat = Double.parseDouble(latString);
 						lon = Double.parseDouble(lonString);
-						gstPool.add(new GST(GSTid, lat, lon));
+						date = LocalDate.parse(dateString);
+						gstPool.add(new GST(GSTid, lat, lon, date));
 						gstAdded = true;
 					}
 					catch (Exception e) {
@@ -69,6 +73,16 @@ public class GSTFactory {
 	
 	public static ArrayList<GST> getGSTpool() {
 		return gstPool;
+	}
+	
+	public static ArrayList<GST> getNextGSTs(LocalDate currDate) {
+		ArrayList<GST> availableGSTs = new ArrayList<GST>();
+		for (GST g : gstPool) {
+			if (g.getShiftDate() == currDate) {
+				availableGSTs.add(g);
+			}
+		}
+		return availableGSTs;
 	}
 
 }

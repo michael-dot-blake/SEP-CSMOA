@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -38,6 +39,8 @@ public class Simulation {
 	private ArrayList<GST> availableGSTPool = new ArrayList<GST>();
 
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
+		
+	private LocalDate nextDay;
 
 	private String JOB_FILE_PATH;
 
@@ -72,10 +75,14 @@ public class Simulation {
 		int complianceCounter = 0;
 		long totalTravelTime = 0;
 		long jobIdleTime = 0;
+		LocalDate thisDay = LocalDate.parse(currentTime.getYear()+"-"+currentTime.getMonthValue()+"-"+currentTime.getDayOfMonth());
+		nextDay = null;
 		
-		availableGSTPool = GSTFactory.getGSTpool();
+		availableGSTPool = GSTFactory.getNextGSTs(thisDay);
 		ArrayList<Job> jobPool = JobFactory.getJobPool();
 		do {
+			thisDay = LocalDate.parse(currentTime.getYear()+"-"+currentTime.getMonthValue()+"-"+currentTime.getDayOfMonth());
+			checkDay(thisDay, nextDay);
 			int availableGSTs = availableGSTPool.size();
 			for (Job j : jobPool) {
 
@@ -196,6 +203,16 @@ public class Simulation {
 	
 	public static long getRunTime() {
 		return runTimeInSeconds - SECONDS_IN_A_DAY;
+	}
+	
+	private void checkDay(LocalDate currThisDay, LocalDate currNextDay) {
+		if (currNextDay == null) {
+			currNextDay = currThisDay.plusDays(1);
+		}
+		else if (currThisDay == currNextDay) {
+			availableGSTPool = GSTFactory.getNextGSTs(currThisDay);
+			nextDay = currThisDay.plusDays(1);
+		}
 	}
 
 	public static void main(String[] args) throws SecurityException, IOException, CsvDataTypeMismatchException,
