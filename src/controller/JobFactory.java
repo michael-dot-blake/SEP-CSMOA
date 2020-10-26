@@ -89,11 +89,6 @@ public class JobFactory {
 					}
 				}
 				sc.close();
-
-				for (Job j : jobPool) {
-					System.out.println(j);
-				}
-
 			}
 
 			else {
