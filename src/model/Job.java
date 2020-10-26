@@ -1,9 +1,6 @@
 package model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
 
 /**
  * @author Sawmya Patidar
@@ -15,160 +12,65 @@ public class Job implements Comparable<Job> {
 
 	// instance variables to be initialised when a job is created
 
-	private int orderNum;
-	private String orderType;
-	private String orderDescription;
-	private String issueCode;
-	private String issueDescription;
-	private String mainActType;
-	private String mainActDescription;
-	private LocalDate orderCreateDate;
-	private LocalTime orderCreateTime;
+	private String orderNum;
 	private LocalDateTime orderCreateDateAndTime;
 	private String jobPriority;
 	private String suburb;
 	private String street;
 	private String houseNum1;
-	private String houseNum2;
 	private String postcode;
-	private String fitterDistrict;
 	private int jobDurationInMinutes;
 	private GST assignedGST;
-
-	
 
 	// instance variables to be set prior to the creation of a completedJobRecord
 	// object
 	private LocalDateTime endDateAndTime;
-	private int idleTime;
+	private long idleTime;
 	private int travelTimeInSeconds;
 
 	/**
-	 * Constructor for a final Job object with all values initialised
-	 * 
-	 * @param jobId
-	 * @param orderType
-	 * @param orderDescription
-	 * @param issueCode
-	 * @param issueDescription
-	 * @param mainActType
-	 * @param mainActDescip
-	 * @param jobDate
-	 * @param jobTime
+	 * @param orderNum
+	 * @param orderCreateDateAndTime
 	 * @param jobPriority
 	 * @param suburb
 	 * @param street
 	 * @param houseNum1
-	 * @param houseNum2
 	 * @param postcode
-	 * @param fitterDistrict
-	 * @param jobDuration
+	 * @param jobDurationInMinutes
+	 * @param assignedGST
 	 * @param endDateAndTime
+	 * @param idleTime
+	 * @param travelTimeInSeconds
 	 */
-	public Job(int jobId, String orderType, String orderDescription, String issueCode, String issueDescription,
-			String mainActType, String mainActDescription, LocalDate jobDate, LocalTime jobTime,
-			LocalDateTime startDateAndTime, String jobPriority, String suburb, String street, String houseNum1,
-			String houseNum2, String postcode, String fitterDistrict, int jobDurationInMinutes, int idleTime, int travelTimeInSeconds,
-			LocalDateTime endDateAndTime) {
-		this.orderNum = jobId;
-		this.orderType = orderType;
-		this.orderDescription = orderDescription;
-		this.issueCode = issueCode;
-		this.issueDescription = issueDescription;
-		this.mainActType = mainActType;
-		this.mainActDescription = mainActDescription;
-		this.orderCreateDate = jobDate;
-		this.orderCreateTime = jobTime;
-		this.orderCreateDateAndTime = startDateAndTime;
+
+	public Job(String orderNum, String jobPriority, String houseNum1, String street, String suburb, String postcode,
+			LocalDateTime orderCreateDateAndTime, int jobDurationInMinutes, GST assignedGST,
+			LocalDateTime endDateAndTime, long idleTime, int travelTimeInSeconds) {
+		this.orderNum = orderNum;
 		this.jobPriority = jobPriority;
-		this.suburb = suburb;
-		this.street = street;
 		this.houseNum1 = houseNum1;
-		this.houseNum2 = houseNum2;
+		this.street = street;
+		this.suburb = suburb;
 		this.postcode = postcode;
-		this.fitterDistrict = fitterDistrict;
+		this.orderCreateDateAndTime = orderCreateDateAndTime;
 		this.jobDurationInMinutes = jobDurationInMinutes;
-		this.travelTimeInSeconds = travelTimeInSeconds;
+		this.assignedGST = assignedGST;
 		this.endDateAndTime = endDateAndTime;
-		this.assignedGST = null;
 		this.idleTime = idleTime;
-	}
-	// Getters and setters
+		this.travelTimeInSeconds = travelTimeInSeconds;
 
-	public String getMainActDescription() {
-		return mainActDescription;
-	}
-
-	public void setMainActDescription(String mainActDescription) {
-		this.mainActDescription = mainActDescription;
 	}
 
 	public void setJobPriority(String jobPriority) {
 		this.jobPriority = jobPriority;
 	}
 
-	public int getOrderNum() {
+	public String getOrderNum() {
 		return orderNum;
 	}
 
-	public void setOrderNum(int orderNum) {
+	public void setOrderNum(String orderNum) {
 		this.orderNum = orderNum;
-	}
-
-	public String getOrderType() {
-		return orderType;
-	}
-
-	public void setOrderType(String orderType) {
-		this.orderType = orderType;
-	}
-
-	public String getOrderDescription() {
-		return orderDescription;
-	}
-
-	public void setOrderDescription(String orderDescription) {
-		this.orderDescription = orderDescription;
-	}
-
-	public String getIssueCode() {
-		return issueCode;
-	}
-
-	public void setIssueCode(String issueCode) {
-		this.issueCode = issueCode;
-	}
-
-	public String getIssuedescription() {
-		return issueDescription;
-	}
-
-	public void setIssuedescription(String issuedescription) {
-		this.issueDescription = issuedescription;
-	}
-
-	public String getMainActType() {
-		return mainActType;
-	}
-
-	public void setMainActType(String mainActType) {
-		this.mainActType = mainActType;
-	}
-
-	public LocalDate getOrderCreateDate() {
-		return orderCreateDate;
-	}
-
-	public void setOrderCreateDate(LocalDate jobString) {
-		this.orderCreateDate = jobString;
-	}
-
-	public LocalTime getOrderCreateTime() {
-		return orderCreateTime;
-	}
-
-	public void setOrderCreateTime(LocalTime orderCreateTime) {
-		this.orderCreateTime = orderCreateTime;
 	}
 
 	public String getJobPriority() {
@@ -210,28 +112,12 @@ public class Job implements Comparable<Job> {
 		this.houseNum1 = houseNum1;
 	}
 
-	public String getHouseNum2() {
-		return houseNum2;
-	}
-
-	public void setHouseNum2(String houseNum2) {
-		this.houseNum2 = houseNum2;
-	}
-
 	public String getPostcode() {
 		return postcode;
 	}
 
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
-	}
-
-	public String getFitterDistrict() {
-		return fitterDistrict;
-	}
-
-	public void setFitterDistrict(String fitterDistrict) {
-		this.fitterDistrict = fitterDistrict;
 	}
 
 	public int getJobDuration() {
@@ -270,19 +156,14 @@ public class Job implements Comparable<Job> {
 		this.orderCreateDateAndTime = orderCreateDateAndTime;
 	}
 
-	public void setIdleTime(int jobIdleTime) {
+	public void setIdleTime(long jobIdleTime) {
 		this.idleTime = jobIdleTime;
 	}
 
-	public int getIdleTime() {
+	public long getIdleTime() {
 		return idleTime;
 	}
 
-	public static int calculateIdleTime(LocalDateTime orderCreateTime, LocalDateTime timeJobAssigned) {
-		long minutes = orderCreateTime.until(timeJobAssigned, ChronoUnit.MINUTES);
-		// System.out.println(seconds);
-		return (int) minutes;
-	}
 
 	@Override
 	public int compareTo(Job o) {
@@ -291,10 +172,10 @@ public class Job implements Comparable<Job> {
 
 	@Override
 	public String toString() {
-		return " Job [Num: " + orderNum + ", FitterDistrict: " + fitterDistrict + " Job Priority: " + jobPriority
-				+ ", Start Date and Time: " + getOrderCreateDateAndTime() + ", Duration: " + jobDurationInMinutes
-				+ ", Travel_Time: " + (travelTimeInSeconds/60) + ", Idle_Time: " + idleTime
-				+ ", End Date And Time: " + endDateAndTime + "]";
+		return " Job [Num: " + orderNum + " Job Priority: " + jobPriority + ", Start Date and Time: "
+				+ getOrderCreateDateAndTime() + ", Duration: " + jobDurationInMinutes + ", Travel_Time: "
+				+ (travelTimeInSeconds / 60) + ", Idle_Time: " + idleTime + ", End Date And Time: " + endDateAndTime
+				+ "]";
 	}
 
 }

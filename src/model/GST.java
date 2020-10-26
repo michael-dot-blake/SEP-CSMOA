@@ -1,6 +1,10 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+
+import controller.SimUtils;
+import controller.Simulation;
 
 /**
  * @author Yun Wang
@@ -14,14 +18,42 @@ public class GST implements Comparable<GST> {
 	private String gSTid;
 	private double lat, lon;
 	private LocalDateTime finishTime;
-	private int travelTime;
+	private ArrayList<Job> myJobsToday;
 
 	public GST(String gSTid, double lat, double lon) {
 		this.gSTid = gSTid;
 		this.lat = lat;
 		this.lon = lon;
 		finishTime = null;
-		travelTime = 0;
+		myJobsToday = new ArrayList<Job>();
+
+	}
+
+	public String[] parseMyJobsToday() {
+		int totalTravelTime = 0;
+		float idleTimePercentage = 0;
+		int jobsCompleted = 0;
+
+		if (myJobsToday.size() == 0) {
+			String id = this.getgSTid();
+			String travTimeString = "Total Travel Time Mins: 0";
+			String idleTimeString = "Total Idle Time Mins: 100%";
+			String jobsCompletedString = "Total Jobs Completed Today: 0";
+			String[] stats = new String[] { id, travTimeString, idleTimeString, jobsCompletedString };
+			return stats;
+		} else {
+			for (Job j : myJobsToday) {
+				totalTravelTime = totalTravelTime + (j.getTravelTimeInSeconds() * 2);
+				idleTimePercentage = (float) ((Simulation.getRunTime()) - (j.getJobDuration() * 60) - (j.getTravelTimeInSeconds() * 2)) / (Simulation.getRunTime()) * 100;
+				jobsCompleted = myJobsToday.size();
+			}
+			String id = this.getgSTid();
+			String travTimeString = "Total Travel Time Mins: " + SimUtils.formatSeconds(totalTravelTime);
+			String idleTimeString = "Percentage of Time Idle: " + (String.format("%.0f%%", idleTimePercentage));
+			String jobsCompletedString = "Total Jobs Completed Today: " + Integer.toString(jobsCompleted);
+			String[] stats = new String[] { id, travTimeString, idleTimeString, jobsCompletedString };
+			return stats;
+		}
 	}
 
 	public String getgSTid() {
@@ -57,30 +89,16 @@ public class GST implements Comparable<GST> {
 		return finishTime;
 	}
 
-	public void setTravelTime(int travelTime) {
-		this.travelTime = travelTime;
-
+	public ArrayList<Job> getMyJobsToday() {
+		return myJobsToday;
 	}
 
-	public int getTravelTime() {
-		return travelTime;
-	}
-	
 	@Override
 	public int compareTo(GST g1) {
-		if (this.travelTime > g1.travelTime) {
-			return 1;
-		}
-		if (this.travelTime < g1.travelTime) {
-			return -1;
-			
-		} else {
-			return 0;
-		}
-
+		return 0;
 	}
 
-	
+	// }
 
 	@Override
 	public String toString() {

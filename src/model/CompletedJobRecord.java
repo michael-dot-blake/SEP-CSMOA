@@ -1,5 +1,7 @@
 package model;
 
+import java.time.LocalDateTime;
+
 import com.opencsv.bean.CsvBindByName;
 
 /**
@@ -12,25 +14,27 @@ public class CompletedJobRecord {
 
 	private GST gst;
 	private Job job;
-	
+
 	@CsvBindByName(column = "A-Job ID")
 	private String createNum;
-	@CsvBindByName(column = "B-Address")
+	@CsvBindByName(column = "B-GST ID")
+	private String gstId;
+	@CsvBindByName(column = "C-Address")
 	private String address;
-	@CsvBindByName(column = "C-Suburb")
+	@CsvBindByName(column = "D-Suburb")
 	private String suburb;
-	@CsvBindByName(column = "D-Postcode")
+	@CsvBindByName(column = "E-Postcode")
 	private String postcode;
-	@CsvBindByName(column = "E-Start Date Time")
+	@CsvBindByName(column = "F-Start Date Time")
 	private String startDateAndTime;
-	@CsvBindByName(column = "F-Idle Time mins")
+	@CsvBindByName(column = "G-Idle Time mins")
 	private String idleTime;
-	@CsvBindByName(column = "G-Travel Time mins")
+	@CsvBindByName(column = "H-Travel Time mins")
 	private Integer travelTime;
-	@CsvBindByName(column = "H-Job Duration mins")
+	@CsvBindByName(column = "I-Job Duration mins")
 	private Integer jobDuration;
-	@CsvBindByName(column = "I-End Date Time")
-	private String endDateAndTime;
+	@CsvBindByName(column = "J-End Date Time")
+	private LocalDateTime endDateAndTime;
 
 	/**
 	 * @param gst
@@ -39,16 +43,21 @@ public class CompletedJobRecord {
 	public CompletedJobRecord(GST gst, Job job) {
 		this.gst = gst;
 		this.job = job;
-		this.createNum = Integer.toString(job.getOrderNum());
+		this.createNum = job.getOrderNum();
+		this.gstId = gst.getgSTid();
 		this.address = job.getHouseNum1() + " " + job.getStreet();
 		this.suburb = job.getSuburb();
 		this.postcode = job.getPostcode();
 		this.startDateAndTime = job.getOrderCreateDateAndTime().toString();
-		this.idleTime = Long.toString(job.getIdleTime());
+		this.idleTime = Long.toString(job.getIdleTime() / 60);
 		this.travelTime = (job.getTravelTimeInSeconds() / 60);
 		this.jobDuration = job.getJobDuration();
-		this.endDateAndTime = job.getEndDateAndTime().toString();
+		this.endDateAndTime = job.getEndDateAndTime();
 
+	}
+	
+	public LocalDateTime getEndDateAndTime() {
+		return endDateAndTime;
 	}
 
 	@Override
