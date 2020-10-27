@@ -47,7 +47,7 @@ public class Simulation {
 	// Strings representing filenames to pass as arguments in cmdline
 	private String JOB_FILE_PATH = "JobFiles/oneperday.csv";
 
-	private String GST_FILE_PATH = "GSTFiles/gsts.csv";
+	private String GST_FILE_PATH = "GSTFiles/gsts1perday.csv";
 
 	private String LOG_FILE_JOB = "jobOutput.csv";
 
@@ -75,15 +75,18 @@ public class Simulation {
 		int complianceCounter = 0;
 		long totalTravelTime = 0;
 		long jobIdleTime = 0;
-		LocalDateTime startTime = currentTime;
 		LocalDate thisDay = currentTime.toLocalDate();
+		LocalTime GSTstartTime = LocalTime.of(7,0);
 		nextDay = null;
 
 		availableGSTPool = GSTFactory.getNextGSTs(thisDay);
 		ArrayList<Job> jobPool = JobFactory.getJobPool();
 		do {
 			thisDay = currentTime.toLocalDate();
+			
+			if (currentTime.toLocalTime().equals(GSTstartTime)) {
 			checkDay(thisDay, nextDay);
+			}
 			int availableGSTs = availableGSTPool.size();
 			for (Iterator<Job> jobPoolIter = jobPool.iterator(); jobPoolIter.hasNext();) {
 				Job j = jobPoolIter.next();
