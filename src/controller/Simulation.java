@@ -49,7 +49,9 @@ public class Simulation {
 
 	private String GST_FILE_PATH = "GSTFiles/gstData1.csv";
 
-	private String LOG_FILE_NAME = "output.csv";
+	private String LOG_FILE_JOB = "jobOutput.csv";
+	
+	private String LOG_FILE_GST = "gstOutput.csv";
 
 	// An Integer representing the required compliance time in seconds
 	private final int COMPLIANCE_TIME = 1800;
@@ -189,7 +191,7 @@ public class Simulation {
 			long avgTravelTime = totalTravelTime / jobsCompleted;
 			float complianceRate = (float) complianceCounter / (jobsCompleted + incompleteJobs) * 100;
 			SimUtils.generateOutput(avgTravelTime, complianceRate, incompleteJobs, completedJobs,
-					GSTFactory.getGSTpool(), LOG_FILE_NAME);
+					GSTFactory.getGSTpool(), LOG_FILE_JOB);
 		}
 
 	}
@@ -207,10 +209,12 @@ public class Simulation {
 
 	}
 
-	private void initFileNames(String jobFile, String gstFile, String outputFile) {
+	private void initFileNames(String jobFile, String gstFile, String outputjobs, String outputgst) {
 		JOB_FILE_PATH = jobFile;
 		GST_FILE_PATH = gstFile;
-		LOG_FILE_NAME = outputFile;
+		LOG_FILE_JOB = outputjobs;
+		LOG_FILE_GST = outputgst;
+		
 	}
 
 	public static long getRunTime() {
@@ -236,8 +240,8 @@ public class Simulation {
 			CsvRequiredFieldEmptyException, InterruptedException {
 
 		Simulation s = new Simulation();
-		if (args.length == 3) {
-			s.initFileNames(args[0], args[1], args[2]);
+		if (args.length == 4) {
+			s.initFileNames(args[0], args[1], args[2], args[3]);
 		}
 		s.runSimulation();
 
