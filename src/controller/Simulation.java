@@ -31,33 +31,33 @@ public class Simulation {
 	// Queue storage for jobs
 	private PriorityQueue<Job> jobQueue = new PriorityQueue<Job>();
 
+	// Deque storage for jobs waiting to be added to the active Queue when there is
+	// no GST available
 	private Deque<Job> idleJobQueue = new ArrayDeque<Job>();
 
 	// Store completed jobs
 	private ArrayList<CompletedJobRecord> completedJobs = new ArrayList<CompletedJobRecord>();
 
+	// ArrayList of currently available GSTs
 	private ArrayList<GST> availableGSTPool = new ArrayList<GST>();
 
+	// ArrayList of currently busy GSTs
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
-		
-	private LocalDate nextDay;
 
-	private String JOB_FILE_PATH;
+	// Strings representing filenames to pass as arguments in cmdline
+	private String JOB_FILE_PATH = "JobFiles/Job14.csv";
 
-	private String GST_FILE_PATH;
+	private String GST_FILE_PATH = "GSTFiles/gstData1.csv";
 
-	private String LOG_FILE_NAME;
-	
-	//An Integer representing the size of the isochrone in seconds
+	private String LOG_FILE_NAME = "output.csv";
+
+	// An Integer representing the required compliance time in seconds
 	private final int COMPLIANCE_TIME = 1800;
-	
-	private static final int SECONDS_IN_A_DAY = 86400;
-	
-	private static long runTimeInSeconds = 0;
-	
-	
-	
 
+	// An integer representing the run time of the simulation
+	private static long runTimeInSeconds = 0;
+
+	private LocalDate nextDay;
 
 	/**
 	 * Main simulation method
@@ -75,16 +75,23 @@ public class Simulation {
 		int complianceCounter = 0;
 		long totalTravelTime = 0;
 		long jobIdleTime = 0;
-		LocalDate thisDay = LocalDate.parse(currentTime.getYear()+"-"+currentTime.getMonthValue()+"-"+currentTime.getDayOfMonth());
+		LocalDateTime startTime = currentTime;
+		LocalDate thisDay = LocalDate
+				.parse(currentTime.getYear() + "-" + currentTime.getMonthValue() + "-" + currentTime.getDayOfMonth());
 		nextDay = null;
 		
+		System.out.println(thisDay);
+		System.out.println(currentTime.toLocalDate());
+
 		availableGSTPool = GSTFactory.getNextGSTs(thisDay);
 		ArrayList<Job> jobPool = JobFactory.getJobPool();
 		do {
-			thisDay = LocalDate.parse(currentTime.getYear()+"-"+currentTime.getMonthValue()+"-"+currentTime.getDayOfMonth());
+			thisDay = LocalDate.parse(
+					currentTime.getYear() + "-" + currentTime.getMonthValue() + "-" + currentTime.getDayOfMonth());
 			checkDay(thisDay, nextDay);
 			int availableGSTs = availableGSTPool.size();
-			for (Job j : jobPool) {
+			for (Iterator<Job> jobPoolIter = jobPool.iterator(); jobPoolIter.hasNext();) {
+				Job j = jobPoolIter.next();
 
 				if (currentTime.equals(j.getOrderCreateDateAndTime()) && availableGSTs == 0) {
 					idleJobQueue.addLast(j);
@@ -96,8 +103,8 @@ public class Simulation {
 						Job current = iter.next();
 						jobIdleTime = SimUtils.calculateTimeBetween(current.getOrderCreateDateAndTime(), currentTime);
 						current.setIdleTime(jobIdleTime);
-						current.setEndDateAndTime(current.getOrderCreateDateAndTime().plusSeconds(jobIdleTime));
 						jobQueue.add(current);
+						jobPoolIter.remove();
 						iter.remove();
 						break;
 					}
@@ -105,6 +112,7 @@ public class Simulation {
 				} else if (currentTime.equals(j.getOrderCreateDateAndTime()) && availableGSTs > 0
 						&& idleJobQueue.isEmpty()) {
 					jobQueue.add(j);
+					jobPoolIter.remove();
 				}
 
 			}
@@ -121,7 +129,7 @@ public class Simulation {
 							System.out.println("Found the closest GST: " + gst.getgSTid() + " in 30min isochrone.");
 							Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
 							travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord, currentTime);
-							if (travelTime < COMPLIANCE_TIME) {
+							if ((travelTime + j.getIdleTime()) < COMPLIANCE_TIME) {
 								complianceCounter++;
 							}
 							j.setTravelTimeInSeconds(travelTime);
@@ -130,34 +138,38 @@ public class Simulation {
 									jobTime.plusMinutes(jobDuration).plusSeconds(travelTime).plusSeconds(jobIdleTime));
 							totalTravelTime = totalTravelTime + travelTime;
 							j.setAssignedGST(gst);
-							gst.setFinishTime(
-									j.getEndDateAndTime().plusSeconds(travelTime * 2).plusSeconds(j.getIdleTime()));
+
+							// Set the time that the GST will become available again
+							// Reapply the travel time to simulate a GST returning to their previous
+							// position
+							gst.setFinishTime(j.getEndDateAndTime().plusSeconds(travelTime));
 							availableGSTPool.remove(gst);
 							busyGSTs.add(gst);
+
 						} else if (gst == null && !availableGSTPool.isEmpty()) {
 							gst = SimUtils.findGstByStraightLineDistance(jobCoord, availableGSTPool);
 							System.out.println("Found the closest GST: " + gst.getgSTid() + " outside isochrone");
 							Coordinate gstCoord = new Coordinate(gst.getLat(), gst.getLon());
 							travelTime = AzureMapsApi.getRouteTime(gstCoord, jobCoord, currentTime);
-							if (travelTime < COMPLIANCE_TIME) {
+							if ((travelTime + j.getIdleTime()) < COMPLIANCE_TIME) {
 								complianceCounter++;
 							}
 							System.out.println("Travel Time is: " + SimUtils.formatSeconds(travelTime) + "\n");
 							j.setTravelTimeInSeconds(travelTime);
+
+							// Set the finishing time for the job
 							j.setEndDateAndTime(
 									jobTime.plusMinutes(jobDuration).plusSeconds(travelTime).plusSeconds(jobIdleTime));
 							totalTravelTime = totalTravelTime + travelTime;
 							j.setAssignedGST(gst);
-							
-							//Set the time that the GST will become available again
-							//Double the travel time to simulate a GST returning to their previous position
-							gst.setFinishTime(
-									j.getEndDateAndTime().plusSeconds(travelTime * 2).plusSeconds(j.getIdleTime()));
-							busyGSTs.add(gst);
+
+							// Set the time that the GST will become available again
+							// Reapply the travel time to simulate a GST returning to their previous
+							// position
+							gst.setFinishTime(j.getEndDateAndTime().plusSeconds(travelTime));
+
 							availableGSTPool.remove(gst);
-						} else {
-							System.out.println("No GST available");
-							break;
+							busyGSTs.add(gst);
 
 						}
 
@@ -168,8 +180,12 @@ public class Simulation {
 			SimUtils.removeCompletedJobFromQueue(currentTime, jobQueue, completedJobs);
 			SimUtils.checkGstFinished(currentTime, availableGSTPool, busyGSTs);
 			currentTime = currentTime.plusSeconds(1);
-			runTimeInSeconds++;
+			if (jobPool.isEmpty() && jobQueue.isEmpty() && busyGSTs.isEmpty()) {
+				endTime = currentTime;
+			}
+			
 		} while (currentTime.isBefore(endTime));
+		runTimeInSeconds = SimUtils.calculateTimeBetween(startTime, endTime);
 		int jobsCompleted = completedJobs.size();
 		int incompleteJobs = idleJobQueue.size() + jobQueue.size();
 		if (jobsCompleted == 0) {
@@ -177,7 +193,8 @@ public class Simulation {
 		} else {
 			long avgTravelTime = totalTravelTime / jobsCompleted;
 			float complianceRate = (float) complianceCounter / (jobsCompleted + incompleteJobs) * 100;
-			SimUtils.generateOutput(avgTravelTime, complianceRate, incompleteJobs, completedJobs, GSTFactory.getGSTpool(), LOG_FILE_NAME);
+			SimUtils.generateOutput(avgTravelTime, complianceRate, incompleteJobs, completedJobs,
+					GSTFactory.getGSTpool(), LOG_FILE_NAME);
 		}
 
 	}
@@ -200,16 +217,15 @@ public class Simulation {
 		GST_FILE_PATH = gstFile;
 		LOG_FILE_NAME = outputFile;
 	}
-	
+
 	public static long getRunTime() {
-		return runTimeInSeconds - SECONDS_IN_A_DAY;
+		return runTimeInSeconds;
 	}
-	
+
 	private void checkDay(LocalDate currThisDay, LocalDate currNextDay) {
 		if (currNextDay == null) {
-			currNextDay = currThisDay.plusDays(1);
-		}
-		else if (currThisDay == currNextDay) {
+			nextDay = currThisDay.plusDays(1);
+		} else if (currThisDay == currNextDay) {
 			availableGSTPool = GSTFactory.getNextGSTs(currThisDay);
 			nextDay = currThisDay.plusDays(1);
 		}
@@ -223,9 +239,6 @@ public class Simulation {
 			s.initFileNames(args[0], args[1], args[2]);
 		}
 		s.runSimulation();
-		
-		
-		
 
 	}// end main
 
