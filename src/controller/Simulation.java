@@ -45,9 +45,9 @@ public class Simulation {
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
 
 	// Strings representing filenames to pass as arguments in cmdline
-	private String JOB_FILE_PATH = "JobFiles/oneperday.csv";
+	private String JOB_FILE_PATH = "JobFiles/2jobsperday.csv";
 
-	private String GST_FILE_PATH = "GSTFiles/gsts.csv";
+	private String GST_FILE_PATH = "GSTFiles/gsts2perdayduplicateids.csv";
 
 	private String LOG_FILE_JOB = "jobOutput.csv";
 
