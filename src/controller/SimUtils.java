@@ -90,7 +90,7 @@ public class SimUtils {
 	}
 
 	public static void generateOutput(long avgTravelTime, float complianceRate, int incompleteJobs,
-			ArrayList<CompletedJobRecord> completedJobs, ArrayList<GST> gstRecords, String jobFilename,
+			ArrayList<CompletedJobRecord> completedJobs, ArrayList<GST> gstRecord, String jobFilename,
 			String gstFilename)
 			throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException, InterruptedException {
 		String compString = "Compliance Rate: " + (String.format("%.0f%%", complianceRate));
@@ -104,7 +104,7 @@ public class SimUtils {
 		Log.appendSingleLineToCSV(trav, jobFilename);
 		Log.appendSingleLineToCSV(incomplete, jobFilename);
 
-		Log.writeToCsv(gstRecords, gstFilename);
+		Log.writeToCsv(gstRecord, gstFilename);
 
 		System.out.println("Run Successful. Output written to " + jobFilename);
 
