@@ -4,8 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import controller.SimUtils;
-import controller.Simulation;
+import com.opencsv.bean.CsvBindByName;
 
 /**
  * @author Yun Wang
@@ -16,9 +15,21 @@ import controller.Simulation;
 
 public class GST implements Comparable<GST> {
 
+	@CsvBindByName(column = "A-GST ID")
 	private String gSTid;
-	private double lat, lon;
+	@CsvBindByName(column = "B-Lat")
+	private double lat;
+	@CsvBindByName(column = "C-Lon")
+	private double lon;
+	@CsvBindByName(column = "D-Date")
 	private LocalDate shift;
+	@CsvBindByName(column = "E-Travel Mins")
+	private int totalTravelTime;
+	@CsvBindByName(column = "F-Work Mins")
+	private int totalTimeWorked;
+	@CsvBindByName(column = "G-Jobs Completed")
+	private int numJobsCompleted;
+
 	private LocalDateTime finishTime;
 	private ArrayList<Job> myJobsToday;
 
@@ -29,40 +40,17 @@ public class GST implements Comparable<GST> {
 		this.shift = shift;
 		finishTime = null;
 		myJobsToday = new ArrayList<Job>();
-
 	}
 
-	public String[] parseMyJobsToday() {
-		int totalTravelTime = 0;
-		float idleTimePercentage = 0;
-		int jobsCompleted = 0;
-		long shiftLength = Simulation.getRunTime();
-		int totalJobDuration = 0;
-		int activeTime = 0;
-
-		if (myJobsToday.size() == 0) {
-			String id = this.getgSTid();
-			String travTimeString = "Total Travel Time Mins: 0";
-			String idleTimeString = "Total Idle Time Mins: 100%";
-			String jobsCompletedString = "Total Jobs Completed Today: 0";
-			String[] stats = new String[] { id, travTimeString, idleTimeString, jobsCompletedString };
-			return stats;
-		} else {
-			for (Job myJobs : myJobsToday) {
-				totalTravelTime += myJobs.getTravelTimeInSeconds() * 2;
-				totalJobDuration += (myJobs.getJobDuration() * 60);
-				activeTime = totalTravelTime + totalJobDuration; 
-				idleTimePercentage = (float) (activeTime * 100) / shiftLength;
-				jobsCompleted = myJobsToday.size();
-			}
-			String id = this.getgSTid();
-			String travTimeString = "Total Travel Time Mins: "
-					+ Integer.toString(totalTravelTime/60);
-			String idleTimeString = "Percentage of Time Idle: " + (String.format("%.0f%%", idleTimePercentage));
-			String jobsCompletedString = "Total Jobs Completed Today: " + Integer.toString(jobsCompleted);
-			String[] stats = new String[] { id, travTimeString, idleTimeString, jobsCompletedString };
-			return stats;
-		}
+	public GST(String gSTid, double lat, double lon, LocalDate shift, int totalTravelTime, int totalTimeWorked,
+			int numJobsCompleted) {
+		this.gSTid = gSTid;
+		this.lat = lat;
+		this.lon = lon;
+		this.shift = shift;
+		this.totalTravelTime = totalTravelTime/60;
+		this.totalTimeWorked = totalTimeWorked/60;
+		this.numJobsCompleted = numJobsCompleted;
 	}
 
 	public String getgSTid() {
@@ -88,7 +76,7 @@ public class GST implements Comparable<GST> {
 	public void setLon(double lon) {
 		this.lon = lon;
 	}
-	
+
 	public LocalDate getShiftDate() {
 		return shift;
 	}
