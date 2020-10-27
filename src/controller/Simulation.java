@@ -225,7 +225,7 @@ public class Simulation {
 	private void checkDay(LocalDate currThisDay, LocalDate currNextDay) {
 		if (currNextDay == null) {
 			nextDay = currThisDay.plusDays(1);
-		} else if (currThisDay == currNextDay) {
+		} else if (currThisDay.compareTo(currNextDay) == 0) {
 			availableGSTPool = GSTFactory.getNextGSTs(currThisDay);
 			nextDay = currThisDay.plusDays(1);
 		}
