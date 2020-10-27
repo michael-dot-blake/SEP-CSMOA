@@ -43,11 +43,11 @@ public class Simulation {
 
 	// ArrayList of currently busy GSTs
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
-
+	
 	// Strings representing filenames to pass as arguments in cmdline
-	private String JOB_FILE_PATH = "JobFiles/Job14.csv";
+	private String JOB_FILE_PATH = "JobFiles/oneperday.csv";
 
-	private String GST_FILE_PATH = "GSTFiles/gstData1.csv";
+	private String GST_FILE_PATH = "GSTFiles/gsts.csv";
 
 	private String LOG_FILE_JOB = "jobOutput.csv";
 	
@@ -190,8 +190,9 @@ public class Simulation {
 		} else {
 			long avgTravelTime = totalTravelTime / jobsCompleted;
 			float complianceRate = (float) complianceCounter / (jobsCompleted + incompleteJobs) * 100;
-			SimUtils.generateOutput(avgTravelTime, complianceRate, incompleteJobs, completedJobs,
-					GSTFactory.getGSTpool(), LOG_FILE_JOB);
+			
+			SimUtils.generateOutput(avgTravelTime, complianceRate, incompleteJobs,completedJobs,
+					SimUtils.getOverallGstStats(availableGSTPool), LOG_FILE_JOB, LOG_FILE_GST);
 		}
 
 	}
