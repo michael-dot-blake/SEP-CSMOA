@@ -74,14 +74,14 @@ public class SimUtils {
 
 	}
 
-	public static GST findClosestGst(Coordinate jobCoord, int timeBudgetInSeconds, LocalDateTime departureTime)
+	public static GST findClosestGst(Coordinate jobCoord, int timeBudgetInSeconds, LocalDateTime departureTime, ArrayList<GST> gstPool)
 			throws IOException {
 
 		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(jobCoord, timeBudgetInSeconds, departureTime);
 		Polygon poly = AzureMapsApi.BuildPolygon(jsonObj);
 		ArrayList<GST> nearbyGSTs = new ArrayList<GST>();
 
-		for (GST g : GSTFactory.getGSTpool()) {
+		for (GST g : gstPool) {
 			Coordinate gstCoord = new Coordinate(g.getLat(), g.getLon());
 			if (AzureMapsApi.checkIfLocationInIsochrone(poly, gstCoord)) {
 				nearbyGSTs.add(g);

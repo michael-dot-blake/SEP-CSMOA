@@ -78,10 +78,11 @@ public class GSTFactory {
 	public static ArrayList<GST> getNextGSTs(LocalDate currDate) {
 		ArrayList<GST> availableGSTs = new ArrayList<GST>();
 		for (GST g : gstPool) {
-			if (g.getShiftDate() == currDate) {
+			if (g.getShiftDate().compareTo(currDate) == 0) {
 				availableGSTs.add(g);
 			}
 		}
+		
 		return availableGSTs;
 	}
 

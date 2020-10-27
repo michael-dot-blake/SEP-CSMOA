@@ -76,18 +76,13 @@ public class Simulation {
 		long totalTravelTime = 0;
 		long jobIdleTime = 0;
 		LocalDateTime startTime = currentTime;
-		LocalDate thisDay = LocalDate
-				.parse(currentTime.getYear() + "-" + currentTime.getMonthValue() + "-" + currentTime.getDayOfMonth());
+		LocalDate thisDay = currentTime.toLocalDate();
 		nextDay = null;
-		
-		System.out.println(thisDay);
-		System.out.println(currentTime.toLocalDate());
 
 		availableGSTPool = GSTFactory.getNextGSTs(thisDay);
 		ArrayList<Job> jobPool = JobFactory.getJobPool();
 		do {
-			thisDay = LocalDate.parse(
-					currentTime.getYear() + "-" + currentTime.getMonthValue() + "-" + currentTime.getDayOfMonth());
+			thisDay = currentTime.toLocalDate();
 			checkDay(thisDay, nextDay);
 			int availableGSTs = availableGSTPool.size();
 			for (Iterator<Job> jobPoolIter = jobPool.iterator(); jobPoolIter.hasNext();) {
@@ -123,7 +118,7 @@ public class Simulation {
 						Coordinate jobCoord = SimUtils.getJobLocation(j);
 						LocalDateTime jobTime = j.getOrderCreateDateAndTime();
 						int jobDuration = j.getJobDuration();
-						GST gst = SimUtils.findClosestGst(jobCoord, COMPLIANCE_TIME, jobTime);
+						GST gst = SimUtils.findClosestGst(jobCoord, COMPLIANCE_TIME, jobTime, availableGSTPool);
 						int travelTime = 0;
 						if (gst != null) {
 							System.out.println("Found the closest GST: " + gst.getgSTid() + " in 30min isochrone.");
@@ -226,7 +221,13 @@ public class Simulation {
 		if (currNextDay == null) {
 			nextDay = currThisDay.plusDays(1);
 		} else if (currThisDay.compareTo(currNextDay) == 0) {
+			System.out.println("This Day = Next Day\n");
+			availableGSTPool.clear();
 			availableGSTPool = GSTFactory.getNextGSTs(currThisDay);
+			System.out.println("GSTS in Pool: \n");
+			for (GST g : availableGSTPool) {
+				System.out.println(g.getgSTid()+"\n");
+			}
 			nextDay = currThisDay.plusDays(1);
 		}
 	}
