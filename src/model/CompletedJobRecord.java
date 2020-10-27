@@ -55,10 +55,6 @@ public class CompletedJobRecord {
 		this.endDateAndTime = job.getEndDateAndTime();
 
 	}
-	
-	public LocalDateTime getEndDateAndTime() {
-		return endDateAndTime;
-	}
 
 	@Override
 	public String toString() {
