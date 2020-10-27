@@ -43,22 +43,20 @@ public class Simulation {
 
 	// ArrayList of currently busy GSTs
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
-	
+
 	// Strings representing filenames to pass as arguments in cmdline
 	private String JOB_FILE_PATH = "JobFiles/oneperday.csv";
 
 	private String GST_FILE_PATH = "GSTFiles/gsts.csv";
 
 	private String LOG_FILE_JOB = "jobOutput.csv";
-	
+
 	private String LOG_FILE_GST = "gstOutput.csv";
 
 	// An Integer representing the required compliance time in seconds
 	private final int COMPLIANCE_TIME = 1800;
 
-	// An integer representing the run time of the simulation
-	private static long runTimeInSeconds = 0;
-
+	// LocalDate object referencing the next day in the simulation
 	private LocalDate nextDay;
 
 	/**
@@ -164,7 +162,6 @@ public class Simulation {
 							// Reapply the travel time to simulate a GST returning to their previous
 							// position
 							gst.setFinishTime(j.getEndDateAndTime().plusSeconds(travelTime));
-
 							availableGSTPool.remove(gst);
 							busyGSTs.add(gst);
 
@@ -180,9 +177,8 @@ public class Simulation {
 			if (jobPool.isEmpty() && jobQueue.isEmpty() && busyGSTs.isEmpty()) {
 				endTime = currentTime;
 			}
-			
+
 		} while (currentTime.isBefore(endTime));
-		runTimeInSeconds = SimUtils.calculateTimeBetween(startTime, endTime);
 		int jobsCompleted = completedJobs.size();
 		int incompleteJobs = idleJobQueue.size() + jobQueue.size();
 		if (jobsCompleted == 0) {
@@ -190,9 +186,9 @@ public class Simulation {
 		} else {
 			long avgTravelTime = totalTravelTime / jobsCompleted;
 			float complianceRate = (float) complianceCounter / (jobsCompleted + incompleteJobs) * 100;
-			
-			SimUtils.generateOutput(avgTravelTime, complianceRate, incompleteJobs,completedJobs,
-					SimUtils.getOverallGstStats(availableGSTPool), LOG_FILE_JOB, LOG_FILE_GST);
+
+			SimUtils.generateOutput(avgTravelTime, complianceRate, incompleteJobs, completedJobs,
+					SimUtils.getOverallGstStats(GSTFactory.getGSTpool()), LOG_FILE_JOB, LOG_FILE_GST);
 		}
 
 	}
@@ -215,11 +211,7 @@ public class Simulation {
 		GST_FILE_PATH = gstFile;
 		LOG_FILE_JOB = outputjobs;
 		LOG_FILE_GST = outputgst;
-		
-	}
 
-	public static long getRunTime() {
-		return runTimeInSeconds;
 	}
 
 	private void checkDay(LocalDate currThisDay, LocalDate currNextDay) {
@@ -231,7 +223,7 @@ public class Simulation {
 			availableGSTPool = GSTFactory.getNextGSTs(currThisDay);
 			System.out.println("GSTS in Pool: \n");
 			for (GST g : availableGSTPool) {
-				System.out.println(g.getgSTid()+"\n");
+				System.out.println(g.getgSTid() + "\n");
 			}
 			nextDay = currThisDay.plusDays(1);
 		}
