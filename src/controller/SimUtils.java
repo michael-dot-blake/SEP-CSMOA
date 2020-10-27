@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -51,31 +52,66 @@ public class SimUtils {
 		}
 	}
 
+	public static ArrayList<GST> getOverallGstStats(ArrayList<GST> gstPool) {
+
+		ArrayList<GST> myGSTstats = new ArrayList<GST>();
+
+		int totalTravelTime = 0;
+		int numJobsCompleted = 0;
+		int totalTimeWorked = 0;
+		String gstId = null;
+		double lat = 0.00;
+		double lon = 0.00;
+		LocalDate shift = null;
+
+		for (GST g : gstPool) {
+			if (g.getMyJobsToday().size() == 0) {
+				gstId = g.getgSTid();
+				lat = g.getLat();
+				lon = g.getLon();
+				shift = g.getShiftDate();
+				myGSTstats.add(new GST(gstId, lat, lon, shift, totalTravelTime, totalTimeWorked, numJobsCompleted));
+			} else {
+				for (Job myJobs : g.getMyJobsToday()) {
+					totalTravelTime = myJobs.getTravelTimeInSeconds() * 2;
+					totalTimeWorked = (myJobs.getJobDuration() * 60);
+					numJobsCompleted = g.getMyJobsToday().size();
+				}
+				gstId = g.getgSTid();
+				lat = g.getLat();
+				lon = g.getLon();
+				shift = g.getShiftDate();
+				myGSTstats.add(new GST(gstId, lat, lon, shift, totalTravelTime, totalTimeWorked, numJobsCompleted));
+
+			}
+
+		}
+		return myGSTstats;
+	}
+
 	public static void generateOutput(long avgTravelTime, float complianceRate, int incompleteJobs,
-			ArrayList<CompletedJobRecord> completedJobs, ArrayList<GST> gstPool, String filename)
+			ArrayList<CompletedJobRecord> completedJobs, ArrayList<GST> gstRecords, String jobFilename,
+			String gstFilename)
 			throws CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, IOException, InterruptedException {
 		String compString = "Compliance Rate: " + (String.format("%.0f%%", complianceRate));
 		String travTimeString = "Average Travel Time Mins: " + (avgTravelTime / 60);
 		String incompleteJobString = "Incomplete Jobs: " + Integer.toString(incompleteJobs);
-		String gstTableHeading = "GST DATA";
 		String[] comp = new String[] { compString };
 		String[] trav = new String[] { travTimeString };
 		String[] incomplete = new String[] { incompleteJobString };
-		String[] heading = new String[] { gstTableHeading };
-		Log.writeToCsv(completedJobs, filename);
-		Log.appendSingleLineToCSV(comp, filename);
-		Log.appendSingleLineToCSV(trav, filename);
-		Log.appendSingleLineToCSV(incomplete, filename);
-		Log.appendSingleLineToCSV(heading, filename);
-		for (GST g : gstPool) {
-			Log.appendSingleLineToCSV(g.parseMyJobsToday(), filename);
-		}
-		System.out.println("Run Successful. Output written to " + filename);
+		Log.writeToCsv(completedJobs, jobFilename);
+		Log.appendSingleLineToCSV(comp, jobFilename);
+		Log.appendSingleLineToCSV(trav, jobFilename);
+		Log.appendSingleLineToCSV(incomplete, jobFilename);
+
+		Log.writeToCsv(gstRecords, gstFilename);
+
+		System.out.println("Run Successful. Output written to " + jobFilename);
 
 	}
 
-	public static GST findClosestGst(Coordinate jobCoord, int timeBudgetInSeconds, LocalDateTime departureTime, ArrayList<GST> gstPool)
-			throws IOException {
+	public static GST findClosestGst(Coordinate jobCoord, int timeBudgetInSeconds, LocalDateTime departureTime,
+			ArrayList<GST> gstPool) throws IOException {
 
 		JsonObject jsonObj = AzureMapsApi.getIsochroneCoords(jobCoord, timeBudgetInSeconds, departureTime);
 		Polygon poly = AzureMapsApi.BuildPolygon(jsonObj);
