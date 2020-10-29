@@ -13,7 +13,7 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 
 public class Log {
 	
-	public static <T> void writeToCsv(List<T> list, String filename)
+	public static <T> void writeListToCsv(List<T> list, String filename)
 			throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException, InterruptedException {
 		Writer writer = new FileWriter(filename);
 

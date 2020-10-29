@@ -65,22 +65,25 @@ public class SimUtils {
 		LocalDate shift = null;
 
 		for (GST g : gstPool) {
-			if (g.getMyJobsToday().size() == 0) {
+			if (g.getMyJobsToday().size() > 0) {
 				gstId = g.getgSTid();
 				lat = g.getLat();
 				lon = g.getLon();
 				shift = g.getShiftDate();
-				myGSTstats.add(new GST(gstId, lat, lon, shift, totalTravelTime, totalTimeWorked, numJobsCompleted));
-			} else {
 				for (Job myJobs : g.getMyJobsToday()) {
 					totalTravelTime = myJobs.getTravelTimeInSeconds() * 2;
 					totalTimeWorked = (myJobs.getJobDuration() * 60);
 					numJobsCompleted = g.getMyJobsToday().size();
 				}
+				myGSTstats.add(new GST(gstId, lat, lon, shift, totalTravelTime, totalTimeWorked, numJobsCompleted));
+			} else {
 				gstId = g.getgSTid();
 				lat = g.getLat();
 				lon = g.getLon();
 				shift = g.getShiftDate();
+				totalTravelTime = 0;
+				numJobsCompleted = 0;
+				totalTimeWorked = 0;
 				myGSTstats.add(new GST(gstId, lat, lon, shift, totalTravelTime, totalTimeWorked, numJobsCompleted));
 
 			}
@@ -99,12 +102,12 @@ public class SimUtils {
 		String[] comp = new String[] { compString };
 		String[] trav = new String[] { travTimeString };
 		String[] incomplete = new String[] { incompleteJobString };
-		Log.writeToCsv(completedJobs, jobFilename);
+		Log.writeListToCsv(completedJobs, jobFilename);
 		Log.appendSingleLineToCSV(comp, jobFilename);
 		Log.appendSingleLineToCSV(trav, jobFilename);
 		Log.appendSingleLineToCSV(incomplete, jobFilename);
 
-		Log.writeToCsv(gstRecord, gstFilename);
+		Log.writeListToCsv(gstRecord, gstFilename);
 
 		System.out.println("Run Successful. Output written to " + jobFilename);
 
