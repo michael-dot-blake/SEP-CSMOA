@@ -45,7 +45,7 @@ public class Simulation {
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
 
 	// Strings representing filenames to pass as arguments in cmdline
-	private String JOB_FILE_PATH = "JobFiles/2jobsperday.csv";
+	private String JOB_FILE_PATH = "JobFiles/1job.csv";
 
 	private String GST_FILE_PATH = "GSTFiles/gsts2perdayduplicateids.csv";
 
@@ -60,7 +60,18 @@ public class Simulation {
 	private LocalDate nextDay;
 
 	/**
-	 * Main simulation method
+	 * Main simulation method. Accepts two LocalDateTime objects as arguments which
+	 * represent the start and end of the simulation. The Simulation progresses
+	 * second by second, checking the job pool to see if the time matches the start
+	 * time of a job. If it does, the method checks whether a GST is currently
+	 * available to be assigned the job. If no GST is available the job will enter
+	 * the idleQueue and be next in line when a GST becomes available. If a GST is
+	 * available then the job enters the jobQueue and is assigned the closest
+	 * available GST based on a call to the Azure Maps API. Once a job is assigned
+	 * an endDateAndTime will be set which the method then uses to check when to end
+	 * the job and move it to the completedJobs Array. The simulation will
+	 * automatically terminate when all jobs from the jobPool have been completed
+	 * and there are no busy GSTs.
 	 * 
 	 * @throws IOException
 	 * @throws SecurityException
