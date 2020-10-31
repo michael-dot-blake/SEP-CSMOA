@@ -7,8 +7,10 @@ import com.opencsv.bean.CsvBindByName;
 /**
  * @author Michael Blake
  * 
- *         A class to create CompletedJob objects which are records of jobs
- *         which have been assigned and completed
+ *         A class to create CompletedJobRecord objects which are records of
+ *         jobs which have been assigned and completed. It takes a Job and GST
+ *         object as instance variable and calls getters from those objects in
+ *         its constructor
  */
 public class CompletedJobRecord {
 
