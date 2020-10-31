@@ -9,8 +9,12 @@ import com.opencsv.bean.CsvBindByName;
 /**
  * @author Yun Wang
  * 
- *         A class used to create GST objects which will be assigned to jobs in
- *         the simulation
+ *         A class used to create GST objects when they are added to the
+ *         simulation via the GSTFactory. It includes bindings for each instance
+ *         variables which are used by the opencsv library to write objects to a
+ *         .csv file in a formatted way. It also defines an additional
+ *         constructor which is used to create records of GST activity on any
+ *         given day
  */
 
 public class GST implements Comparable<GST> {
@@ -48,8 +52,8 @@ public class GST implements Comparable<GST> {
 		this.lat = lat;
 		this.lon = lon;
 		this.shift = shift;
-		this.totalTravelTime = totalTravelTime/60;
-		this.totalTimeWorked = totalTimeWorked/60;
+		this.totalTravelTime = totalTravelTime / 60;
+		this.totalTimeWorked = totalTimeWorked / 60;
 		this.numJobsCompleted = numJobsCompleted;
 	}
 
