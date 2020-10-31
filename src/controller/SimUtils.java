@@ -71,9 +71,7 @@ public class SimUtils {
 				lon = g.getLon();
 				shift = g.getShiftDate();
 				for (Job myJobs : g.getMyJobsToday()) {
-					System.out.println("Total Travel Time: ");
 					totalTravelTime = totalTravelTime + (myJobs.getTravelTimeInSeconds() * 2);
-					System.out.println(g.getgSTid() + " " +totalTravelTime/60);
 					numJobsCompleted = g.getMyJobsToday().size();
 					totalTimeWorked = (myJobs.getJobDuration() * 60) * g.getMyJobsToday().size();
 				}
@@ -81,7 +79,7 @@ public class SimUtils {
 				totalTravelTime = 0;
 				numJobsCompleted = 0;
 				totalTimeWorked = 0;
-				
+
 			} else {
 				gstId = g.getgSTid();
 				lat = g.getLat();
@@ -115,7 +113,9 @@ public class SimUtils {
 
 		Log.writeListToCsv(gstRecord, gstFilename);
 
-		System.out.println("Run Successful. Output written to " + jobFilename);
+		System.out.println("Run Successful");
+		System.out.println("Job Data written to: " + jobFilename);
+		System.out.println("GST Data written to: " + gstFilename);
 
 	}
 
