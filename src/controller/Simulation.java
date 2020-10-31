@@ -23,8 +23,11 @@ import model.Job;
  * @author Michael Blake
  * @author Clark Skinner
  * 
- *         Simulation class to handle assigning jobs to GSTs in early stages of
- *         development
+ *         Main class which handles the running of the simulation. It utilises
+ *         methods from the SimUtils class to trigger the creation of jobs in
+ *         the simulation, allocate GSTs to jobs, complete jobs and generate
+ *         records for completed jobs in the from of CompletedJobRecord objects.
+ * 
  */
 public class Simulation {
 
@@ -45,13 +48,13 @@ public class Simulation {
 	private ArrayList<GST> busyGSTs = new ArrayList<GST>();
 
 	// Strings representing filenames to pass as arguments in cmdline
-	private String JOB_FILE_PATH = "JobFiles/1job.csv";
+	private String JOB_FILE_PATH;
 
-	private String GST_FILE_PATH = "GSTFiles/gsts2perdayduplicateids.csv";
+	private String GST_FILE_PATH;
 
-	private String LOG_FILE_JOB = "jobOutput.csv";
+	private String LOG_FILE_JOB;
 
-	private String LOG_FILE_GST = "gstOutput.csv";
+	private String LOG_FILE_GST;
 
 	// An Integer representing the required compliance time in seconds
 	private final int COMPLIANCE_TIME = 1800;
@@ -231,13 +234,8 @@ public class Simulation {
 		if (currNextDay == null) {
 			nextDay = currThisDay.plusDays(1);
 		} else if (currThisDay.compareTo(currNextDay) == 0) {
-			System.out.println("This Day = Next Day\n");
 			availableGSTPool.clear();
 			availableGSTPool = GSTFactory.getNextGSTs(currThisDay);
-			System.out.println("GSTS in Pool: \n");
-			for (GST g : availableGSTPool) {
-				System.out.println(g.getgSTid() + "\n");
-			}
 			nextDay = currThisDay.plusDays(1);
 		}
 	}
