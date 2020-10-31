@@ -68,7 +68,6 @@ public class GSTFactory {
 //		for (GST gst : gstPool) {
 //			System.out.println(gst);
 //		}
-		System.out.println("\nGST init finish.\n");
 	}
 	
 	public static ArrayList<GST> getGSTpool() {
