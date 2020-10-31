@@ -71,11 +71,17 @@ public class SimUtils {
 				lon = g.getLon();
 				shift = g.getShiftDate();
 				for (Job myJobs : g.getMyJobsToday()) {
-					totalTravelTime = myJobs.getTravelTimeInSeconds() * 2;
+					System.out.println("Total Travel Time: ");
+					totalTravelTime = totalTravelTime + (myJobs.getTravelTimeInSeconds() * 2);
+					System.out.println(g.getgSTid() + " " +totalTravelTime/60);
 					numJobsCompleted = g.getMyJobsToday().size();
 					totalTimeWorked = (myJobs.getJobDuration() * 60) * g.getMyJobsToday().size();
 				}
 				myGSTstats.add(new GST(gstId, lat, lon, shift, totalTravelTime, totalTimeWorked, numJobsCompleted));
+				totalTravelTime = 0;
+				numJobsCompleted = 0;
+				totalTimeWorked = 0;
+				
 			} else {
 				gstId = g.getgSTid();
 				lat = g.getLat();
