@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
  * @author Sawmya Patidar
  * 
  *         A class to create Job objects when they are added to the simulation
+ *         via the JobFactory
  *
  */
 public class Job implements Comparable<Job> {
@@ -163,7 +164,6 @@ public class Job implements Comparable<Job> {
 	public long getIdleTime() {
 		return idleTime;
 	}
-
 
 	@Override
 	public int compareTo(Job o) {
