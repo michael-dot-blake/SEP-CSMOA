@@ -73,7 +73,7 @@ public class SimUtils {
 				for (Job myJobs : g.getMyJobsToday()) {
 					totalTravelTime = totalTravelTime + (myJobs.getTravelTimeInSeconds() * 2);
 					numJobsCompleted = g.getMyJobsToday().size();
-					totalTimeWorked = (myJobs.getJobDuration() * 60) * g.getMyJobsToday().size();
+					totalTimeWorked = totalTimeWorked + (myJobs.getJobDuration() * 60);
 				}
 				myGSTstats.add(new GST(gstId, lat, lon, shift, totalTravelTime, totalTimeWorked, numJobsCompleted));
 				totalTravelTime = 0;
