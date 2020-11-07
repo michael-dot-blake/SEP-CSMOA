@@ -1,5 +1,5 @@
 # Jemena Simulation
-This is a git repository created for as the capstone project for Software Engineering Final Project at RMIT semester 2 2020. The project was to build a digital twin
+This is a git repository created for the capstone project for Software Engineering Final Project at RMIT semester 2 2020. The project was to build a digital twin
 for the Australian gas provider Jemena. This simulation would take in an amount of workers for the day (Gas Servicing Technicians, 
 abbreviated to GSTs) as well as take in a list of jobs and their locations based on historical data. The jobs are added to the pool based on their time and are paired
 up with an available worker. 
