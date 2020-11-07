@@ -11,11 +11,11 @@ the /lib/ folder of the repository. They should be added to the project build pa
 ## Contribution
 This project is the intellectual Property of Jemena and all development work on this project should be conducted with their explicit consent.
 The students who contributed to this project were:
-Clark Skinner
-Michael Blake
-Sawmya Patidar
-Arif Hasan
-Olivia Wang
+* Clark Skinner
+* Michael Blake
+* Sawmya Patidar
+* Arif Hasan
+* Olivia Wang
 
 ## Project Status
 Development of this project has currently ceased. The current project exists as a prototype for what a final shippable product may look like.
