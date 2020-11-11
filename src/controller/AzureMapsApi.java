@@ -34,7 +34,7 @@ public class AzureMapsApi {
 	private static final String STATE = "NSW";
 
 	// Insert Azure Maps API key here
-	private static final String API_KEY = "5nXsFMSUBlUyt_Hvq0fgM6u6tKXy80wgwWfvZaLJuj0";
+	private static final String API_KEY = "";
 
 	/**
 	 * A method which takes an address and calls the Azure Maps Api to return
